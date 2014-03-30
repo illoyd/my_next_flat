@@ -41,6 +41,11 @@ module MyNextFlat
       SearchResultCache.cached?(search)
     end
     
+    def sample_cached_listings(count)
+      keys = ListingCache.keys.sample(count)
+      $redis.mget(keys).map{ |value| ListingCache.deserialize(value) }
+    end
+    
     ##
     # Get the search from the cache if available
     def cached_search(search)

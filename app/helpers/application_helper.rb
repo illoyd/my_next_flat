@@ -72,5 +72,20 @@ module ApplicationHelper
       else number_with_delimiter(number, options)
    end
   end
+  
+  def beds_for(beds)
+    beds = beds.try(:beds) || beds
+    case beds
+      when 0
+        'studio'
+      else
+        pluralize(beds, 'bed')
+    end
+  end
+  
+  def baths_for(baths)
+    baths = baths.try(:baths) || baths
+    pluralize(baths, 'bath')
+  end
 
 end

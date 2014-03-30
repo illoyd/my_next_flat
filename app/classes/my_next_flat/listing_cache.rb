@@ -23,6 +23,10 @@ module MyNextFlat
       $redis.exists(key)
     end
     
+    def self.keys
+      $redis.keys('listing:*')
+    end
+    
     def self.cache_key(listing)
       "listing:#{ listing.try(:id) || listing }"
     end

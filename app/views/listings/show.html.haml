@@ -17,8 +17,8 @@
   .panel-body
     %p
       .label.label-primary= price_for(@listing)
-      .label.label-info #{ @listing.beds } #{ 'beds'.pluralize(@listing.beds) }
-      .label.label-info #{ @listing.baths } #{ 'baths'.pluralize(@listing.baths) }
+      .label.label-info= beds_for(@listing)
+      .label.label-info= baths_for(@listing)
       ~ @listing.description
     %p= link_to 'More Information', @listing.listing_url, class: 'btn btn-success btn-block'
     

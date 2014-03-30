@@ -15,7 +15,7 @@ module Zoopla
 
     property :price,         required: true, transformer: IntegerTransformer
     property :beds,          from: :num_bedrooms, required: true, transformer: IntegerTransformer
-    property :baths,         from: :num_bathrooms, required: true, transformer: IntegerTransformer
+    property :baths,         from: :num_bathrooms, transformer: IntegerTransformer
 
     property :listing_url,   from: :details_url
     property :image_url
@@ -40,6 +40,10 @@ module Zoopla
     def price_per_calendar_month
       return 0 if self.for_sale?
       (self.price.to_f * 52 / 12).truncate
+    end
+    
+    def baths?
+      !self.baths.blank?
     end
 
     def ==(other)

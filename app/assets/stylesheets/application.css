@@ -66,3 +66,7 @@ form.madlib .form-control {
 #map_canvas {
   background-color: grey;
 }
+
+.highlights h3 {
+  font-size: 125%;
+}

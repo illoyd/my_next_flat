@@ -1,15 +1,3 @@
--#
-  %li.media
-    - if result.thumbnail_url
-      .pull-left= image_tag result.thumbnail_url, class: 'media-object'
-    - if result.thumbnail_url
-      .pull-right= image_tag result.agent_logo_url, class: 'media-object'
-      
-    .media-body
-      %p
-        %strong= result.address
-      %p= result.summary
-      / %pre= result
 %tr
   %td
     = link_to listing_path(result.id) do
@@ -21,8 +9,8 @@
     .pull-right
       .label.label-warning= status_for(result.status)
       .label.label-primary= price_for(result)
-      .label.label-info #{ result.beds } #{ 'beds'.pluralize(result.beds) }
-      .label.label-info #{ result.baths } #{ 'baths'.pluralize(result.baths) }
+      .label.label-info= beds_for(result)
+      .label.label-info= baths_for(result) if result.baths?
     %br/
     = simple_format result.summary
     .small Updated #{ l(result.updated_at) }
