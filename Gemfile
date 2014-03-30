@@ -49,6 +49,7 @@ gem 'ice_cube'
 gem 'devise', '~> 3.2.0'
 gem 'devise-async'
 gem 'cancancan', '~> 1.7'
+gem 'rails_12factor'
 
 #
 # Infrastructure gems
