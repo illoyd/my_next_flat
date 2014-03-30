@@ -1,0 +1,35 @@
+.panel.panel-default
+  .panel-heading
+    %h1.panel-title Searches
+
+  - if @searches.empty?
+    .panel-body
+      %p.text-muted No searches saved.
+      %p
+        = link_to(new_search_path, class: 'btn btn-success btn-lg') do
+          %i.fa.fa-search
+          Get started!
+
+  %ul.list-group
+    - @searches.each do |search|
+      = render partial: 'destroy_modal', locals: {search: search}
+    
+      %li.list-group-item
+        .pull-right
+          .btn-group
+            = link_to search_path(search), class: 'btn btn-default btn-sm' do
+              = results_count(search)
+              %i.fa.fa-search
+            = link_to edit_search_path(search), class: 'btn btn-default btn-sm' do
+              %i.fa.fa-pencil
+            = link_to '#', class: 'btn btn-default btn-sm', 'data-toggle'=>"modal", 'data-target'=>"#delete_#{search.id}" do
+              %i.fa.fa-trash-o
+
+        %p
+          = link_to search do
+            = search.name
+        %p
+          = search.locations.map{ |location| location.area }.uniq.to_sentence
+
+  .panel-body
+    = link_to 'Start a new search', new_search_path, class: 'btn btn-success btn-block'

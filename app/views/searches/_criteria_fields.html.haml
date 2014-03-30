@@ -1,0 +1,46 @@
+%li.list-group-item
+  = f.hidden_field :_destroy, class: 'destroy'
+  = link_to '#', onclick: "javascript:delete_section(this); return false;", class: 'pull-right', style: 'font-size: 150%' do
+    &times;
+
+  I want to
+  
+  / Buy or let
+  - if f.object.new_record?
+    = f.label :type, class: 'sr-only'
+    = f.select :type, options_for_criteria_types, {}, class: 'form-control input-sm'
+  - else
+    %kbd= criteria_kind_for(f.object)
+
+  something between
+  
+  / Price
+  .form-group{ style: 'width: 35%' }
+    = f.label :min_price, class: 'sr-only'
+    .input-group
+      %span.input-group-addon &pound;
+      = f.text_field :min_price, class: 'form-control input-sm', placeholder: '0'
+  and  
+  .form-group{ style: 'width: 35%' }
+    = f.label :max_price, class: 'sr-only'
+    .input-group
+      %span.input-group-addon &pound;
+      = f.text_field :max_price, class: 'form-control input-sm', placeholder: '1,000,000'
+  
+  / Beds
+  with 
+  = f.label :min_beds, class: 'sr-only'
+  = f.text_field :min_beds, class: 'form-control input-sm', style: 'width: 25%', placeholder: 0
+  to
+  = f.label :max_beds, class: 'sr-only'
+  = f.text_field :max_beds, class: 'form-control input-sm', style: 'width: 25%', placeholder: 'any'
+  bedrooms
+  
+  / Baths
+  and
+  = f.label :min_baths, class: 'sr-only'
+  = f.text_field :min_baths, class: 'form-control input-sm', style: 'width: 25%', placeholder: 0
+  to
+  = f.label :max_baths, class: 'sr-only'
+  = f.text_field :max_baths, class: 'form-control input-sm', style: 'width: 25%', placeholder: 'any'
+  bathrooms

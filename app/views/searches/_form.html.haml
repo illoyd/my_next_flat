@@ -1,0 +1,56 @@
+= form_for(@search, html: { class: 'form-inline madlib' }) do |f|
+  - if @search.errors.any?
+    .panel.panel-danger
+      .panel-heading
+        %h2.panel-title Oops!
+      .panel-body
+        = pluralize(@search.errors.count, "error")
+        prohibited this search from being saved
+      %ul.list-group
+        - @search.errors.full_messages.each do |msg|
+          %li.list-group-item= msg
+
+  .form-group
+    = f.label :name, class: 'col-sm-2 control-label'
+    .col-sm-8= f.text_field :name, class: 'form-control'
+    .col-sm-2= f.submit "Search", class: 'btn btn-success'
+
+  .row
+    / Locations
+    .col-md-6
+      .panel.panel-info
+        .panel-heading
+          %h2.panel-title
+            %i.fa.fa-map-marker
+            Locations
+        %ul.list-group
+          = f.fields_for :locations do |builder|
+            - render 'location_fields', :f => builder
+        .panel-footer
+          = @search.locations.count
+          locations
+          .pull-right
+            = link_to_add_fields(f, :locations) do
+              %i.fa.fa-plus
+              Add
+
+    /Criteria
+    .col-md-6
+      .panel.panel-info
+        .panel-heading
+          %h2.panel-title
+            %i.fa.fa-check
+            Criteria
+        %ul.list-group
+          = f.fields_for :criterias do |builder|
+            - render 'criteria_fields', :f => builder
+        .panel-footer
+          = @search.criterias.count
+          criteria
+          .pull-right
+            = link_to_add_fields(f, :criterias) do
+              %i.fa.fa-plus
+              Add
+
+  .row
+    .col-md-offset-2.col-md-8= f.submit "Search", class: 'btn btn-success btn-block'

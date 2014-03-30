@@ -1,0 +1,19 @@
+/ Delete modal!
+%div.modal.fade{ id: "delete_#{search.id}", tabindex: -1, role: 'dialog', 'aria-labelledby'=>"delete_#{search.id}_label", 'aria-hidden'=>'true' }
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &times;
+        %h4{ id: "delete_#{search.id}_label" }
+          %i.fa.fa-trash-o
+          Delete?
+      .modal-body
+        %p Are you sure you want to delete <strong>#{ search.name }</strong>? It can't be undone!
+        %p
+          = button_to search_path(search), class: 'btn btn-danger btn-block', method: :delete do
+            %i.fa.fa-trash-o
+            I understand - delete forever!
+        %p
+          %button.btn.btn-primary.btn-block{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}
+            %i.fa.fa-check-circle
+            I changed my mind - keep it!

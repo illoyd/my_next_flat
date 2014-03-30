@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  search_terms: MyString
+  radius: 1.5
+
+two:
+  search_terms: MyString
+  radius: 1.5

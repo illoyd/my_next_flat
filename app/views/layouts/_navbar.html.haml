@@ -1,0 +1,41 @@
+%nav.navbar.navbar-inverse{role: "navigation"}
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to(root_path, class: 'navbar-brand') do
+        %i.fa.fa-home
+        MyNextFlat
+
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        - if guest_user?
+          %li
+            = link_to(new_user_registration_path) do
+              %i.fa.fa-plus
+              Sign up
+          %li
+            = link_to new_user_session_path do
+              %i.fa.fa-sign-in
+              Sign in
+
+        - else
+          %li
+            =link_to(edit_user_registration_path) do
+              Hi,
+              = current_or_guest_user.name
+        %li
+          =link_to(searches_path) do
+            = current_or_guest_user.searches.count
+            %i.fa.fa-search
+
+        - unless guest_user?
+          %li
+            = link_to destroy_user_session_path, :method => :delete do
+              %i.fa.fa-sign-out
+              Sign out

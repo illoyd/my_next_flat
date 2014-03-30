@@ -41,9 +41,49 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# My gems!
-gem 'redis'
-gem 'sidekiq'
+#
+# Standard gems
 gem 'haml'
 gem 'api_smith'
+gem 'ice_cube'
+gem 'devise', '~> 3.2.0'
+gem 'devise-async'
+gem 'cancancan', '~> 1.7'
 
+#
+# Infrastructure gems
+gem 'oj'
+gem 'oj_mimic_json'
+gem 'redis'
+gem 'sidekiq'
+
+#
+# Miscelanious gems
+gem 'uk_postcode'
+
+#
+# Test and development gems
+group :test, :development do
+  gem "rspec-rails" #, "~> 2.0"
+	gem 'factory_girl'
+	gem 'faker'
+end
+
+#
+# Test gems
+group :test do
+  gem 'minitest'
+	gem 'shoulda-matchers'
+	gem 'rspec-sidekiq'
+	gem 'vcr'
+	gem 'webmock', "~> 1.11.0"
+	gem 'fuubar'
+  gem 'simplecov', :require => false
+  gem 'hashdiff'
+end
+
+#
+# Production gems
+group :production do
+  gem 'newrelic_rpm'
+end

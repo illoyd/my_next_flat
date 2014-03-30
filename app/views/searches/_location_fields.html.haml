@@ -1,0 +1,26 @@
+%li.list-group-item
+  = f.hidden_field :_destroy, class: 'destroy'
+  = link_to '#', onclick: "javascript:delete_section(this); return false;", class: 'pull-right', style: 'font-size: 150%' do
+    &times;
+
+  I'm looking for something
+
+  / Radius
+  .form-group
+    = f.label :radius, class: 'sr-only'
+    = f.select :radius, options_for_radius, {}, { class: 'form-control input-sm' }
+
+  the
+  
+  / Type
+  - if f.object.new_record?
+    .form-group
+      = f.label :type, class: 'sr-only'
+      = f.select :type, options_for_location_types, {}, { class: 'form-control input-sm' }
+  - else
+    %kbd= location_kind_for(f.object)
+
+  / Area
+  .form-group
+    = f.label :area, class: 'sr-only'
+    = f.text_field :area, class: 'form-control input-sm' 

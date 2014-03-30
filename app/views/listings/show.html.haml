@@ -1,0 +1,52 @@
+.panel.panel-info
+  .panel-heading
+    .pull-right
+      = link_to :back do
+        %i.fa.fa-arrow-circle-o-left
+        Back
+    %h2.panel-title= @listing.address
+    
+  .row
+    .col-md-6
+      = link_to @listing.listing_url do
+        = image_tag @listing.image_url, src: @listing.caption
+        / , style: 'width: 100%'
+    .col-md-6{ style: 'padding-left: 5px; height: 100%; min-height: 100px;' }
+      #map_canvas{ style: 'height: 100%; min-height: 255px;' }
+
+  .panel-body
+    %p
+      .label.label-primary= price_for(@listing)
+      .label.label-info #{ @listing.beds } #{ 'beds'.pluralize(@listing.beds) }
+      .label.label-info #{ @listing.baths } #{ 'baths'.pluralize(@listing.baths) }
+      ~ @listing.description
+    %p= link_to 'More Information', @listing.listing_url, class: 'btn btn-success btn-block'
+    
+    -#
+      %p
+        %strong Raw
+      %pre~ @listing.as_json
+
+  .panel-footer
+    Last updated #{ l(@listing.updated_at) }
+    .pull-right
+      = link_to :back do
+        %i.fa.fa-arrow-circle-o-left
+        Back
+
+:javascript
+  function load_map() {
+    var canvas = document.getElementById('map_canvas');
+    var coords = new google.maps.LatLng(#{ @listing.latitude }, #{ @listing.longitude });
+    var options = {
+      center: coords,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(canvas, options);
+    var marker = new google.maps.Marker({
+      position: coords,
+      map: map,
+    });
+  }
+  load_map();

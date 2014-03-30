@@ -1,0 +1,84 @@
+%li.list-group-item
+  I want to 
+  %kbd= criteria_kind_for(criteria)
+  
+  / Price
+  - if criteria.min_price && criteria.max_price
+    between
+    %kbd= number_to_price criteria.min_price, criteria.to_let?
+    and
+    %kbd= number_to_price criteria.max_price, criteria.to_let?
+
+  - elsif criteria.min_price
+    at least
+    %kbd= number_to_price criteria.min_price, criteria.to_let?
+
+  - elsif criteria.max_price
+    at most
+    %kbd= number_to_price criteria.max_price, criteria.to_let?
+
+  / Bedrooms
+  - if criteria.min_beds || criteria.max_beds
+    - if criteria.prices?
+      and
+    with
+
+    - if criteria.min_beds == criteria.max_beds
+      %kbd= criteria.min_beds
+    
+    - elsif criteria.min_beds && criteria.max_beds
+      %kdb= criteria.min_beds
+      to
+      %kbd= criteria.max_beds
+
+    - elsif criteria.min_beds
+      at least
+      %kbd= criteria.min_beds
+
+    - elsif criteria.max_beds
+      at most
+      %kbd= criteria.max_beds
+      
+    bedrooms
+      
+
+  / Bathrooms
+  - if criteria.min_baths || criteria.max_baths
+    - if criteria.prices? || criteria.beds?
+      and
+    with
+
+    - if criteria.min_baths == criteria.max_baths
+      %kbd= criteria.min_baths
+    
+    - elsif criteria.min_baths && criteria.max_baths
+      %kdb= criteria.min_baths
+      to
+      %kbd= criteria.max_baths
+
+    - elsif criteria.min_baths
+      at least
+      %kbd= criteria.max_baths
+
+    - elsif criteria.max_beds
+      at most
+      %kbd= criteria.max_baths
+    bathrooms
+      
+
+-#
+  .form-group
+    = f.label :min_price, 'Price', class: 'col-sm-2 control-label'
+    .col-sm-5= f.text_field :min_price, class: 'form-control'
+    = f.label :max_price, class: 'col-sm-2 control-label hidden'
+    .col-sm-5= f.text_field :max_price, class: 'form-control'
+  .form-group
+    = f.label :min_beds, 'Beds', class: 'col-sm-2 control-label'
+    .col-sm-5= f.text_field :min_beds, class: 'form-control'
+    = f.label :max_beds, class: 'col-sm-2 control-label hidden'
+    .col-sm-5= f.text_field :max_beds, class: 'form-control'
+  .form-group
+    = f.label :min_baths, 'Baths', class: 'col-sm-2 control-label'
+    .col-sm-5= f.text_field :min_baths, class: 'form-control'
+    = f.label :max_baths, class: 'col-sm-2 control-label hidden'
+    .col-sm-5= f.text_field :max_baths, class: 'form-control'

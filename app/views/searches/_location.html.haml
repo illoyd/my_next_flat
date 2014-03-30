@@ -1,0 +1,13 @@
+%li.list-group-item
+  I'm looking for something
+
+  / Radius
+  %kbd= radius_for(location.radius).html_safe
+
+  the
+  
+  / Type
+  %kbd= location_kind_for(location)
+
+  / Area
+  %kbd= location.area

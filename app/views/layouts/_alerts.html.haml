@@ -1,0 +1,5 @@
+- %w( alert warning success notice ).each do |kind|
+  - if flash[kind]
+    .alert.alert-dismissable{ class: alert_class_for(kind) }
+      %button{type: "button", class:"close", 'data-dismiss' => "alert", 'aria-hidden' => "true"} &times;
+      = flash[kind]

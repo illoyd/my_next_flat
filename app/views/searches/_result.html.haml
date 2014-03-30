@@ -1,0 +1,29 @@
+-#
+  %li.media
+    - if result.thumbnail_url
+      .pull-left= image_tag result.thumbnail_url, class: 'media-object'
+    - if result.thumbnail_url
+      .pull-right= image_tag result.agent_logo_url, class: 'media-object'
+      
+    .media-body
+      %p
+        %strong= result.address
+      %p= result.summary
+      / %pre= result
+%tr
+  %td
+    = link_to listing_path(result.id) do
+      = image_tag result.image_url, src: result.caption || result.address, class: 'thumbnail', style: 'min-height:70px; min-width:90px; max-width: 160px;'
+    = image_tag result.agent_logo_url, src: result.agent_name, style: 'max-width: 90px;'
+  %td
+    = link_to listing_path(result.id) do
+      %strong= result.address
+    .pull-right
+      .label.label-warning= status_for(result.status)
+      .label.label-primary= price_for(result)
+      .label.label-info #{ result.beds } #{ 'beds'.pluralize(result.beds) }
+      .label.label-info #{ result.baths } #{ 'baths'.pluralize(result.baths) }
+    %br/
+    = simple_format result.summary
+    .small Updated #{ l(result.updated_at) }
+    

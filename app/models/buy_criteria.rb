@@ -1,0 +1,3 @@
+class BuyCriteria < Criteria
+  
+end
