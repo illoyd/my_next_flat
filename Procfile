@@ -1,3 +1,3 @@
-web: rails server
-redis: redis-server
+web: rails server -p 5000
 worker: sidekiq
+redis: redis-server
