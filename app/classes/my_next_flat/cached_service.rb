@@ -21,13 +21,13 @@ module MyNextFlat
     
     ##
     # Perform searches, using cache first if available. If a new search is required, then cache the results as well.
-    def search(search_or_id)
+    def search(search_or_id, options={})
       search_id = search_or_id.try(:id) || search_or_id
       search    = search_or_id.is_a?(Search) ? search_or_id : Search.find(search_id)
       return SearchResultCache.results(search_id) if SearchResultCache.cached?(search_id)
 
       # Request and cache
-      results = self.service.search(search)
+      results = self.service.search(search, options)
       SearchResultCache.cache_nil(search) if results.nil?
       SearchResultCache.cache(search, results)
       results
@@ -42,7 +42,7 @@ module MyNextFlat
     end
     
     def sample_cached_listings(count)
-      keys = ListingCache.keys.sample(count)
+      keys = ListingCache.keys.sample(count).compact
       return [] if keys.empty?
       $redis.mget(keys).map{ |value| ListingCache.deserialize(value) }
     end
