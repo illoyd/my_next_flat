@@ -43,6 +43,7 @@ module MyNextFlat
     
     def sample_cached_listings(count)
       keys = ListingCache.keys.sample(count)
+      return [] if keys.empty?
       $redis.mget(keys).map{ |value| ListingCache.deserialize(value) }
     end
     
