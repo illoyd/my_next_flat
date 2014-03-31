@@ -18,8 +18,8 @@ module Zoopla
       query(params).try(:first)
     end
     
-    def search(search)
-      results = build_queries(search).map { |query| query(query) }
+    def search(search, options={})
+      results = build_queries(search).map { |query| query(options.merge(query)) }
       results.flatten.uniq
     end
     
