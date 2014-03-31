@@ -1,3 +1,2 @@
-web: rails server -p 5000
+web: unicorn_rails -c config/unicorn.conf.rb
 worker: sidekiq
-redis: redis-server
