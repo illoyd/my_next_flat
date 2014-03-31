@@ -57,6 +57,7 @@ gem 'oj'
 gem 'oj_mimic_json'
 gem 'redis'
 gem 'sidekiq'
+gem 'sidetiq'
 
 #
 # Miscelanious gems
