@@ -52,7 +52,7 @@ gem 'cancancan', '~> 1.7'
 
 #
 # Production gems
-# gem 'rails_12factor', group: :production
+gem 'rails_12factor', group: :production
 
 #
 # Infrastructure gems
