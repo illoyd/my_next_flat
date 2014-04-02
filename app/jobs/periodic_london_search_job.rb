@@ -4,7 +4,7 @@ class PeriodicLondonSearchJob
 
   recurrence { hourly }
 
-  NEIGHBOURHOODS = [ "Balham",
+  NEIGHBORHOODS = [ "Balham",
     "Battersea",
     "Belgravia",
     "Bermondsey",
@@ -55,7 +55,7 @@ class PeriodicLondonSearchJob
     "Wimbledon" ]
 
   def perform()
-    search(random_neighbourhood)
+    search(random_neighborhood)
   end
   
   def search(neighborhood)
@@ -72,17 +72,17 @@ class PeriodicLondonSearchJob
   
   def build_search(neighborhood)
     search = Search.new
-    search.locations << Location.new( radius: 2, area: neighbourhood || self.random_neighbourhood )
+    search.locations << Location.new( radius: 2, area: neighborhood || self.random_neighborhood )
     search.criterias << BuyCriteria.new( min_price: 25_000 )
     search.criterias << LetCriteria.new( min_price: 25 )
   end
   
-  def random_neighbourhood
-    NEIGHBOURHOODS.sample + ', London'
+  def random_neighborhood
+    NEIGHBORHOODS.sample + ', London'
   end
   
   def all
-    NEIGHBOURHOODS.shuffle.each { |neighbourhood| perform(neighbourhood + ', London') }
+    NEIGHBORHOODS.shuffle.each { |neighborhood| perform(neighborhood + ', London') }
   end
   
   def service
