@@ -71,10 +71,11 @@ class PeriodicLondonSearchJob
   end
   
   def build_search(neighborhood)
-    search = Search.new
-    search.locations << Location.new( radius: 2, area: neighborhood || self.random_neighborhood )
-    search.criterias << BuyCriteria.new( min_price: 25_000 )
-    search.criterias << LetCriteria.new( min_price: 25 )
+    search = Search.new.tap do |s|
+      s.locations << Location.new( radius: 2, area: neighborhood || self.random_neighborhood )
+      s.criterias << BuyCriteria.new( min_price: 25_000 )
+      s.criterias << LetCriteria.new( min_price: 25 )
+    end
   end
   
   def random_neighborhood
