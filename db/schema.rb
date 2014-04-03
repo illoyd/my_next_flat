@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323121826) do
+ActiveRecord::Schema.define(version: 20140403092417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,9 +52,21 @@ ActiveRecord::Schema.define(version: 20140323121826) do
     t.float    "radius",     default: 0.0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "locations", ["search_id"], name: "index_locations_on_search_id", using: :btree
+
+  create_table "point_of_interests", force: true do |t|
+    t.string   "name"
+    t.string   "kind"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "zone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "searches", force: true do |t|
     t.integer  "user_id"
