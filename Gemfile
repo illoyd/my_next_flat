@@ -49,10 +49,7 @@ gem 'ice_cube'
 gem 'devise', '~> 3.2.0'
 gem 'devise-async'
 gem 'cancancan', '~> 1.7'
-
-#
-# Production gems
-gem 'rails_12factor', group: :production
+gem 'uk_postcode'
 
 #
 # Infrastructure gems
@@ -61,10 +58,6 @@ gem 'oj_mimic_json'
 gem 'redis'
 gem 'sidekiq'
 gem 'sidetiq'
-
-#
-# Miscelanious gems
-gem 'uk_postcode'
 
 #
 # Test and development gems
@@ -91,4 +84,6 @@ end
 # Production gems
 group :production do
   gem 'newrelic_rpm'
+  gem 'rails_12factor'
+  gem 'lograge'
 end
