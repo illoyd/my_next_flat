@@ -32,7 +32,7 @@ module Zoopla
     def check_response_body_errors(response)
       return unless response && response['error_code']
       case response['error_code'].to_i
-        when -1 then raise DisambiguationError.new(response['disambiguation'] || response['error_string'], response)
+        when -1 then raise DisambiguationError.new("#{ response['error_string'] } Did you mean #{ response['disambiguation'].to_sentence( two_words_connector: ' or ', last_word_connector: ', or ') }?", response)
         when  1 then raise InsufficientArgumentsError.new(response['error_string'], response)
         when  5 then raise InvalidRequestedDataError.new(response['error_string'], response)
         when  7 then raise UnknownLocationError.new(response['suggestion'] || response['error_string'], response)

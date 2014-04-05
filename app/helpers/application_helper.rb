@@ -40,8 +40,7 @@ module ApplicationHelper
   end
   
   def results_count(search)
-    service = MyNextFlat::CachedService.new
-    service.cached_search?(search) ? service.search(search).count : nil
+    Zoopla::CachedListings.new.search(search, {}, {allow_query: false}).count
   end
   
   def price_for(listing)

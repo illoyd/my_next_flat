@@ -1,6 +1,6 @@
 module Zoopla
 
-  class Service
+  class ServiceOld
     include APISmith::Client
     base_uri "http://api.zoopla.co.uk/"
     endpoint "api/v1/"

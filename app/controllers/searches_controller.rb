@@ -10,7 +10,7 @@ class SearchesController < ApplicationController
   # GET /searches/1
   # GET /searches/1.json
   def show
-    @results = MyNextFlat::CachedService.new.search(@search).sort_by(&:updated_at).reverse!
+    @results = Zoopla::CachedListings.new.search(@search).sort_by(&:updated_at).reverse!
   end
 
   # GET /searches/new
@@ -46,7 +46,6 @@ class SearchesController < ApplicationController
   def update
     respond_to do |format|
       if @search.update(search_params)
-        MyNextFlat::CachedService.new.clear(@search)
         format.html { redirect_to @search, notice: 'Search was successfully updated.' }
         format.json { render action: 'show', status: :ok, location: @search }
       else

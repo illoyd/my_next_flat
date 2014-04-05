@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Zoopla::Service, :vcr do
+describe 'Zoopla::Service', :vcr, :skip do
   it_behaves_like 'a listing service'
 
   def zoopla_location_params(location)

@@ -124,19 +124,13 @@ describe Zoopla::Listings, :vcr do
       end
       
       it 'combines location searches to return all results' do
-        results1 = subject.search(search1)
-        results2 = subject.search(search2)
-        expect( subject.search(search) ).to match_array(results1 + results2)
+        results1 = subject.search(search1, page_size: 2).map { |listing| listing.address }
+        results2 = subject.search(search2, page_size: 2).map { |listing| listing.address }
+        expected_results = (results1 + results2).uniq
+        expect( subject.search(search, page_size: 2).map { |listing| listing.address }.to_a ).to match_array(expected_results)
       end
     end
 
   end #search
 
-#   reload!
-#   FactoryGirl.search_definitions
-#   location = FactoryGirl.build(:location, area: 'S', search: nil)
-#   criteria = FactoryGirl.build(:buy_criteria, :with_prices, search: nil)
-#   search = FactoryGirl.build(:search, user: nil, locations: [location], criterias: [criteria])
-#   Zoopla::Service.new.search(search)
-  
 end

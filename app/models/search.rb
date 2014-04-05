@@ -32,7 +32,7 @@ class Search < ActiveRecord::Base
   def combinations
     self.locations.product(self.criterias)
   end
-  
+
   protected
   
   def ensure_schedule

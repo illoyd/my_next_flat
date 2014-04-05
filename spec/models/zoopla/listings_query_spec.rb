@@ -95,10 +95,10 @@ describe Zoopla::ListingsQuery, :vcr do
     context 'with only location' do
       let(:location) { build(:location, area: 'SE10', search: nil) }
       it 'finds for location' do
-        expect( subject.where(location).execute ).to be_a(Array)
+        expect( subject.where(location).execute ).to be_a(Enumerable)
       end
       it 'finds for 2 locations' do
-        expect( subject.where(location, location).execute ).to be_a(Array)
+        expect( subject.where(location, location).execute ).to be_a(Enumerable)
       end
     end
     
@@ -114,20 +114,13 @@ describe Zoopla::ListingsQuery, :vcr do
 
     context 'with both location and criteria' do
       it 'finds for [location, criteria]' do
-        expect( subject.where(location, criteria).execute ).to be_a(Array)
+        expect( subject.where(location, criteria).execute ).to be_a(Enumerable)
       end
       it 'finds for [criteria, location]' do
-        expect( subject.where(criteria, location).execute ).to be_a(Array)
+        expect( subject.where(criteria, location).execute ).to be_a(Enumerable)
       end
     end
 
   end #search
 
-#   reload!
-#   FactoryGirl.find_definitions
-#   location = FactoryGirl.build(:location, area: 'S', search: nil)
-#   criteria = FactoryGirl.build(:buy_criteria, :with_prices, search: nil)
-#   search = FactoryGirl.build(:search, user: nil, locations: [location], criterias: [criteria])
-#   Zoopla::Service.new.find(search)
-  
 end

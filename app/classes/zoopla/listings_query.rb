@@ -17,6 +17,8 @@ module Zoopla
     def params
       @params
     end
+    
+    delegate :to_hash, to: :params
 
     def where(*components)
       components.each { |component| @params.merge!(self.params_for(component)) }
@@ -27,8 +29,8 @@ module Zoopla
       self.execute.first
     end
     
-    def execute(options = {})
-      @api.query(@params, options)
+    def execute
+      @api.query(@params)
     end
     
     alias_method :all, :execute
@@ -47,6 +49,7 @@ module Zoopla
         when ::BuyCriteria    then ::Zoopla::BuyCriteriaParams.call(data)
         when ::LetCriteria    then ::Zoopla::LetCriteriaParams.call(data)
         when ::Criteria       then ::Zoopla::CriteriaParams.call(data)
+        when ::Hash           then data
         else
           raise ::Zoopla::Error.new("Could not build search parameters for #{ term.class.to_s }.")
       end

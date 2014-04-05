@@ -4,39 +4,60 @@ module Zoopla
   
     TTL = 24.hours.seconds
 
+    def search(search, extras={}, options={})
+      queries(search, extras).reduce(Set.new) { |memo,query| memo.merge(self.query(query, options)) }
+    end
+    
     def query(query, options = {})
+      options.reverse_merge!(default_options)
+      
       # Get cache if available 
-      cached_results = get_cache(query, options)
-      return cached_results if cached_results
+      if options[:use_cache]
+        cached_results = get_cache(query)
+        return cached_results if cached_results
+      end
       
       # Query via parent
-      results = super(query, options)
+      results = options[:allow_query] ? super(query) : []
       
       # Add to cache
-      set_cache(query, options, results) unless results.try(:empty?)
+      if options[:use_cache] && options[:update_cache]
+        set_cache(query, results) unless results.try(:empty?)
+      end
       
       # Return results
       results
     end
     
-    def cache_key_for(query, options={})
-      query_terms = query.merge(options).with_indifferent_access
-      query_terms.reject! { |k,v| v.nil? }
+    def default_options
+      { use_cache: true, update_cache: true, allow_query: true }
+    end
+    
+    def cache_key_for(query)
+      query_terms = query.with_indifferent_access.reject { |k,v| v.nil? }
       'zoopla:listings:' + query_terms.keys.sort.map { |k| "#{ k }=#{ query_terms[k].to_s.downcase.gsub(/\s/,'') }" }.join(':')
     end
 
-    def get_cache(query, options)
-      cache_key = cache_key_for(query, options)
+    def get_cache(query)
+      cache_key = cache_key_for(query)
       $redis.exists(cache_key) ? Zoopla::Listing.call(JSON.parse($redis.get(cache_key))) : nil
     end
     
-    def set_cache(query, options, results)
-      cache_key = cache_key_for(query, options)
+    def set_cache(query, results)
+      # Store the main search
+      cache_key = cache_key_for(query)
       $redis.setex(cache_key, TTL, results.to_json)
+      
+      # For every item in the response, cache it as if it were a seperate search
+      results.each do |listing|
+        listing_query = listing_id_query_for(listing.id)
+        listing_cache_key = cache_key_for(listing_query)
+        $redis.setex(listing_cache_key, TTL, [listing].to_json)
+      end
     end
     
-    def clear_cache(query, options)
-      cache_key = cache_key_for(query, options)
+    def clear_cache(query)
+      cache_key = cache_key_for(query)
       $redis.del(cache_key)
     end
 

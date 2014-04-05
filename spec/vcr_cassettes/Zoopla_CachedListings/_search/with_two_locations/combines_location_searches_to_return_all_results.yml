@@ -2,6 +2,70 @@
 http_interactions:
 - request:
     method: get
+    uri: http://api.zoopla.co.uk/api/v1/property_listings.json?api_key=m68yy3tekf9ddwxjkcs7jzbn&area=SE10&listing_status=sale&maximum_price=325000&minimum_price=250000&order_by=age&ordering=descending&page_size=2&radius=0.5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 05 Apr 2014 12:44:13 GMT
+      Server:
+      - Mashery Proxy
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\"country\":\"England\",\"result_count\":22,\"longitude\":-0.00105342953728481,\"area_name\":\"
+        SE10\",\"listing\":[{\"num_floors\":\"0\",\"listing_status\":\"sale\",\"num_bedrooms\":\"1\",\"latitude\":51.48714,\"agent_address\":\"22
+        College Approach, Greenwich\",\"property_type\":\"Flat\",\"longitude\":0.002159,\"thumbnail_url\":\"http://li.zoocdn.com/6ce28432fa60bf4de67a34a9f6eda9b12dc288db_80_60.jpg\",\"description\":\"A
+        bright one bedroom apartment in a recently built and sought after riverside
+        development in Greenwich, located just off the historic Ballast Quay.The apartment
+        is situated on the fourth floor of this stylish building and the accommodation
+        comprises entrance hall, open plan living room/kitchen with fitted aeg appliances,
+        bedroom & bathroom. The property is conveniently located for access to Maze
+        Hill main line station, and the Thames Path provides a pleasant walk into
+        central Greenwich which offers an excellent selection of shops, bars and restaurants.
+        Cutty Sark DLR is a short walk away, and the Royal Park is nearby.\",\"post_town\":\"London\",\"details_url\":\"http://www.zoopla.co.uk/for-sale/details/32574202?utm_source=v1:--LHAS6eGhbT-0queK8yvT78PEI0zbqB&utm_medium=api\",\"short_description\":\"A
+        bright one bedroom apartment in a recently built and sought after riverside
+        development in Greenwich, located just off the historic Ballast Quay.  The
+        apartment is situated on the fourth floor of this stylish building and the
+        accommodation comprises entrance hall, open plan (contd...)\",\"outcode\":\"SE10\",\"new_home\":\"true\",\"county\":\"London\",\"price\":\"299950\",\"listing_id\":\"32574202\",\"image_caption\":\"Picture
+        No.08\",\"status\":\"for_sale\",\"agent_name\":\"JLL - Greenwich\",\"num_recepts\":\"0\",\"country\":\"England\",\"displayable_address\":\"Lovells
+        Wharf, Henry Hudson Apartments, Banning St, Greenwich, London SE10\",\"first_published_date\":\"2014-04-04
+        01:26:28\",\"floor_plan\":[\"http://lc.zoocdn.com/ee375b4da6fd3ef1cb482d282d19caddda7f4651.jpg\"],\"street_name\":\"Henry
+        Hudson Apartments Banning St, Greenwich London\",\"num_bathrooms\":\"0\",\"price_change\":[{\"date\":\"2014-04-03
+        17:30:44\",\"price\":\"299950\"}],\"agent_logo\":\"http://st.zoocdn.com/zoopla_static_agent_logo_(248637).png\",\"agent_phone\":\"020
+        3318 7868\",\"image_url\":\"http://li.zoocdn.com/6ce28432fa60bf4de67a34a9f6eda9b12dc288db_354_255.jpg\",\"last_published_date\":\"2014-04-04
+        01:26:28\"},{\"image_caption\":\"Main\",\"status\":\"for_sale\",\"num_floors\":\"0\",\"listing_status\":\"sale\",\"num_bedrooms\":\"1\",\"agent_name\":\"Chase
+        Evans\",\"latitude\":51.495308,\"agent_address\":\"320 Westferry Road, Poplar\",\"num_recepts\":\"0\",\"property_type\":\"Flat\",\"country\":\"England\",\"longitude\":0.014187,\"first_published_date\":\"2014-04-03
+        06:16:23\",\"displayable_address\":\"Canary Skyline, West Parkside, London
+        SE10\",\"street_name\":\"West Parkside\",\"num_bathrooms\":\"0\",\"thumbnail_url\":\"http://li.zoocdn.com/cf14bd05a0373d18ee49b641782ddef87562a39d_80_60.jpg\",\"description\":\"Chase
+        Evans is pleased to offer this one bedroom, 4th floor apartment situated within
+        the new Greenwich Millennium Village. Canary Skyline is ideally located for
+        fantastic transport links including North Greenwich underground station for
+        the Jubilee line and the Emirates cable car providing easy access into Canary
+        Wharf, London Bridge, Waterloo and Stratford.**computer generated images****completion
+        estimated Q3 2014**\",\"post_town\":\"London\",\"details_url\":\"http://www.zoopla.co.uk/for-sale/details/32563541?utm_source=v1:--LHAS6eGhbT-0queK8yvT78PEI0zbqB&utm_medium=api\",\"agent_logo\":\"http://st.zoocdn.com/zoopla_static_agent_logo_(160584).png\",\"price_change\":[{\"date\":\"2014-04-03
+        03:58:52\",\"price\":\"285000\"}],\"short_description\":\"\",\"agent_phone\":\"020
+        7768 2436\",\"outcode\":\"SE10\",\"image_url\":\"http://li.zoocdn.com/cf14bd05a0373d18ee49b641782ddef87562a39d_354_255.jpg\",\"last_published_date\":\"2014-04-04
+        06:01:09\",\"county\":\"London\",\"price\":\"285000\",\"listing_id\":\"32563541\"}],\"radius\":\"0.5\",\"street\":\"\",\"town\":\"\",\"latitude\":51.486031,\"county\":\"London\",\"bounding_box\":{\"longitude_min\":\"-0.0330022027494658\",\"latitude_min\":\"51.4628134665016\",\"longitude_max\":\"0.0308953436748962\",\"latitude_max\":\"51.5092485334984\"},\"postcode\":\"SE10\"}"
+    http_version: 
+  recorded_at: Sat, 05 Apr 2014 12:44:15 GMT
+- request:
+    method: get
     uri: http://api.zoopla.co.uk/api/v1/property_listings.json?api_key=m68yy3tekf9ddwxjkcs7jzbn&area=NW10&listing_status=sale&maximum_price=325000&minimum_price=250000&order_by=age&ordering=descending&page_size=2&radius=0.5
     body:
       encoding: US-ASCII
@@ -17,7 +81,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Sat, 05 Apr 2014 12:05:25 GMT
+      - Sat, 05 Apr 2014 12:44:16 GMT
       Server:
       - Mashery Proxy
       Vary:
@@ -136,5 +200,5 @@ http_interactions:
         ZV9tYXgiOiItMC4yMDMyODgyMjcyMzAyNDUiLCJsYXRpdHVkZV9tYXgiOiI1
         MS41NzM2MDM1MzM0OTg0In0sInBvc3Rjb2RlIjoiTlcxMCJ9
     http_version: 
-  recorded_at: Sat, 05 Apr 2014 12:05:26 GMT
+  recorded_at: Sat, 05 Apr 2014 12:44:16 GMT
 recorded_with: VCR 2.9.0
