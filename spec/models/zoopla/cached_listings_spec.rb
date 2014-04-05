@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Zoopla::CachedListings, :vcr, :focus do
+describe Zoopla::CachedListings, :vcr do
 
   def zoopla_location_params(location)
     {
@@ -36,37 +36,23 @@ describe Zoopla::CachedListings, :vcr, :focus do
     let(:location) { build(:location, area: 'SE10', search: nil) }
     let(:criteria) { build(:buy_criteria, :with_prices, search: nil) }
 
-    let(:expected_location)     { zoopla_location_params(location) }
-    let(:expected_criteria)     { zoopla_criteria_params(criteria) }
+    let(:location_params)     { trim_params(zoopla_location_params(location)) }
+    let(:criteria_params)     { trim_params(zoopla_criteria_params(criteria)) }
+    let(:query_params)        { merge_params(location_params, criteria_params) }
 
-    let(:expected_query)        { merge_params(expected_location, expected_criteria) }
-    let(:expected_queries)      { [expected_query] }
+    let(:expected_location_cache_key) { "zoopla:listings:area=se10:radius=#{ location.radius }" }
+    let(:expected_criteria_cache_key) { "zoopla:listings:listing_status=sale:maximum_price=#{ criteria.max_price }:minimum_price=#{ criteria.min_price }" }
+    let(:expected_query_cache_key)    { "zoopla:listings:area=se10:listing_status=sale:maximum_price=#{ criteria.max_price }:minimum_price=#{ criteria.min_price }:radius=#{ location.radius }" }
 
-    let(:expected_combination)  { [location, criteria] }
-    let(:expected_combinations) { [expected_combination] }
-
-    describe '#where' do
+    describe '#cache_key_for' do
       it 'builds query for location' do
-        expected_location.reject!{ |k,v| v.nil? }
-        expect( subject.where(location) ).to be_hash_matching(expected_location)
+        expect( subject.cache_key_for(location_params) ).to eq(expected_location_cache_key)
       end
       it 'builds query for criteria' do
-        expected_criteria.reject!{ |k,v| v.nil? }
-        expect( subject.where(criteria) ).to be_hash_matching(expected_criteria)
+        expect( subject.cache_key_for(criteria_params) ).to eq(expected_criteria_cache_key)
       end
-      it 'builds query for 2 locations' do
-        expected_location.reject!{ |k,v| v.nil? }
-        expect( subject.where(location, location) ).to be_hash_matching(expected_location)
-      end
-      it 'builds query for 2 criterias' do
-        expected_criteria.reject!{ |k,v| v.nil? }
-        expect( subject.where(criteria, criteria) ).to be_hash_matching(expected_criteria)
-      end
-      it 'builds query for [criteria, location]' do
-        expect( subject.where(location, criteria) ).to be_hash_matching(expected_query)
-      end
-      it 'builds query for [criteria, location]' do
-        expect( subject.where(criteria, location) ).to be_hash_matching(expected_query)
+      it 'builds query for query' do
+        expect( subject.cache_key_for(query_params) ).to eq(expected_query_cache_key)
       end
     end
     
@@ -112,8 +98,8 @@ describe Zoopla::CachedListings, :vcr, :focus do
     
     context 'with two locations' do
       let(:search)    { build(:search, locations: [location1, location2], criterias: [criteria]) }
-      let(:search1)    { build(:search, locations: [location1], criterias: [criteria]) }
-      let(:search2)    { build(:search, locations: [location2], criterias: [criteria]) }
+      let(:search1)   { build(:search, locations: [location1], criterias: [criteria]) }
+      let(:search2)   { build(:search, locations: [location2], criterias: [criteria]) }
 
       let(:location1) { build(:location, area: 'SE10', search: nil) }
       let(:location2) { build(:location, area: 'NW10', search: nil) }
