@@ -1,5 +1,3 @@
-require 'zoopla/error'
-
 module Zoopla
 
   class Service
@@ -76,7 +74,7 @@ module Zoopla
         when Criteria
           build_criteria_params(term)
         else
-          raise Zoopla::Error, "Could not build search parameters for #{ term.class.to_s }."
+          raise Zoopla::Error.new("Could not build search parameters for #{ term.class.to_s }.")
       end
       params.reject{ |k,v| v.nil? }
     end
@@ -142,7 +140,7 @@ module Zoopla
         when LetCriteria
           'rent'
         else
-          raise Error, "Unknown listing_status for #{ criteria.class.to_s }."
+          raise Error.new("Unknown listing_status for #{ criteria.class.to_s }.")
         end
     end
     

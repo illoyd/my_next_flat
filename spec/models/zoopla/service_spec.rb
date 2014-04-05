@@ -13,7 +13,7 @@ describe Zoopla::Service, :vcr do
 
   def zoopla_criteria_params(criteria)
     {
-      listing_status: (criteria.class == BuyCriteria ? 'sale' : 'buy'),
+      listing_status: (criteria.class == BuyCriteria ? 'sale' : 'rent'),
       minimum_price:  criteria.min_price,
       maximum_price:  criteria.max_price,
       minimum_beds:   criteria.min_beds,

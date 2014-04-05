@@ -44,6 +44,7 @@ gem 'unicorn'
 #
 # Standard gems
 gem 'haml'
+gem 'hashie'
 gem 'api_smith'
 gem 'ice_cube'
 gem 'devise', '~> 3.2.0'
@@ -56,7 +57,7 @@ gem 'uk_postcode'
 gem 'oj'
 gem 'oj_mimic_json'
 gem 'redis'
-gem 'sidekiq'
+gem 'sidekiq', '~> 2.17'
 gem 'sidetiq'
 
 #
