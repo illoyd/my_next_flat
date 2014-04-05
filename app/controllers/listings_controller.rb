@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
   skip_authorization_check :show
 
   def show
-    @listing = MyNextFlat::CachedService.new.listing(params[:id])
+    @listing = Zoopla::CachedListings.new.find(params[:id])
   end
 
 end

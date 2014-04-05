@@ -29,6 +29,10 @@ class Search < ActiveRecord::Base
     listings.reject { |ll| ll.updated_at < cutoff_timestamp }.sort_by(&:updated_at)
   end
   
+  def combinations
+    self.locations.product(self.criterias)
+  end
+
   protected
   
   def ensure_schedule

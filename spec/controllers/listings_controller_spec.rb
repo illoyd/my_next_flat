@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe ListingsController do
+describe ListingsController, :vcr do
 
 end

@@ -87,7 +87,7 @@ class PeriodicLondonSearchJob
   end
   
   def service
-    @service ||= MyNextFlat::CachedService.new
+    @service ||= Zoopla::CachedListings.new
   end
 
 end
