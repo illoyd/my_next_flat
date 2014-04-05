@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.zoopla.co.uk/api/v1/property_listings.json?api_key=m68yy3tekf9ddwxjkcs7jzbn&area=S&listing_status=sale&maximum_price=325000&minimum_price=250000&order_by=age&ordering=descending&radius=0.5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 05 Apr 2014 12:14:12 GMT
+      Server:
+      - Mashery Proxy
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\"disambiguation\":[\"South East England\",\"South West England\"],\"error_string\":\"Disambiguation
+        required.\",\"error_code\":\"-1\"}"
+    http_version: 
+  recorded_at: Sat, 05 Apr 2014 12:14:12 GMT
+recorded_with: VCR 2.9.0
