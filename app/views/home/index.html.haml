@@ -15,11 +15,12 @@
 %p
   Get started!
 
-%h2 Nearby
-%p People have found the re
+%h2 What's nearby #{ @local_area }
+#map_canvas{ style: 'min-height: 200px;' }
+
 .row.highlights
-  - @recent_listings.each do |listing|
-    .col-sm-6.col-md-3
+  - @local_listings.each do |listing|
+    .col-sm-6.col-md-4
       .thumbnail
         = link_to listing_path(listing.id) do
           = image_tag listing.image_url, src: listing.caption
@@ -27,3 +28,18 @@
           %h3= listing.address
           %p~ truncate listing.summary, seperator: ' ', length: 150
           %p= link_to 'Check it out!', listing_path(listing.id), class: 'btn btn-success btn-block'
+
+%script{ :type => 'text/javascript' }
+  function load_map() {
+  var canvas = document.getElementById('map_canvas');
+  var coords = new google.maps.LatLng(#{ @local_map_center[0] }, #{ @local_map_center[1] });
+  var options = { center: coords, zoom: 15, mapTypeId: google.maps.MapTypeId.ROADMAP };
+  var map = new google.maps.Map(canvas, options);
+      
+  - @local_listings.each do |listing|
+    new google.maps.Marker({
+    position: new google.maps.LatLng(#{ listing.latitude }, #{ listing.longitude }),
+    map: map
+    });
+  }
+  load_map();

@@ -11,6 +11,16 @@ module ApplicationHelper
       end
     "alert-#{ kind }"
   end
+  
+  def map_tag(search, options={})
+    options.reverse_merge!(src: map_url('place', search), frameborder: 0)
+    content_tag(:iframe, '', options)
+  end
+  
+  def map_url(mode, search, params={})
+    params.reverse_merge!( q: search, key: Rails.application.secrets.google_maps_embed_api_key )
+    "https://www.google.com/maps/embed/v1/#{ mode }?#{ params.to_query }"
+  end
 
   def link_to_add_fields(name=nil, f=nil, association=nil, &block)
     f, association = name, f if block_given?
