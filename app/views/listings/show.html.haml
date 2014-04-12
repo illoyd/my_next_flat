@@ -6,21 +6,24 @@
         Back
     %h2.panel-title= @listing.address
     
-  .row
-    .col-md-6
-      = link_to @listing.listing_url do
-        = image_tag @listing.image_url, src: @listing.caption
-        / , style: 'width: 100%'
+  -#
     .col-md-6{ style: 'padding-left: 5px; height: 100%; min-height: 100px;' }
-      #map_canvas{ style: 'height: 100%; min-height: 255px;' }
+      -# #map_canvas{ style: 'height: 100%; min-height: 255px;' }
+      = map_tag(@listing.address, height: 255, width: '100%')
+      
 
   .panel-body
+    = link_to @listing.listing_url do
+      = image_tag @listing.image_url, src: @listing.caption, class: 'thumbnail'
     %p
       .label.label-primary= price_for(@listing)
       .label.label-info= beds_for(@listing)
       .label.label-info= baths_for(@listing)
       ~ @listing.description
     %p= link_to 'More Information', @listing.listing_url, class: 'btn btn-success btn-block'
+      
+    = map_tag(@listing.address, height: 255, width: '100%')
+    
     
     -#
       %p
@@ -34,19 +37,20 @@
         %i.fa.fa-arrow-circle-o-left
         Back
 
-:javascript
-  function load_map() {
-    var canvas = document.getElementById('map_canvas');
-    var coords = new google.maps.LatLng(#{ @listing.latitude }, #{ @listing.longitude });
-    var options = {
-      center: coords,
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(canvas, options);
-    var marker = new google.maps.Marker({
-      position: coords,
-      map: map,
-    });
-  }
-  load_map();
+-#
+  :javascript
+    function load_map() {
+      var canvas = document.getElementById('map_canvas');
+      var coords = new google.maps.LatLng(#{ @listing.latitude }, #{ @listing.longitude });
+      var options = {
+        center: coords,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(canvas, options);
+      var marker = new google.maps.Marker({
+        position: coords,
+        map: map,
+      });
+    }
+    load_map();

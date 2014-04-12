@@ -2,8 +2,13 @@ class HomeController < ApplicationController
   skip_authorization_check :index
   
   def index
-    @local_search = local_search(area)
-    @local_listings = Zoopla::CachedListings.new.search(@local_search)
+    @local_area = request.location.try(:city)
+    @local_area = 'London' if @local_area.blank?
+
+    @local_search = local_search(@local_area)
+    @local_listings = Zoopla::CachedListings.new.search(@local_search) rescue []
+    
+    @local_map_center = Geocoder::Calculations.geographic_center(@local_listings.map { |ll| [ll.latitude, ll.longitude] })
   end
 
   protected
