@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   skip_authorization_check :index
+  layout false
   
   def index
     @local_area = request.location.try(:city)

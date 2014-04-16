@@ -55,7 +55,7 @@ class PeriodicLondonSearchJob
     "Wimbledon" ]
 
   def perform()
-    search(random_neighborhood)
+    # search(random_neighborhood)
   end
   
   def search(neighborhood)

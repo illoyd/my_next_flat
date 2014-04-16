@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
   end
   
   def guest_user?
-    !session[:guest_user_id].blank?
+    current_or_guest_user.guest?
   end
 
   helper_method :current_or_guest_user, :guest_user?
@@ -72,10 +72,10 @@ class ApplicationController < ActionController::Base
   #
   # Create a new guest user
   def create_guest_user
-    u = User.create(:name => "guest", :email => "guest_#{Time.now.to_i}#{rand(99)}@example.com")
-    u.save!(:validate => false)
-    session[:guest_user_id] = u.id
-    u
+    User.create(name: "Guest", email: "guest_#{Time.now.to_i}#{rand(99)}@mynextflat.co.uk", guest: true).tap do |u|
+      u.save!(:validate => false)
+      session[:guest_user_id] = u.id
+    end
   end
 
 end
