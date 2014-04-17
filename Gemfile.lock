@@ -34,6 +34,8 @@ GEM
     arel (5.0.0)
     atomic (1.1.16)
     bcrypt (3.1.7)
+    bootstrap-sass (3.1.1.0)
+      sass (~> 3.2)
     builder (3.2.2)
     cancancan (1.7.1)
     celluloid (0.15.2)
@@ -222,6 +224,7 @@ PLATFORMS
 
 DEPENDENCIES
   api_smith
+  bootstrap-sass (~> 3.1.1)
   cancancan (~> 1.7)
   coffee-rails (~> 4.0.0)
   devise (~> 3.2.0)

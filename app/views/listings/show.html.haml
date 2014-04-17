@@ -27,10 +27,7 @@
       .label.label-info= baths_for(@listing)
       ~ @listing.description
     %p= link_to 'More Information', @listing.listing_url, class: 'btn btn-success btn-block'
-      
-    = map_tag(@listing.address, height: 255, width: '100%')
-    
-    
+
     -#
       %p
         %strong Raw
@@ -42,21 +39,3 @@
       = link_to :back do
         %i.fa.fa-arrow-circle-o-left
         Back
-
--#
-  :javascript
-    function load_map() {
-      var canvas = document.getElementById('map_canvas');
-      var coords = new google.maps.LatLng(#{ @listing.latitude }, #{ @listing.longitude });
-      var options = {
-        center: coords,
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      var map = new google.maps.Map(canvas, options);
-      var marker = new google.maps.Marker({
-        position: coords,
-        map: map,
-      });
-    }
-    load_map();

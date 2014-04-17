@@ -52,6 +52,7 @@ gem 'devise-async'
 gem 'cancancan', '~> 1.7'
 gem 'uk_postcode'
 gem 'geocoder'
+gem 'bootstrap-sass', '~> 3.1.1'
 
 #
 # Infrastructure gems

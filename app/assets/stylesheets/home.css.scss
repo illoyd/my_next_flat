@@ -2,62 +2,62 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "theme";
+
 @import url(//fonts.googleapis.com/css?family=Gloria+Hallelujah);
 
 //html,body { height: 100%; margin: 0px; padding: 0px; }
-//html,body { height: 100%; }
+html,body { height: 100%; }
 
-body#home {
-  #header {
-    #logo {
-      position: relative;
+#map {
+  height: 100%;
+}
 
-      h1 {
-        padding: 15px 15px 15px 55px;
-        border-width: 0 1px 4px 1px;
-        border-radius: 5px;
-        border-color: #e2e2e2;
-        border-style: solid;
-        background-color: white;
-        color: 555;
-        font-family: 'Gloria Hallelujah';
-      }
+#panel-container {
+  @include container-fixed();
+  height: 100%;
 
-      span.logo {
-        font-size: 500%;
-        position: absolute;        
-        top: -20px;
-        left: -60px;
-        border-width: 0 1px 4px 1px;
-        border-radius: 5px;
-        border-color: #e2e2e2;
-        
-        .fa-stack-2x {
-          color: white;
-          text-shadow: 0px 4px #e2e2e2;
-        }
-        
-        .fa-stack-1x {
-          color: 555;
-        }
-      }
+  #panels {
+    @include make-row();
+    height: 100%;
+  
+    #content-panel {
+      @include make-sm-column(6);
+      @include make-sm-column-push(6);
+      @include make-md-column(5);
+      @include make-md-column-push(7);
+      @include make-lg-column(4);
+      @include make-lg-column-push(8);
     }
-  }
-
-  #footer {
-    padding-bottom: 5px;
-  }
-
-  #map {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    z-index: -1;
+    
+    #map-panel {
+      @include make-sm-column(6);
+      @include make-sm-column-pull(6);
+      @include make-md-column(7);
+      @include make-md-column-pull(5);
+      @include make-lg-column(8);
+      @include make-lg-column-pull(4);
+      height: 100%;
+      padding-left: 0px;
+      position: fixed;
+    }
   }
 }
 
+h1 {
+  font-family: 'Gloria Hallelujah';
+}
+
+
+
+
+.emboss {
+  box-shadow: 
+  0 1px 2px #fff, /*bottom external highlight*/
+  0 -1px 1px #666, /*top external shadow*/ 
+  inset 0 -1px 1px rgba(0,0,0,0.5), /*bottom internal shadow*/ 
+  inset 0 1px 1px rgba(255,255,255,0.8); /*top internal highlight*/
+}
 
 @mixin blur($radius) {
   filter: blur($radius * 1px);

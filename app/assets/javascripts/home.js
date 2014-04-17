@@ -29,9 +29,11 @@ function add_marker(id, latitude, longitude, content_id) {
 	});
 };
 
+/*
 function fit_map(id) {
   var markers = get_map_markers(id);
   var bounds  = new google.maps.LatLngBounds();
   for(ii = 0; ii < markers.length; ii++) { bounds.extend(markers[ii].getPosition()); }
   get_map(id).fitBounds(bounds);
 };
+*/
