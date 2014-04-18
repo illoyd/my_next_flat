@@ -26,8 +26,6 @@ html,body { height: 100%; }
       @include make-sm-column-push(6);
       @include make-md-column(5);
       @include make-md-column-push(7);
-      @include make-lg-column(4);
-      @include make-lg-column-push(8);
     }
     
     #map-panel {
@@ -35,8 +33,6 @@ html,body { height: 100%; }
       @include make-sm-column-pull(6);
       @include make-md-column(7);
       @include make-md-column-pull(5);
-      @include make-lg-column(8);
-      @include make-lg-column-pull(4);
       height: 100%;
       padding-left: 0px;
       position: fixed;
