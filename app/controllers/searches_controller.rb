@@ -10,7 +10,10 @@ class SearchesController < ApplicationController
   # GET /searches/1
   # GET /searches/1.json
   def show
-    @results = Zoopla::CachedListings.new.search(@search).sort_by(&:updated_at).reverse!
+    @listings = Zoopla::CachedListings.new.search(@search).sort_by(&:updated_at).reverse!
+    @results = @listings
+
+    @map = { id: 'map', markers: @listings, latitude: @listings.first.latitude, longitude: @listings.first.longitude }
   end
 
   # GET /searches/new

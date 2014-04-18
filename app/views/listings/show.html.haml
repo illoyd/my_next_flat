@@ -1,3 +1,5 @@
+- content_for(:title) do
+  #{ title_for(@listing) } at my next flat
 = render 'header'
 
 .row
@@ -17,16 +19,16 @@
           = icon('map-marker')
           Nearby
         = link_to '#advert', class: 'btn btn-default' do
-          = icon('map-marker')
+          = icon('flag')
           Advert
-        = link_to @listing.listing_url, class: 'btn btn-default' do
+        = link_to @listing.listing_url, class: 'btn btn-default', target: :blank do
           = icon('info-circle')
           More Info
 
 
 %h2.listing#photo
   = listing_status_label(@listing)
-  = @listing.street || @listing.address
+  = title_for(@listing)
 
 .row{ style: 'margin-top: 25px;' }
   .col-md-7
@@ -40,42 +42,20 @@
           = image_tag @listing.agent_logo_url, src: @listing.agent_name, class: 'center-block'
 
 
-%h3#highlights highlights
+%h3#highlights
+  highlights
+  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
 %p.label-cloud
-
-  - if @listing.for_sale?
-    %span.label.label-buy #{ @listing.kind.downcase } for sale
-
-  - elsif @listing.to_let?
-    %span.label.label-let #{ @listing.kind.downcase } to let
-
-  - else
-    %span.label.label-default #{ @listing.kind.downcase } #{ @listing.status }
-
-  %span.label.label-price= price_for(@listing)
-
-  - if @listing.beds?
-    %span.label.label-beds= beds_for(@listing)
-
-  - if @listing.baths?
-    %span.label.label-baths= baths_for(@listing)
-
-  - if @listing.receptions?
-    %span.label.label-receptions= receptions_for(@listing)
-
-  - if @listing.city?
-    %span.label.label-default= @listing.city
-
-  - if @listing.outcode?
-    %span.label.label-default= @listing.outcode
-  
+  = render partial: 'listing_labels', object: @listing
   = label("first listed #{ @listing.created_at.to_formatted_s(:short_date) }", :default)
   = label("last updated #{ @listing.updated_at.to_formatted_s(:short_date) }", :default)
 
 %p= @listing.summary
   
 
-%h3#nearby nearby
+%h3#nearby
+  nearby
+  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
 %table.table
   - @nearby.group_by(&:kind).each do |kind, pois|
     %tr
@@ -85,12 +65,16 @@
           - pois.each do |poi|
             %li[poi]{ data: { marker: 'disabled:'+@map[:id], latitude: poi.latitude, longitude: poi.longitude } } #{ poi.name } (#{ poi.distance.round(1) })
 
-%h3#advert description
+%h3#advert
+  description
+  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
 %p.text-muted= @listing.address
 %p!= format_zoopla_description @listing.description
 
 
-%h3#raw raw
+%h3#raw
+  raw
+  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
 - @listing.each do |k,v|
   %pre #{k}: #{v}
   

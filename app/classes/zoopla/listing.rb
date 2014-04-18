@@ -48,7 +48,7 @@ module Zoopla
     end
     
     def beds?
-      !self.beds.blank? && self.beds > 0
+      !self.beds.blank?
     end
     
     def baths?

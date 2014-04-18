@@ -1,0 +1,33 @@
+- listing = listing_labels unless listing
+
+- if listing.created_at.to_date == Time.now.to_date
+  %span.label.label-warning new
+
+- elsif listing.updated_at.to_date == Time.now.to_date
+  %span.label.label-warning updated
+
+- if listing.for_sale?
+  %span.label.label-buy #{ listing.kind.downcase } for sale
+
+- elsif listing.to_let?
+  %span.label.label-let #{ listing.kind.downcase } to let
+
+- else
+  %span.label.label-default #{ listing.kind.downcase } #{ listing.status }
+
+%span.label.label-price= price_for(listing)
+
+- if listing.beds?
+  %span.label.label-beds= beds_for(listing)
+
+- if listing.baths?
+  %span.label.label-baths= baths_for(listing)
+
+- if listing.receptions?
+  %span.label.label-receptions= receptions_for(listing)
+
+- if listing.city?
+  %span.label.label-default= listing.city
+
+- if listing.outcode?
+  %span.label.label-default= listing.outcode

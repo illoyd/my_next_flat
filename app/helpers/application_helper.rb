@@ -12,6 +12,14 @@ module ApplicationHelper
     "alert-#{ kind }"
   end
   
+  def title_for(listing)
+    if !listing.street.blank? && listing.street != listing.city
+      listing.street
+    else
+      listing.address
+    end
+  end
+  
   def icon(label, *classes)
     "<i class=\"fa fa-#{ label } #{ Array(classes).join(' ') }\"></i>".html_safe
   end
