@@ -29,6 +29,6 @@ fit_map = (map) ->
   gmap.setZoom(15) if gmap.getZoom() > 15
 
 
-$(document).ready ->
+$(document).on 'page:change', ->
   $("div[data-mapify]").each (index) ->
     mapify($(this))
