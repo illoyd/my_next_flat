@@ -3,7 +3,7 @@ ruby '2.1.0'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0.rc1'
+gem 'rails', '4.1.0'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 gem 'pg'
@@ -44,6 +44,7 @@ gem 'unicorn'
 #
 # Standard gems
 gem 'haml'
+gem 'haml-contrib'
 gem 'hashie'
 gem 'api_smith'
 gem 'ice_cube'
@@ -53,6 +54,7 @@ gem 'cancancan', '~> 1.7'
 gem 'uk_postcode'
 gem 'geocoder'
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'rails_12factor'
 
 #
 # Infrastructure gems
@@ -87,6 +89,5 @@ end
 # Production gems
 group :production do
   gem 'newrelic_rpm'
-  gem 'rails_12factor'
   gem 'lograge'
 end

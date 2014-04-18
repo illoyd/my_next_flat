@@ -7,7 +7,7 @@ namespace :data do
       finder_attributes = default_attributes.merge({ name: attributes['name'] })
       poi = PointOfInterest.find_or_initialize_by(finder_attributes)
       puts "#{ poi.new_record? ? 'Creating' : 'Updating' } #{ attributes['name'] }."
-      poi.update_attributes(default_attributes.merge(finder_attributes))
+      poi.update_attributes(default_attributes.merge(attributes))
       poi.save
     end
   end

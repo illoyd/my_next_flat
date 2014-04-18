@@ -5,5 +5,5 @@
       #map{ data: { mapify: @map[:id], latitude: @map[:longitude], longitude: @map[:latitude] } }
       .sr-only
         - @map[:markers].each do |listing|
-          .info{ id: "listing_#{listing.id}", data: { marker: @map[:id], latitude: listing.latitude, longitude: listing.longitude } }
+          .info[listing]{ data: { marker: @map[:id], latitude: listing.latitude, longitude: listing.longitude } }
             %p= link_to listing.address, listing_path(listing.id)

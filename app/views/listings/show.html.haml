@@ -1,41 +1,98 @@
-.panel.panel-info
-  .panel-heading
-    .pull-right
-      = link_to :back do
-        %i.fa.fa-arrow-circle-o-left
-        Back
-    %h2.panel-title= @listing.address
-    
-  -#
-    .col-md-6{ style: 'padding-left: 5px; height: 100%; min-height: 100px;' }
-      -# #map_canvas{ style: 'height: 100%; min-height: 255px;' }
-      = map_tag(@listing.address, height: 255, width: '100%')
-      
+= render 'header'
 
-  .panel-body
-    .tiltshift{ style: "background-image: url('#{ @listing.image_url }')"}
+.row
+  .col-xs-12
+    #link-bar.btn-toolbar
+      .btn-group.btn-group-sm
+        = link_to :back, class: 'btn btn-default' do
+          = icon('arrow-circle-o-left')
+          Back
+        = link_to '#photo', class: 'btn btn-default' do
+          = icon('camera')
+          Photo
+        = link_to '#highlights', class: 'btn btn-default' do
+          = icon('check')
+          Highlights
+        = link_to '#nearby', class: 'btn btn-default' do
+          = icon('map-marker')
+          Nearby
+        = link_to '#advert', class: 'btn btn-default' do
+          = icon('map-marker')
+          Advert
+        = link_to @listing.listing_url, class: 'btn btn-default' do
+          = icon('info-circle')
+          More Info
+
+
+%h2.listing#photo
+  = listing_status_label(@listing)
+  = @listing.street || @listing.address
+
+.row{ style: 'margin-top: 25px;' }
+  .col-md-7
+    = link_to @listing.listing_url, class: 'thumbnail', target: '_blank' do
       = image_tag @listing.image_url, src: @listing.caption
+  .col-md-5
+    .panel.panel-default
+      .panel-heading= @listing.agent_name
+      .panel-body
+        = link_to @listing.listing_url, target: '_blank' do
+          = image_tag @listing.agent_logo_url, src: @listing.agent_name, class: 'center-block'
 
-    .backgroundFrame
-      .background{ style: "background-image: url('#{ @listing.image_url }')"}
 
-    = link_to @listing.listing_url do
-      = image_tag @listing.image_url, src: @listing.caption, class: 'thumbnail'
-    %p
-      .label.label-primary= price_for(@listing)
-      .label.label-info= beds_for(@listing)
-      .label.label-info= baths_for(@listing)
-      ~ @listing.description
-    %p= link_to 'More Information', @listing.listing_url, class: 'btn btn-success btn-block'
+%h3#highlights highlights
+%p.label-cloud
 
-    -#
-      %p
-        %strong Raw
-      %pre~ @listing.as_json
+  - if @listing.for_sale?
+    %span.label.label-buy #{ @listing.kind.downcase } for sale
 
-  .panel-footer
-    Last updated #{ l(@listing.updated_at) }
-    .pull-right
-      = link_to :back do
-        %i.fa.fa-arrow-circle-o-left
-        Back
+  - elsif @listing.to_let?
+    %span.label.label-let #{ @listing.kind.downcase } to let
+
+  - else
+    %span.label.label-default #{ @listing.kind.downcase } #{ @listing.status }
+
+  %span.label.label-price= price_for(@listing)
+
+  - if @listing.beds?
+    %span.label.label-beds= beds_for(@listing)
+
+  - if @listing.baths?
+    %span.label.label-baths= baths_for(@listing)
+
+  - if @listing.receptions?
+    %span.label.label-receptions= receptions_for(@listing)
+
+  - if @listing.city?
+    %span.label.label-default= @listing.city
+
+  - if @listing.outcode?
+    %span.label.label-default= @listing.outcode
+  
+  = label("first listed #{ @listing.created_at.to_formatted_s(:short_date) }", :default)
+  = label("last updated #{ @listing.updated_at.to_formatted_s(:short_date) }", :default)
+
+%p= @listing.summary
+  
+
+%h3#nearby nearby
+%table.table
+  - @nearby.group_by(&:kind).each do |kind, pois|
+    %tr
+      %th{style: 'width: 15%' }= kind.to_s.humanize.downcase
+      %td
+        %ul.list-inline
+          - pois.each do |poi|
+            %li[poi]{ data: { marker: 'disabled:'+@map[:id], latitude: poi.latitude, longitude: poi.longitude } } #{ poi.name } (#{ poi.distance.round(1) })
+
+%h3#advert description
+%p.text-muted= @listing.address
+%p!= format_zoopla_description @listing.description
+
+
+%h3#raw raw
+- @listing.each do |k,v|
+  %pre #{k}: #{v}
+  
+
+%p= link_to 'More Information', @listing.listing_url, class: 'btn btn-success btn-block', target: '_blank'

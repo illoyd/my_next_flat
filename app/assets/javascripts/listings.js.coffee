@@ -6,7 +6,7 @@ mapify = (map) ->
   map.gmap(
     center: map.data('latitude') + ',' + map.data('longitude')
   ).bind 'init', ->
-    markerify(map, $(marker)) for marker in $('div[data-marker='+map.data('mapify')+']')
+    markerify(map, $(marker)) for marker in $('[data-marker='+map.data('mapify')+']')
     fit_map(map)
 
 

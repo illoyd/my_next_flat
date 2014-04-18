@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140412093156) do
+ActiveRecord::Schema.define(version: 20140418114051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,10 +63,14 @@ ActiveRecord::Schema.define(version: 20140412093156) do
     t.string   "kind"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "zone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "zones",      default: [], array: true
+    t.string   "lines",      default: [], array: true
   end
+
+  add_index "point_of_interests", ["lines"], name: "index_point_of_interests_on_lines", using: :gin
+  add_index "point_of_interests", ["zones"], name: "index_point_of_interests_on_zones", using: :gin
 
   create_table "searches", force: true do |t|
     t.integer  "user_id"

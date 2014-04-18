@@ -16,4 +16,55 @@
  
 @import "theme";
 @import "bootstrap";
-//@import "bootstrap/theme";
+@import "bootstrap/theme";
+
+.heading {
+  h1 {
+    @extend .text-center;
+    font-size: 24px;
+    
+    a {
+      color: $headings-color;
+      &:hover {
+        color: $link-hover-color;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+#link-bar {
+  // @extend .btn-group-justified;
+}
+
+h2.listing span.label {
+  font-size: 40%;
+}
+
+.label-buy {
+  @extend .label-success;
+}
+
+.label-let {
+  @extend .label-danger;
+}
+
+.label-price {
+  @extend .label-primary;
+}
+
+.label-beds {
+  @extend .label-info;
+}
+
+.label-baths {
+  @extend .label-info;
+}
+
+.label-receptions {
+  @extend .label-default;
+}
+
+.label-cloud {
+  font-size: 133%;
+}
