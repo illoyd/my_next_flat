@@ -7,18 +7,20 @@ class Search < ActiveRecord::Base
   accepts_nested_attributes_for :locations, :criterias, allow_destroy: true, reject_if: ->(nested){ nested.blank? }
   
   serialize :schedule, IceCube::Schedule
-  serialize :active_method, ActiveSupport::StringInquirer
   
   after_initialize  :ensure_schedule
   before_validation :update_next_run_at
   
   validates_presence_of :name, :user
+
+  validates :alert_method, inclusion: { in: %w( ignore twitter email ), allow_nil: true }
+
   validates :locations, associated: true, length: { minimum: 1, maximum: 10, too_short: "must have at least %{count} location", too_long: "may have at most %{count} locations" }
   validates :criterias, associated: true, length: { minimum: 1, maximum: 4, too_short: "must have at least %{count} criterion", too_long: "may have at most %{count} criteria"  }
   
   validates :top_n, numericality: { integer_only: true, greater_than_or_equal_to: 1 }
   validates :top_n, numericality: { less_than_or_equal_to: 10 }, if: :alert_via_email?
-  validates :top_n, numericality: { less_than_or_equal_to: 2 },  if: :alert_via_tweet?
+  validates :top_n, numericality: { less_than_or_equal_to: 2 },  if: :alert_via_twitter?
   
   DAILY         = -1
   WEEKDAY       = -2
@@ -31,11 +33,11 @@ class Search < ActiveRecord::Base
   DEFAULT_HOUR  = 8
   
   def alert_via_email?
-    self.alert_method == 'email'
+    self.alert_method.inquiry.email?
   end
   
-  def alert_via_tweet?
-    self.alert_method == 'tweet'
+  def alert_via_twitter?
+    self.alert_method.inquiry.twitter?
   end
   
   ##

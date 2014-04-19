@@ -28,6 +28,15 @@ module ApplicationHelper
     "<span class=\"label label-#{ label } #{ Array(classes).join(' ') }\">#{ text }</span>".html_safe
   end
   
+  def field_error_icon(errors)
+    return nil unless errors.try(:any?)
+    %(
+      <span rel="popover" class="field_error_icon" data-container="body" data-content="#{ errors.join(',') }" data-placement="top" data-toggle="popover" data-trigger="hover">
+        <span class="fa fa-info-circle"></span>
+      </span>
+    ).html_safe
+  end
+  
   def listing_status_label(listing, *classes)
     case
     when listing.for_sale? then label2('for sale', :buy, *classes)

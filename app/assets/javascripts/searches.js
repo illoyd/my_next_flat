@@ -28,3 +28,7 @@ function add_location()
   new_panel = $(template).dup;
   new_panel.get('')
 };
+
+$(function() {
+    $('[rel="popover"]').popover();
+});

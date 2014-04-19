@@ -9,7 +9,7 @@ module SearchesHelper
   end
   
   def options_for_alert_method
-    [ ['Email', 'email'], ['Tweet', 'twitter'], ['Don\'t send', 'ignore'] ]
+    [ ['Don\'t send', 'ignore'], ['Email', 'email'], ['Tweet', 'twitter'] ]
   end
   
   def options_for_radius

@@ -17,7 +17,7 @@
  
 @import "theme";
 @import "bootstrap";
-@import "bootstrap/theme";
+// @import "bootstrap/theme";
 
 .heading {
   h1 {
@@ -68,4 +68,47 @@ h2.listing span.label {
 
 .label-cloud {
   font-size: 133%;
+}
+
+form.madlib {
+  input[type=text], input[type=number], select {
+    border: 0px none transparent;
+    border-bottom: 3px dotted gray;
+    border-radius: 0px;
+    @include box-shadow(none);
+    
+    &:focus {
+      color: $brand-primary;
+      background-color: lighten($brand-primary, 40%);
+      border-bottom-color: $brand-primary;
+    }
+  }
+
+  select, input[type=number] {
+    -webkit-appearance: none;
+    line-height: inherit;
+  }
+  
+  .field_with_errors {
+    input[type=text], input[type=number], select {
+      color: $brand-danger;
+      background-color: lighten($brand-danger, 40%);
+      border-bottom-color: $brand-danger;
+    }
+  }
+}
+
+/*
+form .clearfix:before, form .clearfix:after {
+  display: inline;
+}
+*/
+
+.field_with_errors {
+  display: inline;
+  @extend .has-error;
+}
+
+span.field_error_icon {
+  color: $brand-danger;
 }

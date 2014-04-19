@@ -9,4 +9,4 @@
     = csrf_meta_tags
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
 
-  %body= @map ? render(partial: 'layouts/with_map') : yield
+  %body= @map ? render(partial: 'layouts/with_map') : render(partial: 'layouts/with_content')

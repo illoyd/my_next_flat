@@ -11,26 +11,30 @@
         - @search.errors.full_messages.each do |msg|
           %li.list-group-item= msg
 
-  %p{ style: 'font-size: 125%'}
+  %p{ style: 'font-size: 133%'}
     Save my search as
     = f.label :name, class: 'sr-only'
-    = f.text_field :name, class: 'form-control', placeholder: 'search name'
+    = f.text_field :name, class: 'form-control input-lg', placeholder: 'search name'
+    = field_error_icon @search.errors[:name]
     so I can find it later.
 
-  %p{ style: 'font-size: 125%' }
+  %p{ style: 'font-size: 133%' }
     = f.label :alert_method, class: 'sr-only'
-    = f.select :alert_method, options_for_alert_method, {}, class: 'form-control input-sm'
+    = f.select :alert_method, options_for_alert_method, {}, class: 'form-control input-lg'
+    = field_error_icon @search.errors[:alert_method]
     me the
-    top
     = f.label :top_n, class: 'sr-only'
-    = f.text_field :top_n, class: 'form-control input-sm'
-    listings every
+    = f.number_field :top_n, class: 'form-control input-lg', size: 2, step: 1, in: 1..10
+    = field_error_icon @search.errors[:top_n]
+    newest listings every
     = f.label :day_of_week, class: 'sr-only'
-    = f.select :day_of_week, options_for_day_of_week, {}, class: 'form-control input-sm'
+    = f.select :day_of_week, options_for_day_of_week, {}, class: 'form-control input-lg'
+    = field_error_icon @search.errors[:day_of_week]
     at
     = f.label :hour_of_day, class: 'sr-only'
-    = f.select :hour_of_day, options_for_hour_of_day, {}, class: 'form-control input-sm'
-
+    = f.select :hour_of_day, options_for_hour_of_day, {}, class: 'form-control input-lg'
+    = field_error_icon @search.errors[:hour_of_day]
+    \.
 
   .row
     / Locations

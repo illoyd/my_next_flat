@@ -1,6 +1,9 @@
 #panel-container
   #panels
-    #content-panel= yield
+    #content-panel
+      = render 'header'
+      = yield
+      = render 'footer'
     #map-panel
       #map{ data: { mapify: @map[:id], latitude: @map[:longitude], longitude: @map[:latitude] } }
       .sr-only
