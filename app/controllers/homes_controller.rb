@@ -1,7 +1,7 @@
-class HomeController < ApplicationController
-  skip_authorization_check :index
+class HomesController < ApplicationController
+  skip_authorization_check :show
   
-  def index
+  def show
     @local_area = request.location.try(:city)
     @local_area = 'London' if @local_area.blank?
 
