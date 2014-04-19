@@ -47,8 +47,8 @@
   = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
 %p.label-cloud
   = render partial: 'listing_labels', object: @listing
-  = label("first listed #{ @listing.created_at.to_formatted_s(:short_date) }", :default)
-  = label("last updated #{ @listing.updated_at.to_formatted_s(:short_date) }", :default)
+  = label2("first listed #{ @listing.created_at.to_formatted_s(:short_date) }", :default)
+  = label2("last updated #{ @listing.updated_at.to_formatted_s(:short_date) }", :default)
 
 %p= @listing.summary
   

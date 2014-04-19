@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418114051) do
+ActiveRecord::Schema.define(version: 20140418133202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,13 +74,15 @@ ActiveRecord::Schema.define(version: 20140418114051) do
 
   create_table "searches", force: true do |t|
     t.integer  "user_id"
-    t.string   "name",                       null: false
-    t.boolean  "active",      default: true, null: false
+    t.string   "name",                            null: false
+    t.boolean  "active",       default: true,     null: false
     t.datetime "last_run_at"
     t.datetime "next_run_at"
     t.text     "schedule"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "alert_method", default: "ignore"
+    t.integer  "top_n",        default: 1
   end
 
   add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree

@@ -1,33 +1,33 @@
 - listing = listing_labels unless listing
 
 - if listing.created_at.to_date == Time.now.to_date
-  %span.label.label-warning new
+  =label2("new", "warning")
 
 - elsif listing.updated_at.to_date == Time.now.to_date
-  %span.label.label-warning updated
+  =label2("updated", "warning")
 
 - if listing.for_sale?
-  %span.label.label-buy #{ listing.kind.downcase } for sale
+  =label2("#{ listing.kind.downcase } for sale", "buy")
 
 - elsif listing.to_let?
-  %span.label.label-let #{ listing.kind.downcase } to let
+  =label2("#{ listing.kind.downcase } to let", "let")
 
 - else
-  %span.label.label-default #{ listing.kind.downcase } #{ listing.status }
+  =label2("#{ listing.kind.downcase } #{ listing.status }", "default")
 
-%span.label.label-price= price_for(listing)
+=label2(price_for(listing), "price")
 
 - if listing.beds?
-  %span.label.label-beds= beds_for(listing)
+  =label2(beds_for(listing), "beds")
 
 - if listing.baths?
-  %span.label.label-baths= baths_for(listing)
+  =label2(baths_for(listing), "baths")
 
 - if listing.receptions?
-  %span.label.label-receptions= receptions_for(listing)
+  =label2(receptions_for(listing), "receptions")
 
 - if listing.city?
-  %span.label.label-default= listing.city
+  =label2(listing.city, "default")
 
 - if listing.outcode?
-  %span.label.label-default= listing.outcode
+  =label2(listing.outcode, "default")

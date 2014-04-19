@@ -13,7 +13,7 @@ class SearchesController < ApplicationController
     @listings = Zoopla::CachedListings.new.search(@search).sort_by(&:updated_at).reverse!
     @results = @listings
 
-    @map = { id: 'map', markers: @listings, latitude: @listings.first.latitude, longitude: @listings.first.longitude }
+    @map = { id: 'map', markers: @listings, latitude: @listings.first.try(:latitude) || 51.5072, longitude: @listings.first.try(:longitude) || 0.1275 }
   end
 
   # GET /searches/new
@@ -47,6 +47,9 @@ class SearchesController < ApplicationController
   # PATCH/PUT /searches/1
   # PATCH/PUT /searches/1.json
   def update
+    logger.debug @search.schedule.rrules.first.as_json
+    logger.debug @search.day_of_week
+    logger.debug @search.hour_of_day
     respond_to do |format|
       if @search.update(search_params)
         format.html { redirect_to @search, notice: 'Search was successfully updated.' }
@@ -72,6 +75,6 @@ class SearchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def search_params
-      params.require(:search).permit(:name, { locations_attributes: [ :id, :type, :area, :radius, :_destroy ], criterias_attributes: [ :id, :type, :min_price, :max_price, :min_beds, :max_beds, :min_baths, :max_baths, :_destroy ] })
+      params.require(:search).permit(:name, :alert_method, :day_of_week, :hour_of_day, :top_n, { locations_attributes: [ :id, :type, :area, :radius, :_destroy ], criterias_attributes: [ :id, :type, :min_price, :max_price, :min_beds, :max_beds, :min_baths, :max_baths, :_destroy ] })
     end
 end

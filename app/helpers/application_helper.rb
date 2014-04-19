@@ -24,16 +24,16 @@ module ApplicationHelper
     "<i class=\"fa fa-#{ label } #{ Array(classes).join(' ') }\"></i>".html_safe
   end
   
-  def label(text, label, *classes)
+  def label2(text, label, *classes)
     "<span class=\"label label-#{ label } #{ Array(classes).join(' ') }\">#{ text }</span>".html_safe
   end
   
   def listing_status_label(listing, *classes)
     case
-    when listing.for_sale? then label('for sale', :buy, *classes)
-    when listing.to_let?   then label('to let', :let, *classes)
+    when listing.for_sale? then label2('for sale', :buy, *classes)
+    when listing.to_let?   then label2('to let', :let, *classes)
     else
-      label(listing.status, :default, *classes)
+      label2(listing.status, :default, *classes)
     end
   end
   
