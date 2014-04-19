@@ -34,6 +34,19 @@
   }
 }
 
+#user_controls {
+  display: inline;
+  
+  a#user_icon {
+    @extend .thumbnail;
+    text-align: center;
+    vertical-align: middle;
+    
+    display: inline-block;
+    @include square(40px);
+  }
+}
+
 #link-bar {
   // @extend .btn-group-justified;
 }
