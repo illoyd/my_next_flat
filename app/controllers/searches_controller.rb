@@ -47,9 +47,6 @@ class SearchesController < ApplicationController
   # PATCH/PUT /searches/1
   # PATCH/PUT /searches/1.json
   def update
-    logger.debug @search.schedule.rrules.first.as_json
-    logger.debug @search.day_of_week
-    logger.debug @search.hour_of_day
     respond_to do |format|
       if @search.update(search_params)
         format.html { redirect_to @search, notice: 'Search was successfully updated.' }

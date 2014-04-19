@@ -80,6 +80,7 @@ class Search < ActiveRecord::Base
   protected
   
   def recurrence_rule
+    self.ensure_schedule
     self.schedule.recurrence_rules.first
   end
   
