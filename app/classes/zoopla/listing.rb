@@ -68,7 +68,7 @@ module Zoopla
     end
 
     def ==(other)
-      self.id == other.id
+      self.class == other.class && self.id == other.id
     end
     
     def serialize

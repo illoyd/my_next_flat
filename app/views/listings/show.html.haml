@@ -6,7 +6,7 @@
   .col-xs-12
     #link-bar.btn-toolbar
       .btn-group.btn-group-sm
-        = link_to :back, class: 'btn btn-default' do
+        = link_to @search || :back, class: 'btn btn-default' do
           = icon('arrow-circle-o-left')
           Back
         = link_to '#photo', class: 'btn btn-default' do

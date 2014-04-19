@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
+
   resource :home
-  resources :searches
+
+  resources :searches do
+    resources :listings, only: :show
+  end
+
   resources :listings, only: :show
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,13 +1,13 @@
 .row
   .col-sm-3.col-md-4
-    = link_to listing_path(listing.id), class: 'thumbnail' do
+    = link_to search_listing_path(@search, listing.id), class: 'thumbnail' do
       = image_tag listing.image_url, src: listing.caption || listing.address
 
-    = link_to listing_path(listing.id) do
+    = link_to search_listing_path(@search, listing.id) do
       = image_tag listing.agent_logo_url, src: listing.agent_name, style: 'max-width: 100%;'
 
   .col-sm-9.col-md-8
-    %h3{style: 'margin-top: 0px'}= link_to title_for(listing), listing_path(listing.id)
+    %h3{style: 'margin-top: 0px'}= link_to title_for(listing), search_listing_path(@search, listing.id)
 
     %p= render partial: 'listing_labels', object: listing
 
