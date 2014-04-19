@@ -1,0 +1,129 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require recurring_select
+ *= require_self
+ */
+ 
+@import "theme";
+@import "bootstrap";
+// @import "bootstrap/theme";
+
+.heading {
+  h1 {
+    @extend .text-center;
+    font-size: 24px;
+    
+    a {
+      color: $headings-color;
+      &:hover {
+        color: $link-hover-color;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+#user_controls {
+  display: inline;
+  
+  a#user_icon {
+    @extend .thumbnail;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    text-align: center;
+    vertical-align: middle;
+    
+    display: inline-block;
+    @include square(35px);
+  }
+}
+
+#link-bar {
+  // @extend .btn-group-justified;
+}
+
+h2.listing span.label {
+  font-size: 40%;
+}
+
+.label-buy {
+  @extend .label-success;
+}
+
+.label-let {
+  @extend .label-danger;
+}
+
+.label-price {
+  @extend .label-primary;
+}
+
+.label-beds {
+  @extend .label-info;
+}
+
+.label-baths {
+  @extend .label-info;
+}
+
+.label-receptions {
+  @extend .label-default;
+}
+
+.label-cloud {
+  font-size: 133%;
+}
+
+form.madlib {
+  input[type=text], input[type=number], select {
+    border: 0px none transparent;
+    border-bottom: 3px dotted gray;
+    border-radius: 0px;
+    @include box-shadow(none);
+    
+    &:focus {
+      color: $brand-primary;
+      background-color: lighten($brand-primary, 40%);
+      border-bottom-color: $brand-primary;
+    }
+  }
+
+  select, input[type=number] {
+    -webkit-appearance: none;
+    line-height: inherit;
+  }
+  
+  .field_with_errors {
+    input[type=text], input[type=number], select {
+      color: $brand-danger;
+      background-color: lighten($brand-danger, 40%);
+      border-bottom-color: $brand-danger;
+    }
+  }
+}
+
+/*
+form .clearfix:before, form .clearfix:after {
+  display: inline;
+}
+*/
+
+.field_with_errors {
+  display: inline;
+  @extend .has-error;
+}
+
+span.field_error_icon {
+  color: $brand-danger;
+}

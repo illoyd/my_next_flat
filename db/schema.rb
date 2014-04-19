@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403092417) do
+ActiveRecord::Schema.define(version: 20140418133202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,20 +63,26 @@ ActiveRecord::Schema.define(version: 20140403092417) do
     t.string   "kind"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "zone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "zones",      default: [], array: true
+    t.string   "lines",      default: [], array: true
   end
+
+  add_index "point_of_interests", ["lines"], name: "index_point_of_interests_on_lines", using: :gin
+  add_index "point_of_interests", ["zones"], name: "index_point_of_interests_on_zones", using: :gin
 
   create_table "searches", force: true do |t|
     t.integer  "user_id"
-    t.string   "name",                       null: false
-    t.boolean  "active",      default: true, null: false
+    t.string   "name",                            null: false
+    t.boolean  "active",       default: true,     null: false
     t.datetime "last_run_at"
     t.datetime "next_run_at"
     t.text     "schedule"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "alert_method", default: "ignore"
+    t.integer  "top_n",        default: 1
   end
 
   add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree
@@ -85,16 +91,17 @@ ActiveRecord::Schema.define(version: 20140403092417) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "guest",                  default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

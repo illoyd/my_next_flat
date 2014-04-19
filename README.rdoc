@@ -1,3 +1,7 @@
+== MyNextFlat
+
+A simple website to help you find the home of your dreams. Or at least one you can afford in a place you like!
+
 == README
 
 This README would normally document whatever steps are necessary to get the

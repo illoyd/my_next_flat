@@ -1,52 +1,81 @@
-.panel.panel-info
-  .panel-heading
-    .pull-right
-      = link_to :back do
-        %i.fa.fa-arrow-circle-o-left
-        Back
-    %h2.panel-title= @listing.address
-    
-  .row
-    .col-md-6
-      = link_to @listing.listing_url do
-        = image_tag @listing.image_url, src: @listing.caption
-        / , style: 'width: 100%'
-    .col-md-6{ style: 'padding-left: 5px; height: 100%; min-height: 100px;' }
-      #map_canvas{ style: 'height: 100%; min-height: 255px;' }
+- content_for(:title) do
+  #{ title_for(@listing) } at my next flat
 
-  .panel-body
-    %p
-      .label.label-primary= price_for(@listing)
-      .label.label-info= beds_for(@listing)
-      .label.label-info= baths_for(@listing)
-      ~ @listing.description
-    %p= link_to 'More Information', @listing.listing_url, class: 'btn btn-success btn-block'
-    
-    -#
-      %p
-        %strong Raw
-      %pre~ @listing.as_json
+.row
+  .col-xs-12
+    #link-bar.btn-toolbar
+      .btn-group.btn-group-sm
+        = link_to @search || :back, class: 'btn btn-default' do
+          = icon('arrow-circle-o-left')
+          Back
+        = link_to '#photo', class: 'btn btn-default' do
+          = icon('camera')
+          Photo
+        = link_to '#highlights', class: 'btn btn-default' do
+          = icon('check')
+          Highlights
+        = link_to '#nearby', class: 'btn btn-default' do
+          = icon('map-marker')
+          Nearby
+        = link_to '#advert', class: 'btn btn-default' do
+          = icon('flag')
+          Advert
+        = link_to @listing.listing_url, class: 'btn btn-default', target: :blank do
+          = icon('info-circle')
+          More Info
 
-  .panel-footer
-    Last updated #{ l(@listing.updated_at) }
-    .pull-right
-      = link_to :back do
-        %i.fa.fa-arrow-circle-o-left
-        Back
 
-:javascript
-  function load_map() {
-    var canvas = document.getElementById('map_canvas');
-    var coords = new google.maps.LatLng(#{ @listing.latitude }, #{ @listing.longitude });
-    var options = {
-      center: coords,
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(canvas, options);
-    var marker = new google.maps.Marker({
-      position: coords,
-      map: map,
-    });
-  }
-  load_map();
+%h2.listing#photo
+  = listing_status_label(@listing)
+  = title_for(@listing)
+
+.row{ style: 'margin-top: 25px;' }
+  .col-md-7
+    = link_to @listing.listing_url, class: 'thumbnail', target: '_blank' do
+      = image_tag @listing.image_url, src: @listing.caption
+  .col-md-5
+    .panel.panel-default
+      .panel-heading= @listing.agent_name
+      .panel-body
+        = link_to @listing.listing_url, target: '_blank' do
+          = image_tag @listing.agent_logo_url, src: @listing.agent_name, class: 'center-block'
+
+
+%h3#highlights
+  highlights
+  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
+%p.label-cloud
+  = render partial: 'listing_labels', object: @listing
+  = label2("first listed #{ @listing.created_at.to_formatted_s(:short_date) }", :default)
+  = label2("last updated #{ @listing.updated_at.to_formatted_s(:short_date) }", :default)
+
+%p= @listing.summary
+  
+
+%h3#nearby
+  nearby
+  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
+%table.table
+  - @nearby.group_by(&:kind).each do |kind, pois|
+    %tr
+      %th{style: 'width: 15%' }= kind.to_s.humanize.downcase
+      %td
+        %ul.list-inline
+          - pois.each do |poi|
+            %li[poi]{ data: { marker: 'disabled:'+@map[:id], latitude: poi.latitude, longitude: poi.longitude } } #{ poi.name } (#{ poi.distance.round(1) })
+
+%h3#advert
+  description
+  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
+%p.text-muted= @listing.address
+%p!= format_zoopla_description @listing.description
+
+
+%h3#raw
+  raw
+  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
+- @listing.each do |k,v|
+  %pre #{k}: #{v}
+  
+
+%p= link_to 'More Information', @listing.listing_url, class: 'btn btn-success btn-block', target: '_blank'
