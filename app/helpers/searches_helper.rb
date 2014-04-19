@@ -8,8 +8,24 @@ module SearchesHelper
     [ ['buy', BuyCriteria.name], ['let', LetCriteria.name] ]
   end
   
+  def options_for_alert_method
+    [ ['Don\'t send', 'ignore'], ['Email', 'email'], ['Tweet', 'twitter'] ]
+  end
+  
   def options_for_radius
     [ 0, 0.25, 0.5, 0.75, 1, 2, 5, 10, 15, 25, 50 ].map{ |miles| [radius_for(miles), miles] }
+  end
+  
+  def options_for_day_of_week
+    labels = %w( day weekday weekend Monday Tuesday Wednesday Thursday Friday Saturday Sunday )
+    values = [ Search::DAILY, Search::WEEKDAY, Search::WEEKEND, 1, 2, 3, 4, 5, 6, 0 ]
+    labels.zip(values)
+  end
+  
+  def options_for_hour_of_day
+    labels = %w( midnight 1am 2am 3am 4am 5am 6am 7am 8am 9am 10am 11am noon 1pm 2pm 3pm 4pm 5pm 6pm 7pm 8pm 9pm 10pm 11pm )
+    values = (0..23).to_a
+    labels.zip(values)
   end
   
   def radius_for(radius)

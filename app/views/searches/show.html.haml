@@ -1,40 +1,21 @@
-.panel.panel-info
-  .panel-heading
-    %h2.panel-title= @search.name
-  %table.table.table-hover
-    = render partial: 'result', collection: @results
-  .panel-footer
-    %i.fa.fa-search
-    #{ pluralize @results.count, 'result' }
-    .pull-right
-      = link_to edit_search_path(@search) do
-        %i.fa.fa-pencil
-        Edit
-      = link_to search_path(@search), method: :delete do
-        %i.fa.fa-trash-o
-        Delete
+= render partial: 'searches/destroy_modal', locals: {search: @search}
 
 .row
-  / Locations
-  .col-md-6
-    .panel.panel-info
-      .panel-heading
-        %h2.panel-title
-          %i.fa.fa-map-marker
-          Locations
-      %ul.list-group= render partial: 'location', collection: @search.locations
-      .panel-footer
-        = @search.locations.count
-        locations
+  .col-xs-12
+    #link-bar.btn-toolbar
+      .btn-group.btn-group-sm
+        = link_to home_path, class: 'btn btn-default' do
+          = icon('arrow-circle-o-left')
+          Back
+        = link_to edit_search_path(@search), class: 'btn btn-default' do
+          %i.fa.fa-pencil
+          Edit
+        = link_to '#', class: 'btn btn-default btn-sm', 'data-toggle'=>"modal", 'data-target'=>"#delete_#{@search.id}" do
+          =icon('trash-o')
+          Delete
 
-  / Criteria
-  .col-md-6
-    .panel.panel-info
-      .panel-heading
-        %h2.panel-title
-          %i.fa.fa-check
-          Criteria
-      %ul.list-group= render partial: 'criteria', collection: @search.criterias
-      .panel-footer
-        = @search.criterias.count
-        criteria
+
+%h2.listing
+  = @search.name
+
+= render partial: 'listing', collection: @listings, spacer_template: 'listing_separator'

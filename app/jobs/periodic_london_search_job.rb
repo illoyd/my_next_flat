@@ -55,7 +55,7 @@ class PeriodicLondonSearchJob
     "Wimbledon" ]
 
   def perform()
-    search(random_neighborhood)
+    # search(random_neighborhood)
   end
   
   def search(neighborhood)
@@ -87,7 +87,7 @@ class PeriodicLondonSearchJob
   end
   
   def service
-    @service ||= MyNextFlat::CachedService.new
+    @service ||= Zoopla::CachedListings.new
   end
 
 end

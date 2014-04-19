@@ -1,0 +1,608 @@
+- { name: "Abbey Road", latitude: 51.531952, longitude: 0.003738, zones: [3] }
+- { name: "Abbey Wood", latitude: 51.490784, longitude: 0.120286, zones: [4] }
+- { name: "Acton", latitude: 51.516887, longitude: -0.267676, zones: [3] }
+- { name: "Acton Central", latitude: 51.508758, longitude: -0.263416, zones: [2] }
+- { name: "Acton Town", latitude: 51.503071, longitude: -0.280288, zones: [3] }
+- { name: "Albany Park", latitude: 51.435816, longitude: 0.126459, zones: [5] }
+- { name: "Aldgate", latitude: 51.514342, longitude: -0.075613, zones: [1] }
+- { name: "Aldgate East", latitude: 51.515082, longitude: -0.072987, zones: [1] }
+- { name: "Alexandra Palace", latitude: 51.598263, longitude: -0.120135, zones: [3] }
+- { name: "All Saints", latitude: 51.510477, longitude: -0.01261, zones: [2] }
+- { name: "Alperton", latitude: 51.541209, longitude: -0.299501, zones: [4] }
+- { name: "Amersham", latitude: 51.674129, longitude: -0.606499, zones: [9] }
+- { name: "Anerley", latitude: 51.412517, longitude: -0.065123, zones: [4] }
+- { name: "Angel", latitude: 51.532968, longitude: -0.105567, zones: [1] }
+- { name: "Angel Road", latitude: 51.61242, longitude: -0.048718, zones: [4] }
+- { name: "Archway", latitude: 51.565491, longitude: -0.135107, zones: [2, 3] }
+- { name: "Arnos Grove", latitude: 51.61623, longitude: -0.134256, zones: [4] }
+- { name: "Arsenal", latitude: 51.558541, longitude: -0.105486, zones: [2] }
+- { name: "Baker Street", latitude: 51.52313, longitude: -0.15689, zones: [1] }
+- { name: "Balham", latitude: 51.443183, longitude: -0.152671, zones: [3] }
+- { name: "Bank", latitude: 51.513347, longitude: -0.088986, zones: [1] }
+- { name: "Banstead", latitude: 51.329293, longitude: -0.213118, zones: [6] }
+- { name: "Barbican", latitude: 51.520215, longitude: -0.097707, zones: [1] }
+- { name: "Barking", latitude: 51.539521, longitude: 0.080846, zones: [4] }
+- { name: "Barkingside", latitude: 51.585851, longitude: 0.088491, zones: [4] }
+- { name: "Barnehurst", latitude: 51.46478, longitude: 0.160962, zones: [6] }
+- { name: "Barnes", latitude: 51.467128, longitude: -0.242019, zones: [3] }
+- { name: "Barnes Bridge", latitude: 51.472228, longitude: -0.252348, zones: [3] }
+- { name: "Barons Court", latitude: 51.490229, longitude: -0.213416, zones: [2] }
+- { name: "Battersea Park", latitude: 51.477318, longitude: -0.148109, zones: [2] }
+- { name: "Bayswater", latitude: 51.512111, longitude: -0.187887, zones: [1] }
+- { name: "Beckenham Hill", latitude: 51.424626, longitude: -0.016481, zones: [4] }
+- { name: "Beckenham Junction", latitude: 51.410942, longitude: -0.025687, zones: [4] }
+- { name: "Beckton", latitude: 51.514377, longitude: 0.06154, zones: [3] }
+- { name: "Beckton Park", latitude: 51.508901, longitude: 0.054836, zones: [3] }
+- { name: "Becontree", latitude: 51.539585, longitude: 0.126895, zones: [5] }
+- { name: "Bellingham", latitude: 51.433865, longitude: -0.020397, zones: [3] }
+- { name: "Belmont", latitude: 51.34412, longitude: -0.199475, zones: [5] }
+- { name: "Belsize Park", latitude: 51.550191, longitude: -0.16396, zones: [2] }
+- { name: "Belvedere", latitude: 51.491959, longitude: 0.152048, zones: [5] }
+- { name: "Bermondsey", latitude: 51.497961, longitude: -0.064316, zones: [2] }
+- { name: "Berrylands", latitude: 51.398768, longitude: -0.280307, zones: [5] }
+- { name: "Bethnal Green", latitude: 51.527192, longitude: -0.055378, zones: [2] }
+- { name: "Bethnal Green Rail", latitude: 51.524283, longitude: -0.059999, zones: [2] }
+- { name: "Bexley", latitude: 51.440815, longitude: 0.148218, zones: [6] }
+- { name: "Bexleyheath", latitude: 51.46355, longitude: 0.133377, zones: [5] }
+- { name: "Bickley", latitude: 51.40038, longitude: 0.044318, zones: [5] }
+- { name: "Birkbeck", latitude: 51.403863, longitude: -0.056272, zones: [4] }
+- { name: "Blackfriars", latitude: 51.511587, longitude: -0.102981, zones: [1] }
+- { name: "Blackheath", latitude: 51.465408, longitude: 0.008351, zones: [3] }
+- { name: "Blackhorse Road", latitude: 51.585777, longitude: -0.039611, zones: [3] }
+- { name: "Blackwall", latitude: 51.507832, longitude: -0.007221, zones: [2] }
+- { name: "Bond Street", latitude: 51.513798, longitude: -0.149599, zones: [1] }
+- { name: "Borough", latitude: 51.501049, longitude: -0.094183, zones: [1] }
+- { name: "Boston Manor", latitude: 51.495766, longitude: -0.324733, zones: [4] }
+- { name: "Bounds Green", latitude: 51.607032, longitude: -0.124163, zones: [3, 4] }
+- { name: "Bow Church", latitude: 51.527615, longitude: -0.020485, zones: [2] }
+- { name: "Bow Road", latitude: 51.527042, longitude: -0.024345, zones: [2] }
+- { name: "Bowes Park", latitude: 51.60725, longitude: -0.119778, zones: [3, 4] }
+- { name: "Brent Cross", latitude: 51.576599, longitude: -0.213321, zones: [3] }
+- { name: "Brentford", latitude: 51.487536, longitude: -0.309608, zones: [4] }
+- { name: "Brentwood", latitude: 51.61361, longitude: 0.299687, zones: [7] }
+- { name: "Brimsdown", latitude: 51.655245, longitude: -0.031078, zones: [5] }
+- { name: "Brixton", latitude: 51.462737, longitude: -0.114538, zones: [2] }
+- { name: "Brockley", latitude: 51.46475, longitude: -0.037734, zones: [2] }
+- { name: "Bromley North", latitude: 51.408942, longitude: 0.01725, zones: [4] }
+- { name: "Bromley South", latitude: 51.400001, longitude: 0.017374, zones: [5] }
+- { name: "Bromley-by-Bow", latitude: 51.52484, longitude: -0.011668, zones: [2, 3] }
+- { name: "Brondesbury", latitude: 51.545262, longitude: -0.202824, zones: [2] }
+- { name: "Brondesbury Park", latitude: 51.540325, longitude: -0.21046, zones: [2] }
+- { name: "Broxbourne", latitude: 51.747016, longitude: -0.01101, zones: [9] }
+- { name: "Bruce Grove", latitude: 51.594011, longitude: -0.070385, zones: [3] }
+- { name: "Buckhurst Hill", latitude: 51.626577, longitude: 0.046727, zones: [5] }
+- { name: "Burnt Oak", latitude: 51.602552, longitude: -0.264316, zones: [4] }
+- { name: "Bush Hill Park", latitude: 51.641482, longitude: -0.069266, zones: [5] }
+- { name: "Bushey", latitude: 51.645544, longitude: -0.384707, zones: [8] }
+- { name: "Caledonian Road", latitude: 51.547885, longitude: -0.118346, zones: [2] }
+- { name: "Caledonian Road and Barnsbury", latitude: 51.543285, longitude: -0.11519, zones: [2] }
+- { name: "Cambridge Heath", latitude: 51.53206, longitude: -0.057189, zones: [2] }
+- { name: "Camden Road", latitude: 51.541851, longitude: -0.139189, zones: [2] }
+- { name: "Camden Town", latitude: 51.539969, longitude: -0.142438, zones: [2] }
+- { name: "Canada Water", latitude: 51.498168, longitude: -0.050793, zones: [2] }
+- { name: "Canary Wharf", latitude: 51.503578, longitude: -0.019452, zones: [2] }
+- { name: "Canning Town", latitude: 51.51387, longitude: 0.00832, zones: [3] }
+- { name: "Cannon Street", latitude: 51.511362, longitude: -0.090236, zones: [1] }
+- { name: "Canonbury", latitude: 51.548188, longitude: -0.09256, zones: [2] }
+- { name: "Canons Park", latitude: 51.607651, longitude: -0.294377, zones: [5] }
+- { name: "Carpenders Park", latitude: 51.628187, longitude: -0.385815, zones: [7] }
+- { name: "Carshalton", latitude: 51.368426, longitude: -0.166384, zones: [5] }
+- { name: "Carshalton Beeches", latitude: 51.357387, longitude: -0.169482, zones: [5] }
+- { name: "Castle Bar Park", latitude: 51.522974, longitude: -0.33149, zones: [4] }
+- { name: "Caterham", latitude: 51.282163, longitude: -0.078593, zones: [6] }
+- { name: "Catford", latitude: 51.444265, longitude: -0.026524, zones: [3] }
+- { name: "Catford Bridge", latitude: 51.444695, longitude: -0.024807, zones: [3] }
+- { name: "Chadwell Heath", latitude: 51.568047, longitude: 0.128916, zones: [5] }
+- { name: "Chafford Hundred", latitude: 51.485554, longitude: 0.28749, zones: [7] }
+- { name: "Chalfont and Latimer", latitude: 51.667908, longitude: -0.561053, zones: [8] }
+- { name: "Chalk Farm", latitude: 51.544149, longitude: -0.153719, zones: [2] }
+- { name: "Chancery Lane", latitude: 51.518494, longitude: -0.111948, zones: [1] }
+- { name: "Charing Cross", latitude: 51.508359, longitude: -0.124789, zones: [1] }
+- { name: "Charlton", latitude: 51.486835, longitude: 0.030956, zones: [3] }
+- { name: "Cheam", latitude: 51.35546, longitude: -0.214197, zones: [5] }
+- { name: "Chelsfield", latitude: 51.356265, longitude: 0.108998, zones: [6] }
+- { name: "Chesham", latitude: 51.70538, longitude: -0.611415, zones: [9] }
+- { name: "Cheshunt", latitude: 51.702873, longitude: -0.023873, zones: [8] }
+- { name: "Chessington North", latitude: 51.364243, longitude: -0.300462, zones: [6] }
+- { name: "Chessington South", latitude: 51.356705, longitude: -0.307075, zones: [6] }
+- { name: "Chigwell", latitude: 51.617858, longitude: 0.076194, zones: [4] }
+- { name: "Chingford", latitude: 51.633253, longitude: 0.009529, zones: [5] }
+- { name: "Chipstead", latitude: 51.309275, longitude: -0.169432, zones: [6] }
+- { name: "Chislehurst", latitude: 51.405598, longitude: 0.057506, zones: [5] }
+- { name: "Chiswick", latitude: 51.480782, longitude: -0.266999, zones: [3] }
+- { name: "Chiswick Park", latitude: 51.494371, longitude: -0.267723, zones: [3] }
+- { name: "Chorleywood", latitude: 51.654266, longitude: -0.518319, zones: [7] }
+- { name: "City Thameslink", latitude: 51.513935, longitude: -0.103604, zones: [1] }
+- { name: "Clapham Common", latitude: 51.461804, longitude: -0.138301, zones: [2] }
+- { name: "Clapham High Street", latitude: 51.46547, longitude: -0.13245, zones: [2] }
+- { name: "Clapham Junction", latitude: 51.464367, longitude: -0.170301, zones: [2] }
+- { name: "Clapham North", latitude: 51.464916, longitude: -0.129896, zones: [2] }
+- { name: "Clapham South", latitude: 51.452677, longitude: -0.14797, zones: [2, 3] }
+- { name: "Clapton", latitude: 51.561569, longitude: -0.057475, zones: [2] }
+- { name: "Clock House", latitude: 51.408541, longitude: -0.040688, zones: [4] }
+- { name: "Cobham and Stoke D'Abernon", latitude: 51.318347, longitude: -0.389022, zones: nil }
+- { name: "Cockfosters", latitude: 51.652024, longitude: -0.149902, zones: [5] }
+- { name: "Colindale", latitude: 51.595231, longitude: -0.250273, zones: [4] }
+- { name: "Colliers Wood", latitude: 51.418759, longitude: -0.177401, zones: [3] }
+- { name: "Coulsdon South", latitude: 51.315801, longitude: -0.137889, zones: [6] }
+- { name: "Covent Garden", latitude: 51.51276, longitude: -0.124492, zones: [1] }
+- { name: "Crayford", latitude: 51.448547, longitude: 0.178517, zones: [6] }
+- { name: "Crews Hill", latitude: 51.684475, longitude: -0.10683, zones: [6] }
+- { name: "Cricklewood", latitude: 51.558423, longitude: -0.212534, zones: [3] }
+- { name: "Crofton Park", latitude: 51.455179, longitude: -0.036532, zones: [3] }
+- { name: "Crossharbour and London Arena", latitude: 51.49584, longitude: -0.014918, zones: [2] }
+- { name: "Crouch Hill", latitude: 51.571327, longitude: -0.117119, zones: [3] }
+- { name: "Croxley", latitude: 51.647005, longitude: -0.441589, zones: [7] }
+- { name: "Crystal Palace", latitude: 51.41817, longitude: -0.072593, zones: [3, 4] }
+- { name: "Custom House", latitude: 51.509622, longitude: 0.025787, zones: [3] }
+- { name: "Cutty Sark for Maritime Greenwich", latitude: 51.481944, longitude: -0.010567, zones: [2] }
+- { name: "Cyprus", latitude: 51.508527, longitude: 0.063855, zones: [3] }
+- { name: "Dagenham Dock", latitude: 51.526287, longitude: 0.145045, zones: [5] }
+- { name: "Dagenham East", latitude: 51.544187, longitude: 0.165848, zones: [5] }
+- { name: "Dagenham Heathway", latitude: 51.541212, longitude: 0.147694, zones: [5] }
+- { name: "Dalston Junction", latitude: 51.546094, longitude: -0.07498, zones: [2] }
+- { name: "Dalston Kingsland", latitude: 51.548668, longitude: -0.076213, zones: [2] }
+- { name: "Dartford", latitude: 51.4474, longitude: 0.218098, zones: nil }
+- { name: "Debden", latitude: 51.645492, longitude: 0.083816, zones: [6] }
+- { name: "Denmark Hill", latitude: 51.468201, longitude: -0.090973, zones: [2] }
+- { name: "Deptford", latitude: 51.47889, longitude: -0.026182, zones: [2] }
+- { name: "Deptford Bridge", latitude: 51.474477, longitude: -0.022038, zones: [2, 3] }
+- { name: "Devons Road", latitude: 51.522258, longitude: -0.017993, zones: [2] }
+- { name: "Dollis Hill", latitude: 51.551851, longitude: -0.238783, zones: [3] }
+- { name: "Drayton Green", latitude: 51.516005, longitude: -0.329597, zones: [4] }
+- { name: "Drayton Park", latitude: 51.553078, longitude: -0.105756, zones: [2] }
+- { name: "Ealing Broadway", latitude: 51.514862, longitude: -0.301996, zones: [3] }
+- { name: "Ealing Common", latitude: 51.510249, longitude: -0.287137, zones: [3] }
+- { name: "Earls Court", latitude: 51.491357, longitude: -0.194299, zones: [1, 2] }
+- { name: "Earlsfield", latitude: 51.442239, longitude: -0.187258, zones: [3] }
+- { name: "East Acton", latitude: 51.516263, longitude: -0.248098, zones: [2] }
+- { name: "East Croydon", latitude: 51.375716, longitude: -0.091849, zones: [5] }
+- { name: "East Dulwich", latitude: 51.461626, longitude: -0.080422, zones: [2] }
+- { name: "East Finchley", latitude: 51.587333, longitude: -0.164729, zones: [3] }
+- { name: "East Ham", latitude: 51.539246, longitude: 0.051531, zones: [3, 4] }
+- { name: "East India", latitude: 51.508684, longitude: -0.002356, zones: [2, 3] }
+- { name: "East Putney", latitude: 51.45888, longitude: -0.210984, zones: [2, 3] }
+- { name: "Eastcote", latitude: 51.576552, longitude: -0.396809, zones: [5] }
+- { name: "Eden Park", latitude: 51.390796, longitude: -0.026655, zones: [5] }
+- { name: "Edgware", latitude: 51.61423, longitude: -0.275079, zones: [5] }
+- { name: "Edgware Road (Bakerloo)", latitude: 51.520645, longitude: -0.170525, zones: [1] }
+- { name: "Edgware Road (Circle/District/Hammersmith and City)", latitude: 51.519998, longitude: -0.167654, zones: [1] }
+- { name: "Edmonton Green", latitude: 51.625116, longitude: -0.061625, zones: [4] }
+- { name: "Elephant and Castle", latitude: 51.495849, longitude: -0.100724, zones: [1, 2] }
+- { name: "Elm Park", latitude: 51.549125, longitude: 0.197267, zones: [6] }
+- { name: "Elmers End", latitude: 51.398291, longitude: -0.049449, zones: [4] }
+- { name: "Elmstead Woods", latitude: 51.417081, longitude: 0.044244, zones: [4] }
+- { name: "Elstree and Borehamwood", latitude: 51.652876, longitude: -0.279814, zones: [6] }
+- { name: "Eltham", latitude: 51.455662, longitude: 0.052344, zones: [4] }
+- { name: "Elverson Road", latitude: 51.468372, longitude: -0.016802, zones: [2, 3] }
+- { name: "Embankment", latitude: 51.507313, longitude: -0.122353, zones: [1] }
+- { name: "Emerson Park", latitude: 51.569115, longitude: 0.220237, zones: [6] }
+- { name: "Enfield Chase", latitude: 51.652722, longitude: -0.09069, zones: [5] }
+- { name: "Enfield Lock", latitude: 51.670846, longitude: -0.028377, zones: [6] }
+- { name: "Enfield Town", latitude: 51.65197, longitude: -0.079315, zones: [5] }
+- { name: "Epping", latitude: 51.693686, longitude: 0.11384, zones: [6] }
+- { name: "Epsom Downs", latitude: 51.323659, longitude: -0.238956, zones: [6] }
+- { name: "Erith", latitude: 51.481648, longitude: 0.174276, zones: [6] }
+- { name: "Essex Road", latitude: 51.540633, longitude: -0.096351, zones: [2] }
+- { name: "Euston", latitude: 51.528664, longitude: -0.133282, zones: [1] }
+- { name: "Euston Square", latitude: 51.528664, longitude: -0.133282, zones: [1] }
+- { name: "Ewell East", latitude: 51.345244, longitude: -0.241489, zones: [6] }
+- { name: "Ewell West", latitude: 51.349991, longitude: -0.257075, zones: [6] }
+- { name: "Fairlop", latitude: 51.59611, longitude: 0.090608, zones: [4] }
+- { name: "Falconwood", latitude: 51.459086, longitude: 0.078524, zones: [4] }
+- { name: "Farringdon", latitude: 51.520196, longitude: -0.104829, zones: [1] }
+- { name: "Feltham", latitude: 51.447879, longitude: -0.40981, zones: [6] }
+- { name: "Fenchurch Street", latitude: 51.511567, longitude: -0.07854, zones: [1] }
+- { name: "Finchley Central", latitude: 51.600903, longitude: -0.193206, zones: [4] }
+- { name: "Finchley Road", latitude: 51.547096, longitude: -0.180036, zones: [2] }
+- { name: "Finchley Road and Frognal", latitude: 51.55012, longitude: -0.183637, zones: [2] }
+- { name: "Finsbury Park", latitude: 51.564635, longitude: -0.105867, zones: [2] }
+- { name: "Forest Gate", latitude: 51.549316, longitude: 0.024204, zones: [3] }
+- { name: "Forest Hill", latitude: 51.439308, longitude: -0.053314, zones: [3] }
+- { name: "Fulham Broadway", latitude: 51.480261, longitude: -0.19553, zones: [2] }
+- { name: "Fulwell", latitude: 51.433943, longitude: -0.349424, zones: [6] }
+- { name: "Gallions Reach", latitude: 51.509034, longitude: 0.07179, zones: [3] }
+- { name: "Gants Hill", latitude: 51.576553, longitude: 0.066099, zones: [4] }
+- { name: "Gidea Park", latitude: 51.581866, longitude: 0.205991, zones: [6] }
+- { name: "Gipsy Hill", latitude: 51.42447, longitude: -0.083821, zones: [3] }
+- { name: "Gloucester Road", latitude: 51.4945, longitude: -0.183529, zones: [1] }
+- { name: "Golders Green", latitude: 51.572216, longitude: -0.19482, zones: [3] }
+- { name: "Goldhawk Road", latitude: 51.502077, longitude: -0.22739, zones: [2] }
+- { name: "Goodge Street", latitude: 51.520613, longitude: -0.134793, zones: [1] }
+- { name: "Goodmayes", latitude: 51.566181, longitude: 0.111744, zones: [4] }
+- { name: "Gordon Hill", latitude: 51.663502, longitude: -0.094459, zones: [5] }
+- { name: "Gospel Oak", latitude: 51.555405, longitude: -0.151287, zones: [2] }
+- { name: "Grange Hill", latitude: 51.61348, longitude: 0.092287, zones: [4] }
+- { name: "Grange Park", latitude: 51.642623, longitude: -0.0973, zones: [5] }
+- { name: "Great Portland Street", latitude: 51.523789, longitude: -0.143947, zones: [1] }
+- { name: "Green Park", latitude: 51.506761, longitude: -0.142463, zones: [1] }
+- { name: "Greenford", latitude: 51.54198, longitude: -0.345864, zones: [4] }
+- { name: "Greenwich", latitude: 51.477548, longitude: -0.014849, zones: [2, 3] }
+- { name: "Grove Park", latitude: 51.430433, longitude: 0.022613, zones: [4] }
+- { name: "Gunnersbury", latitude: 51.491863, longitude: -0.27515, zones: [3] }
+- { name: "Hackbridge", latitude: 51.377861, longitude: -0.153865, zones: [4] }
+- { name: "Hackney Central", latitude: 51.547257, longitude: -0.055575, zones: [2] }
+- { name: "Hackney Downs", latitude: 51.549078, longitude: -0.060171, zones: [2] }
+- { name: "Hackney Wick", latitude: 51.543558, longitude: -0.025245, zones: [2] }
+- { name: "Hadley Wood", latitude: 51.668403, longitude: -0.176567, zones: [6] }
+- { name: "Haggerston", latitude: 51.538685, longitude: -0.075581, zones: [2] }
+- { name: "Hainault", latitude: 51.602845, longitude: 0.094123, zones: [4] }
+- { name: "Hammersmith (District)", latitude: 51.49182, longitude: -0.222847, zones: [2] }
+- { name: "Hammersmith (Met.)", latitude: 51.493483, longitude: -0.224626, zones: [2] }
+- { name: "Hampstead", latitude: 51.556543, longitude: -0.178, zones: [2] }
+- { name: "Hampstead Heath", latitude: 51.5552, longitude: -0.164552, zones: [3] }
+- { name: "Hampton", latitude: 51.41588, longitude: -0.372121, zones: [6] }
+- { name: "Hampton Court", latitude: 51.402294, longitude: -0.342743, zones: [6] }
+- { name: "Hampton Wick", latitude: 51.41464, longitude: -0.313089, zones: [6] }
+- { name: "Hanger Lane", latitude: 51.530072, longitude: -0.292982, zones: [3] }
+- { name: "Hanwell", latitude: 51.512186, longitude: -0.338037, zones: [4] }
+- { name: "Harlesden", latitude: 51.536258, longitude: -0.257481, zones: [3] }
+- { name: "Harold Wood", latitude: 51.593202, longitude: 0.234219, zones: [6] }
+- { name: "Harringay", latitude: 51.577358, longitude: -0.105194, zones: [3] }
+- { name: "Harringay Green Lanes", latitude: 51.577146, longitude: -0.098203, zones: [3] }
+- { name: "Harrow and Wealdstone", latitude: 51.592595, longitude: -0.334238, zones: [5] }
+- { name: "Harrow-on-the-Hill", latitude: 51.579388, longitude: -0.336987, zones: [5] }
+- { name: "Hatch End", latitude: 51.609829, longitude: -0.369164, zones: [6] }
+- { name: "Hatton Cross", latitude: 51.466685, longitude: -0.423366, zones: [5, 6] }
+- { name: "Haydons Road", latitude: 51.425457, longitude: -0.188915, zones: [3] }
+- { name: "Hayes", latitude: 51.375737, longitude: 0.010157, zones: [5] }
+- { name: "Hayes and Harlington", latitude: 51.503049, longitude: -0.420627, zones: [5] }
+- { name: "Headstone Lane", latitude: 51.6025, longitude: -0.356893, zones: [5] }
+- { name: "Heathrow Terminal 4", latitude: 51.45978, longitude: -0.447715, zones: [6] }
+- { name: "Heathrow Terminal 5", latitude: 51.470025, longitude: -0.490633, zones: [6] }
+- { name: "Heathrow Terminals 1 2 3", latitude: 51.471289, longitude: -0.452393, zones: [6] }
+- { name: "Hendon", latitude: 51.580075, longitude: -0.238616, zones: [3, 4] }
+- { name: "Hendon Central", latitude: 51.583133, longitude: -0.22672, zones: [3, 4] }
+- { name: "Herne Hill", latitude: 51.453991, longitude: -0.102549, zones: [2, 3] }
+- { name: "Heron Quays", latitude: 51.503387, longitude: -0.021939, zones: [2] }
+- { name: "High Barnet", latitude: 51.651688, longitude: -0.194151, zones: [5] }
+- { name: "High Street Kensington", latitude: 51.500729, longitude: -0.191552, zones: [1] }
+- { name: "Highams Park", latitude: 51.608356, longitude: -0.000121, zones: [4] }
+- { name: "Highbury and Islington", latitude: 51.546496, longitude: -0.104068, zones: [2] }
+- { name: "Highgate", latitude: 51.577647, longitude: -0.14692, zones: [3] }
+- { name: "Hillingdon", latitude: 51.553778, longitude: -0.449884, zones: [6] }
+- { name: "Hither Green", latitude: 51.452402, longitude: -0.000957, zones: [3] }
+- { name: "Holborn", latitude: 51.517236, longitude: -0.119826, zones: [1] }
+- { name: "Holland Park", latitude: 51.507147, longitude: -0.206543, zones: [2] }
+- { name: "Holloway Road", latitude: 51.552816, longitude: -0.112921, zones: [2] }
+- { name: "Homerton", latitude: 51.546595, longitude: -0.038498, zones: [2] }
+- { name: "Honor Oak Park", latitude: 51.450648, longitude: -0.044139, zones: [3] }
+- { name: "Hornchurch", latitude: 51.554355, longitude: 0.218941, zones: [6] }
+- { name: "Hornsey", latitude: 51.586475, longitude: -0.111801, zones: [3] }
+- { name: "Hounslow", latitude: 51.462505, longitude: -0.361782, zones: [5] }
+- { name: "Hounslow Central", latitude: 51.470926, longitude: -0.365944, zones: [4] }
+- { name: "Hounslow East", latitude: 51.473708, longitude: -0.355261, zones: [4] }
+- { name: "Hounslow West", latitude: 51.473106, longitude: -0.385693, zones: [5] }
+- { name: "Hoxton", latitude: 51.531392, longitude: -0.075571, zones: [1, 2] }
+- { name: "Hyde Park Corner", latitude: 51.502584, longitude: -0.15246, zones: [1] }
+- { name: "Ickenham", latitude: 51.560825, longitude: -0.441565, zones: [6] }
+- { name: "Ilford", latitude: 51.559142, longitude: 0.0687, zones: [4] }
+- { name: "Imperial Wharf", latitude: 51.474939, longitude: -0.182823, zones: [2] }
+- { name: "Island Gardens", latitude: 51.48795, longitude: -0.010479, zones: [2] }
+- { name: "Isleworth", latitude: 51.475037, longitude: -0.337314, zones: [4] }
+- { name: "Kenley", latitude: 51.3246, longitude: -0.101205, zones: [6] }
+- { name: "Kennington", latitude: 51.488662, longitude: -0.105056, zones: [2] }
+- { name: "Kensal Green", latitude: 51.530524, longitude: -0.224699, zones: [2] }
+- { name: "Kensal Rise", latitude: 51.534215, longitude: -0.220807, zones: [2] }
+- { name: "Kensington (Olympia)", latitude: 51.49788, longitude: -0.210365, zones: [2] }
+- { name: "Kent House", latitude: 51.412718, longitude: -0.045801, zones: [4] }
+- { name: "Kentish Town", latitude: 51.55001, longitude: -0.140457, zones: [2] }
+- { name: "Kentish Town West", latitude: 51.546548, longitude: -0.146742, zones: [2] }
+- { name: "Kenton", latitude: 51.581496, longitude: -0.315202, zones: [4] }
+- { name: "Kew Bridge", latitude: 51.490005, longitude: -0.288832, zones: [3] }
+- { name: "Kew Gardens", latitude: 51.476789, longitude: -0.285367, zones: [3, 4] }
+- { name: "Kidbrooke", latitude: 51.46269, longitude: 0.028315, zones: [3] }
+- { name: "Kilburn", latitude: 51.546944, longitude: -0.204618, zones: [2] }
+- { name: "Kilburn High Road", latitude: 51.537268, longitude: -0.191099, zones: [2] }
+- { name: "Kilburn Park", latitude: 51.535136, longitude: -0.193952, zones: [2] }
+- { name: "King George V", latitude: 51.502009, longitude: 0.062221, zones: [3] }
+- { name: "King's Cross", latitude: 51.530798, longitude: -0.122742, zones: [1] }
+- { name: "Kings Cross St. Pancras", latitude: 51.530312, longitude: -0.123858, zones: [1] }
+- { name: "Kingsbury", latitude: 51.584877, longitude: -0.278587, zones: [4] }
+- { name: "Kingston", latitude: 51.412642, longitude: -0.301127, zones: [6] }
+- { name: "Kingswood", latitude: 51.294723, longitude: -0.211219, zones: [6] }
+- { name: "Knightsbridge", latitude: 51.501355, longitude: -0.16065, zones: [1] }
+- { name: "Knockholt", latitude: 51.345752, longitude: 0.130845, zones: [6] }
+- { name: "Ladbroke Grove", latitude: 51.517211, longitude: -0.210184, zones: [2] }
+- { name: "Ladywell", latitude: 51.456192, longitude: -0.01923, zones: [3] }
+- { name: "Lambeth North", latitude: 51.49913, longitude: -0.111754, zones: [1] }
+- { name: "Lancaster Gate", latitude: 51.511891, longitude: -0.175416, zones: [1] }
+- { name: "Langdon Park", latitude: 51.518884, longitude: -0.015199, zones: [2] }
+- { name: "Latimer Road", latitude: 51.513958, longitude: -0.217445, zones: [2] }
+- { name: "Lee", latitude: 51.449459, longitude: 0.013379, zones: [3] }
+- { name: "Leicester Square", latitude: 51.511291, longitude: -0.128228, zones: [1] }
+- { name: "Lewisham", latitude: 51.464881, longitude: -0.012418, zones: [2, 3] }
+- { name: "Leyton", latitude: 51.558132, longitude: -0.006451, zones: [3] }
+- { name: "Leyton Midland Road", latitude: 51.569364, longitude: -0.008052, zones: [3] }
+- { name: "Leytonstone", latitude: 51.568522, longitude: 0.009155, zones: [3, 4] }
+- { name: "Leytonstone High Road", latitude: 51.563807, longitude: 0.008269, zones: [3] }
+- { name: "Limehouse", latitude: 51.512312, longitude: -0.039366, zones: [2] }
+- { name: "Liverpool Street", latitude: 51.517598, longitude: -0.082235, zones: [1] }
+- { name: "London Bridge", latitude: 51.504674, longitude: -0.085991, zones: [1] }
+- { name: "London City Airport", latitude: 51.50369, longitude: 0.047887, zones: [3] }
+- { name: "London Fields", latitude: 51.540719, longitude: -0.057685, zones: [2] }
+- { name: "Loughborough Junction", latitude: 51.466679, longitude: -0.102483, zones: [2] }
+- { name: "Loughton", latitude: 51.64157, longitude: 0.055294, zones: [6] }
+- { name: "Lower Sydenham", latitude: 51.424847, longitude: -0.033316, zones: [4] }
+- { name: "Maida Vale", latitude: 51.529995, longitude: -0.185418, zones: [2] }
+- { name: "Malden Manor", latitude: 51.38461, longitude: -0.261106, zones: [4] }
+- { name: "Manor House", latitude: 51.570747, longitude: -0.095671, zones: [2, 3] }
+- { name: "Manor Park", latitude: 51.552854, longitude: 0.045738, zones: [3, 4] }
+- { name: "Mansion House", latitude: 51.512092, longitude: -0.094183, zones: [1] }
+- { name: "Marble Arch", latitude: 51.513966, longitude: -0.158557, zones: [1] }
+- { name: "Maryland", latitude: 51.545668, longitude: 0.005696, zones: [3] }
+- { name: "Marylebone", latitude: 51.522397, longitude: -0.163478, zones: [1] }
+- { name: "Maze Hill", latitude: 51.483014, longitude: 0.003219, zones: [3] }
+- { name: "Mile End", latitude: 51.525311, longitude: -0.032652, zones: [2] }
+- { name: "Mill Hill Broadway", latitude: 51.612871, longitude: -0.249523, zones: [4] }
+- { name: "Mill Hill East", latitude: 51.608317, longitude: -0.209881, zones: [4] }
+- { name: "Mitcham Eastfields", latitude: 51.408384, longitude: -0.153987, zones: [3] }
+- { name: "Mitcham Junction", latitude: 51.393043, longitude: -0.157422, zones: [4] }
+- { name: "Monument", latitude: 51.51063, longitude: -0.086174, zones: [1] }
+- { name: "Moor Park", latitude: 51.629931, longitude: -0.432899, zones: [6, 7] }
+- { name: "Moorgate", latitude: 51.518437, longitude: -0.089003, zones: [1] }
+- { name: "Morden", latitude: 51.402186, longitude: -0.194838, zones: [4] }
+- { name: "Morden South", latitude: 51.396308, longitude: -0.200287, zones: [4] }
+- { name: "Mornington Crescent", latitude: 51.534362, longitude: -0.13873, zones: [2] }
+- { name: "Mortlake", latitude: 51.468168, longitude: -0.267189, zones: [3] }
+- { name: "Motspur Park", latitude: 51.39532, longitude: -0.239425, zones: [4] }
+- { name: "Mottingham", latitude: 51.439825, longitude: 0.050339, zones: [4] }
+- { name: "Mudchute", latitude: 51.491236, longitude: -0.014946, zones: [2] }
+- { name: "Neasden", latitude: 51.554628, longitude: -0.250101, zones: [3] }
+- { name: "New Barnet", latitude: 51.648537, longitude: -0.172955, zones: [5] }
+- { name: "New Beckenham", latitude: 51.416706, longitude: -0.035291, zones: [4] }
+- { name: "New Cross", latitude: 51.476429, longitude: -0.032264, zones: [2] }
+- { name: "New Cross Gate", latitude: 51.475265, longitude: -0.039515, zones: [2] }
+- { name: "New Eltham", latitude: 51.437691, longitude: 0.070459, zones: [4] }
+- { name: "New Malden", latitude: 51.403556, longitude: -0.256204, zones: [4] }
+- { name: "New Southgate", latitude: 51.614094, longitude: -0.142995, zones: [4] }
+- { name: "Newbury Park", latitude: 51.575638, longitude: 0.090318, zones: [4] }
+- { name: "Norbiton", latitude: 51.411909, longitude: -0.284186, zones: [5] }
+- { name: "Norbury", latitude: 51.411189, longitude: -0.122785, zones: [3] }
+- { name: "North Acton", latitude: 51.523432, longitude: -0.259715, zones: [2, 3] }
+- { name: "North Dulwich", latitude: 51.454482, longitude: -0.087904, zones: [2, 3] }
+- { name: "North Ealing", latitude: 51.517622, longitude: -0.288979, zones: [3] }
+- { name: "North Greenwich", latitude: 51.500255, longitude: 0.003601, zones: [2, 3] }
+- { name: "North Harrow", latitude: 51.584631, longitude: -0.362619, zones: [5] }
+- { name: "North Sheen", latitude: 51.46542, longitude: -0.286383, zones: [3] }
+- { name: "North Wembley", latitude: 51.562396, longitude: -0.303934, zones: [4] }
+- { name: "Northfields", latitude: 51.500492, longitude: -0.31505, zones: [3] }
+- { name: "Northolt", latitude: 51.548213, longitude: -0.368426, zones: [5] }
+- { name: "Northolt Park", latitude: 51.557619, longitude: -0.35942, zones: [5] }
+- { name: "Northwick Park", latitude: 51.578509, longitude: -0.318185, zones: [4] }
+- { name: "Northwood", latitude: 51.611214, longitude: -0.423823, zones: [6] }
+- { name: "Northwood Hills", latitude: 51.600803, longitude: -0.409297, zones: [6] }
+- { name: "Norwood Junction", latitude: 51.396954, longitude: -0.075195, zones: [4] }
+- { name: "Notting Hill Gate", latitude: 51.509375, longitude: -0.195907, zones: [1, 2] }
+- { name: "Nunhead", latitude: 51.46658, longitude: -0.053665, zones: [2] }
+- { name: "Oakleigh Park", latitude: 51.637676, longitude: -0.166181, zones: [4] }
+- { name: "Oakwood", latitude: 51.647638, longitude: -0.131839, zones: [5] }
+- { name: "Ockendon", latitude: 51.52199, longitude: 0.290498, zones: [7] }
+- { name: "Old Street", latitude: 51.525581, longitude: -0.087609, zones: [1] }
+- { name: "Orpington", latitude: 51.37352, longitude: 0.089043, zones: [6] }
+- { name: "Osterley", latitude: 51.481217, longitude: -0.352082, zones: [4] }
+- { name: "Oval", latitude: 51.481413, longitude: -0.113307, zones: [2] }
+- { name: "Oxford Circus", latitude: 51.515223, longitude: -0.140822, zones: [1] }
+- { name: "Paddington", latitude: 51.515394, longitude: -0.175722, zones: [1] }
+- { name: "Palmers Green", latitude: 51.618787, longitude: -0.110258, zones: [4] }
+- { name: "Park Royal", latitude: 51.526834, longitude: -0.284915, zones: [3] }
+- { name: "Parsons Green", latitude: 51.47496, longitude: -0.20111, zones: [2] }
+- { name: "Peckham Rye", latitude: 51.469511, longitude: -0.069969, zones: [2] }
+- { name: "Penge East", latitude: 51.419975, longitude: -0.054481, zones: [4] }
+- { name: "Penge West", latitude: 51.418063, longitude: -0.060631, zones: [4] }
+- { name: "Perivale", latitude: 51.536342, longitude: -0.323056, zones: [4] }
+- { name: "Petts Wood", latitude: 51.388599, longitude: 0.074494, zones: [5] }
+- { name: "Piccadilly Circus", latitude: 51.509697, longitude: -0.133697, zones: [1] }
+- { name: "Pimlico", latitude: 51.489553, longitude: -0.133094, zones: [1] }
+- { name: "Pinner", latitude: 51.592362, longitude: -0.381209, zones: [5] }
+- { name: "Plaistow", latitude: 51.531288, longitude: 0.017795, zones: [3] }
+- { name: "Plumstead", latitude: 51.489792, longitude: 0.084314, zones: [4] }
+- { name: "Ponders End", latitude: 51.642731, longitude: -0.034511, zones: [5] }
+- { name: "Pontoon Dock", latitude: 51.502216, longitude: 0.03334, zones: [3] }
+- { name: "Poplar", latitude: 51.507588, longitude: -0.017261, zones: [2] }
+- { name: "Preston Road", latitude: 51.572104, longitude: -0.294958, zones: [4] }
+- { name: "Prince Regent", latitude: 51.509435, longitude: 0.033503, zones: [3] }
+- { name: "Pudding Mill Lane", latitude: 51.534328, longitude: -0.012754, zones: [2, 3] }
+- { name: "Purfleet", latitude: 51.481173, longitude: 0.236789, zones: [7] }
+- { name: "Purley", latitude: 51.337364, longitude: -0.113599, zones: [6] }
+- { name: "Purley Oaks", latitude: 51.346989, longitude: -0.098801, zones: [6] }
+- { name: "Putney", latitude: 51.460953, longitude: -0.216589, zones: [2, 3] }
+- { name: "Putney Bridge", latitude: 51.467865, longitude: -0.209351, zones: [2] }
+- { name: "Queens Park", latitude: 51.534313, longitude: -0.204784, zones: [2] }
+- { name: "Queens Road Peckham", latitude: 51.474285, longitude: -0.057341, zones: [2] }
+- { name: "Queensbury", latitude: 51.593883, longitude: -0.286317, zones: [4] }
+- { name: "Queenstown Road", latitude: 51.474959, longitude: -0.147341, zones: [2] }
+- { name: "Queensway", latitude: 51.510449, longitude: -0.187405, zones: [1] }
+- { name: "Radlett", latitude: 51.685413, longitude: -0.317973, zones: nil }
+- { name: "Rainham", latitude: 51.51734, longitude: 0.190706, zones: [6] }
+- { name: "Ravensbourne", latitude: 51.41387, longitude: -0.006923, zones: [4] }
+- { name: "Ravenscourt Park", latitude: 51.494068, longitude: -0.235955, zones: [2] }
+- { name: "Rayners Lane", latitude: 51.575397, longitude: -0.371046, zones: [5] }
+- { name: "Raynes Park", latitude: 51.409375, longitude: -0.229899, zones: [4] }
+- { name: "Rectory Road", latitude: 51.558763, longitude: -0.068371, zones: [2] }
+- { name: "Redbridge", latitude: 51.576367, longitude: 0.045408, zones: [4] }
+- { name: "Reedham", latitude: 51.331442, longitude: -0.123388, zones: [6] }
+- { name: "Regents Park", latitude: 51.523811, longitude: -0.14533, zones: [1] }
+- { name: "Richmond", latitude: 51.463233, longitude: -0.301725, zones: [4] }
+- { name: "Rickmansworth", latitude: 51.640323, longitude: -0.47367, zones: [7] }
+- { name: "Riddlesdown", latitude: 51.332675, longitude: -0.099479, zones: [6] }
+- { name: "Roding Valley", latitude: 51.616956, longitude: 0.044041, zones: [4] }
+- { name: "Romford", latitude: 51.574642, longitude: 0.18307, zones: [6] }
+- { name: "Rotherhithe", latitude: 51.501595, longitude: -0.052952, zones: [2] }
+- { name: "Royal Albert", latitude: 51.508494, longitude: 0.045192, zones: [3] }
+- { name: "Royal Oak", latitude: 51.518294, longitude: -0.188809, zones: [2] }
+- { name: "Royal Victoria", latitude: 51.509055, longitude: 0.01798, zones: [3] }
+- { name: "Ruislip", latitude: 51.572162, longitude: -0.42122, zones: [6] }
+- { name: "Ruislip Gardens", latitude: 51.55996, longitude: -0.40928, zones: [5] }
+- { name: "Ruislip Manor", latitude: 51.573452, longitude: -0.412835, zones: [6] }
+- { name: "Russell Square", latitude: 51.523013, longitude: -0.124576, zones: [1] }
+- { name: "Sanderstead", latitude: 51.348246, longitude: -0.093694, zones: [6] }
+- { name: "Selhurst", latitude: 51.392186, longitude: -0.089885, zones: [4] }
+- { name: "Seven Kings", latitude: 51.563993, longitude: 0.096334, zones: [4] }
+- { name: "Seven Sisters", latitude: 51.583362, longitude: -0.072452, zones: [3] }
+- { name: "Shadwell", latitude: 51.5113, longitude: -0.056905, zones: [2] }
+- { name: "Shenfield", latitude: 51.630873, longitude: 0.329967, zones: [7] }
+- { name: "Shepherds Bush", latitude: 51.504532, longitude: -0.218505, zones: [2] }
+- { name: "Shepherds Bush Market", latitude: 51.505881, longitude: -0.227386, zones: [2] }
+- { name: "Shoreditch High Street", latitude: 51.523467, longitude: -0.077073, zones: [1] }
+- { name: "Shortlands", latitude: 51.405602, longitude: 0.002782, zones: [4] }
+- { name: "Sidcup", latitude: 51.434398, longitude: 0.10333, zones: [5] }
+- { name: "Silver Street", latitude: 51.615242, longitude: -0.072575, zones: [4] }
+- { name: "Slade Green", latitude: 51.467748, longitude: 0.190533, zones: [6] }
+- { name: "Sloane Square", latitude: 51.49236, longitude: -0.156474, zones: [1] }
+- { name: "Smitham", latitude: 51.322453, longitude: -0.134333, zones: [6] }
+- { name: "Snaresbrook", latitude: 51.580891, longitude: 0.021478, zones: [4] }
+- { name: "South Acton", latitude: 51.499686, longitude: -0.270201, zones: [3] }
+- { name: "South Bermondsey", latitude: 51.487677, longitude: -0.05474, zones: [2] }
+- { name: "South Croydon", latitude: 51.36275, longitude: -0.092503, zones: [5] }
+- { name: "South Ealing", latitude: 51.501644, longitude: -0.307026, zones: [3] }
+- { name: "South Hampstead", latitude: 51.541477, longitude: -0.178357, zones: [2] }
+- { name: "South Harrow", latitude: 51.56468, longitude: -0.35188, zones: [5] }
+- { name: "South Kensington", latitude: 51.494071, longitude: -0.173909, zones: [1] }
+- { name: "South Kenton", latitude: 51.571044, longitude: -0.308129, zones: [4] }
+- { name: "South Merton", latitude: 51.403241, longitude: -0.205536, zones: [4] }
+- { name: "South Quay", latitude: 51.500864, longitude: -0.018446, zones: [2] }
+- { name: "South Ruislip", latitude: 51.55689, longitude: -0.399101, zones: [5] }
+- { name: "South Tottenham", latitude: 51.580403, longitude: -0.071842, zones: [3] }
+- { name: "South Wimbledon", latitude: 51.415361, longitude: -0.19196, zones: [3, 4] }
+- { name: "South Woodford", latitude: 51.591553, longitude: 0.027958, zones: [4] }
+- { name: "Southall", latitude: 51.505957, longitude: -0.378697, zones: [4] }
+- { name: "Southbury", latitude: 51.648434, longitude: -0.052969, zones: [5] }
+- { name: "Southfields", latitude: 51.444883, longitude: -0.206595, zones: [3] }
+- { name: "Southgate", latitude: 51.632376, longitude: -0.127756, zones: [4] }
+- { name: "Southwark", latitude: 51.503854, longitude: -0.105781, zones: [1] }
+- { name: "St Helier", latitude: 51.389912, longitude: -0.199, zones: [4] }
+- { name: "St James Street", latitude: 51.580609, longitude: -0.03279, zones: [3] }
+- { name: "St Johns", latitude: 51.468975, longitude: -0.023226, zones: [2] }
+- { name: "St Margarets", latitude: 51.455206, longitude: -0.32131, zones: [4] }
+- { name: "St Mary Cray", latitude: 51.394759, longitude: 0.107232, zones: [6] }
+- { name: "St Pancras", latitude: 51.530554, longitude: -0.125491, zones: [1] }
+- { name: "St. James's Park", latitude: 51.49961, longitude: -0.133864, zones: [1] }
+- { name: "St. Johns Wood", latitude: 51.534854, longitude: -0.17405, zones: [2] }
+- { name: "St. Pauls", latitude: 51.514835, longitude: -0.097557, zones: [1] }
+- { name: "Stamford Brook", latitude: 51.49445, longitude: -0.245232, zones: [2] }
+- { name: "Stamford Hill", latitude: 51.574448, longitude: -0.076654, zones: [3] }
+- { name: "Stanmore", latitude: 51.619673, longitude: -0.303085, zones: [5] }
+- { name: "Star Lane", latitude: 51.520604, longitude: 0.004205, zones: [3] }
+- { name: "Stepney Green", latitude: 51.521996, longitude: -0.047368, zones: [2] }
+- { name: "Stockwell", latitude: 51.472159, longitude: -0.122832, zones: [2] }
+- { name: "Stoke Newington", latitude: 51.564638, longitude: -0.072321, zones: [2] }
+- { name: "Stonebridge Park", latitude: 51.543987, longitude: -0.275386, zones: [3] }
+- { name: "Stoneleigh", latitude: 51.363364, longitude: -0.248695, zones: [5] }
+- { name: "Stratford", latitude: 51.541693, longitude: -0.003737, zones: [3] }
+- { name: "Stratford High Street", latitude: 51.538149, longitude: -0.001066, zones: [3] }
+- { name: "Stratford International", latitude: 51.544809, longitude: -0.008764, zones: [3] }
+- { name: "Strawberry Hill", latitude: 51.439748, longitude: -0.339603, zones: [5] }
+- { name: "Streatham", latitude: 51.425846, longitude: -0.132311, zones: [3] }
+- { name: "Streatham Common", latitude: 51.418985, longitude: -0.135712, zones: [3] }
+- { name: "Streatham Hill", latitude: 51.43846, longitude: -0.127667, zones: [3] }
+- { name: "Sudbury and Harrow Road", latitude: 51.554494, longitude: -0.315912, zones: [4] }
+- { name: "Sudbury Hill", latitude: 51.55734, longitude: -0.336378, zones: [4] }
+- { name: "Sudbury Hill Harrow", latitude: 51.558342, longitude: -0.335432, zones: [4] }
+- { name: "Sudbury Town", latitude: 51.551397, longitude: -0.316329, zones: [4] }
+- { name: "Sundridge Park", latitude: 51.413394, longitude: 0.020379, zones: [4] }
+- { name: "Surbiton", latitude: 51.3926, longitude: -0.30437, zones: [6] }
+- { name: "Surrey Quays", latitude: 51.493267, longitude: -0.047516, zones: [2] }
+- { name: "Sutton", latitude: 51.359506, longitude: -0.191288, zones: [5] }
+- { name: "Sutton Common", latitude: 51.375555, longitude: -0.196906, zones: [4] }
+- { name: "Swiss Cottage", latitude: 51.543035, longitude: -0.175612, zones: [2] }
+- { name: "Sydenham", latitude: 51.427341, longitude: -0.055074, zones: [3] }
+- { name: "Sydenham Hill", latitude: 51.432576, longitude: -0.080216, zones: [3] }
+- { name: "Syon Lane", latitude: 51.481475, longitude: -0.326481, zones: [4] }
+- { name: "Tadworth", latitude: 51.291628, longitude: -0.235994, zones: [6] }
+- { name: "Tattenham Corner", latitude: 51.309181, longitude: -0.242552, zones: [6] }
+- { name: "Teddington", latitude: 51.424498, longitude: -0.332691, zones: [6] }
+- { name: "Temple", latitude: 51.511041, longitude: -0.113711, zones: [1] }
+- { name: "Thames Ditton", latitude: 51.388616, longitude: -0.338278, zones: [6] }
+- { name: "Theobalds Grove", latitude: 51.692373, longitude: -0.034734, zones: [7] }
+- { name: "Theydon Bois", latitude: 51.672552, longitude: 0.102905, zones: [6] }
+- { name: "Thornton Heath", latitude: 51.398481, longitude: -0.100419, zones: [4] }
+- { name: "Tolworth", latitude: 51.376843, longitude: -0.279606, zones: [5] }
+- { name: "Tooting", latitude: 51.419897, longitude: -0.160988, zones: [3] }
+- { name: "Tooting Bec", latitude: 51.435838, longitude: -0.159686, zones: [3] }
+- { name: "Tooting Broadway", latitude: 51.427049, longitude: -0.16867, zones: [3] }
+- { name: "Tottenham Court Road", latitude: 51.516211, longitude: -0.131096, zones: [1] }
+- { name: "Tottenham Hale", latitude: 51.587998, longitude: -0.060173, zones: [3] }
+- { name: "Totteridge and Whetstone", latitude: 51.630247, longitude: -0.17934, zones: [4] }
+- { name: "Tower Gateway", latitude: 51.510393, longitude: -0.074395, zones: [1] }
+- { name: "Tower Hill", latitude: 51.510394, longitude: -0.076687, zones: [1] }
+- { name: "Tufnell Park", latitude: 51.556441, longitude: -0.137728, zones: [2] }
+- { name: "Tulse Hill", latitude: 51.439797, longitude: -0.105108, zones: [3] }
+- { name: "Turkey Street", latitude: 51.672654, longitude: -0.047215, zones: [6] }
+- { name: "Turnham Green", latitude: 51.495182, longitude: -0.25451, zones: [2] }
+- { name: "Turnpike Lane", latitude: 51.590358, longitude: -0.102791, zones: [3] }
+- { name: "Twickenham", latitude: 51.450251, longitude: -0.328846, zones: [5] }
+- { name: "Upminster", latitude: 51.558763, longitude: 0.251415, zones: [6] }
+- { name: "Upminster Bridge", latitude: 51.557719, longitude: 0.234556, zones: [6] }
+- { name: "Upney", latitude: 51.538406, longitude: 0.101546, zones: [4] }
+- { name: "Upper Holloway", latitude: 51.563623, longitude: -0.129095, zones: [2] }
+- { name: "Upper Warlingham", latitude: 51.308772, longitude: -0.077467, zones: [6] }
+- { name: "Upton Park", latitude: 51.536628, longitude: 0.034556, zones: [3] }
+- { name: "Uxbridge", latitude: 51.546455, longitude: -0.477087, zones: [6] }
+- { name: "Vauxhall", latitude: 51.485736, longitude: -0.123816, zones: [1, 2] }
+- { name: "Victoria", latitude: 51.496424, longitude: -0.143906, zones: [1] }
+- { name: "Waddon", latitude: 51.367379, longitude: -0.11738, zones: [5] }
+- { name: "Wallington", latitude: 51.360332, longitude: -0.150849, zones: [5] }
+- { name: "Waltham Cross", latitude: 51.685257, longitude: -0.02655, zones: [7] }
+- { name: "Walthamstow Central", latitude: 51.583018, longitude: -0.019926, zones: [3] }
+- { name: "Walthamstow Queens Road", latitude: 51.581546, longitude: -0.02383, zones: [3] }
+- { name: "Wandsworth Common", latitude: 51.446366, longitude: -0.163523, zones: [3] }
+- { name: "Wandsworth Road", latitude: 51.470223, longitude: -0.139023, zones: [2] }
+- { name: "Wandsworth Town", latitude: 51.461034, longitude: -0.187896, zones: [2] }
+- { name: "Wanstead", latitude: 51.574902, longitude: 0.028775, zones: [4] }
+- { name: "Wanstead Park", latitude: 51.551778, longitude: 0.026404, zones: [3] }
+- { name: "Wapping", latitude: 51.50434, longitude: -0.055846, zones: [2] }
+- { name: "Warren Street", latitude: 51.52458, longitude: -0.138264, zones: [1] }
+- { name: "Warwick Avenue", latitude: 51.523104, longitude: -0.182939, zones: [2] }
+- { name: "Waterloo", latitude: 51.503147, longitude: -0.113245, zones: [1] }
+- { name: "Watford", latitude: 51.657605, longitude: -0.417256, zones: [7] }
+- { name: "Watford High Street", latitude: 51.652654, longitude: -0.391682, zones: [8] }
+- { name: "Watford Junction", latitude: 51.663883, longitude: -0.396158, zones: nil }
+- { name: "Welling", latitude: 51.464777, longitude: 0.101789, zones: [4] }
+- { name: "Wembley Central", latitude: 51.551865, longitude: -0.296378, zones: [4] }
+- { name: "Wembley Park", latitude: 51.563322, longitude: -0.279228, zones: [4] }
+- { name: "Wembley Stadium", latitude: 51.554655, longitude: -0.286032, zones: [4] }
+- { name: "West Acton", latitude: 51.51777, longitude: -0.280643, zones: [3] }
+- { name: "West Brompton", latitude: 51.487329, longitude: -0.195524, zones: [2] }
+- { name: "West Croydon", latitude: 51.378552, longitude: -0.10202, zones: [5] }
+- { name: "West Drayton", latitude: 51.510071, longitude: -0.472162, zones: [6] }
+- { name: "West Dulwich", latitude: 51.440912, longitude: -0.090658, zones: [3] }
+- { name: "West Ealing", latitude: 51.513625, longitude: -0.319769, zones: [3] }
+- { name: "West Finchley", latitude: 51.609263, longitude: -0.188903, zones: [4] }
+- { name: "West Ham", latitude: 51.528526, longitude: 0.005332, zones: [3] }
+- { name: "West Hampstead", latitude: 51.547474, longitude: -0.191112, zones: [2] }
+- { name: "West Hampstead Thameslink", latitude: 51.548629, longitude: -0.192523, zones: [2] }
+- { name: "West Harrow", latitude: 51.578924, longitude: -0.353832, zones: [5] }
+- { name: "West India Quay", latitude: 51.506763, longitude: -0.020568, zones: [2] }
+- { name: "West Kensington", latitude: 51.490109, longitude: -0.206189, zones: [2] }
+- { name: "West Norwood", latitude: 51.431241, longitude: -0.103175, zones: [3] }
+- { name: "West Ruislip", latitude: 51.569588, longitude: -0.437846, zones: [6] }
+- { name: "West Silvertown", latitude: 51.502884, longitude: 0.02226, zones: [3] }
+- { name: "West Sutton", latitude: 51.36615, longitude: -0.20463, zones: [5] }
+- { name: "West Wickham", latitude: 51.381284, longitude: -0.014562, zones: [5] }
+- { name: "Westbourne Park", latitude: 51.520989, longitude: -0.200868, zones: [2] }
+- { name: "Westcombe Park", latitude: 51.484509, longitude: 0.01776, zones: [3] }
+- { name: "Westferry", latitude: 51.509638, longitude: -0.026309, zones: [2] }
+- { name: "Westminster", latitude: 51.501402, longitude: -0.124988, zones: [1] }
+- { name: "White City", latitude: 51.512232, longitude: -0.224618, zones: [2] }
+- { name: "White Hart Lane", latitude: 51.605035, longitude: -0.070856, zones: [3] }
+- { name: "Whitechapel", latitude: 51.519588, longitude: -0.059406, zones: [2] }
+- { name: "Whitton", latitude: 51.449588, longitude: -0.357668, zones: [5] }
+- { name: "Whyteleafe", latitude: 51.309929, longitude: -0.081121, zones: [6] }
+- { name: "Whyteleafe South", latitude: 51.30349, longitude: -0.076698, zones: [6] }
+- { name: "Willesden Green", latitude: 51.549373, longitude: -0.222393, zones: [2, 3] }
+- { name: "Willesden Junction", latitude: 51.532234, longitude: -0.243895, zones: [3] }
+- { name: "Wimbledon", latitude: 51.421108, longitude: -0.206648, zones: [3] }
+- { name: "Wimbledon Chase", latitude: 51.409531, longitude: -0.214075, zones: [3] }
+- { name: "Wimbledon Park", latitude: 51.434581, longitude: -0.199172, zones: [3] }
+- { name: "Winchmore Hill", latitude: 51.633887, longitude: -0.100902, zones: [4] }
+- { name: "Wood Green", latitude: 51.597454, longitude: -0.109512, zones: [3] }
+- { name: "Wood Lane", latitude: 51.509658, longitude: -0.224458, zones: [2] }
+- { name: "Wood Street", latitude: 51.58667, longitude: -0.001939, zones: [4] }
+- { name: "Woodford", latitude: 51.607202, longitude: 0.034071, zones: [4] }
+- { name: "Woodgrange Park", latitude: 51.549053, longitude: 0.044587, zones: [3, 4] }
+- { name: "Woodmansterne", latitude: 51.319019, longitude: -0.154248, zones: [6] }
+- { name: "Woodside Park", latitude: 51.617868, longitude: -0.185411, zones: [4] }
+- { name: "Woolwich Arsenal", latitude: 51.489907, longitude: 0.069208, zones: [4] }
+- { name: "Woolwich Dockyard", latitude: 51.491108, longitude: 0.054627, zones: [3] }
+- { name: "Worcester Park", latitude: 51.381105, longitude: -0.245561, zones: [4] }

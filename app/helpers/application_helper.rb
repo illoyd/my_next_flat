@@ -11,6 +11,67 @@ module ApplicationHelper
       end
     "alert-#{ kind }"
   end
+  
+  def title_for(listing)
+    if !listing.street.blank? && listing.street != listing.city
+      listing.street
+    else
+      listing.address
+    end
+  end
+  
+  def icon(label, *classes)
+    "<i class=\"fa fa-#{ label } #{ Array(classes).join(' ') }\"></i>".html_safe
+  end
+  
+  def label2(text, label, *classes)
+    "<span class=\"label label-#{ label } #{ Array(classes).join(' ') }\">#{ text }</span>".html_safe
+  end
+  
+  def field_error_icon(errors)
+    return nil unless errors.try(:any?)
+    %(
+      <span rel="popover" class="field_error_icon" data-container="body" data-content="#{ errors.join(',') }" data-placement="top" data-toggle="popover" data-trigger="hover">
+        <span class="fa fa-info-circle"></span>
+      </span>
+    ).html_safe
+  end
+  
+  def listing_status_label(listing, *classes)
+    case
+    when listing.for_sale? then label2('for sale', :buy, *classes)
+    when listing.to_let?   then label2('to let', :let, *classes)
+    else
+      label2(listing.status, :default, *classes)
+    end
+  end
+  
+  def badge(text, label, *classes)
+    "<span class=\"badge badge-#{ label } #{ Array(classes).join(' ') }\">#{ text }</span>".html_safe
+  end
+  
+  def map_tag(search, options={})
+    options.reverse_merge!(src: map_url('place', search), frameborder: 0)
+    content_tag(:iframe, '', options)
+  end
+  
+  def map_url(mode, search, params={})
+    params.reverse_merge!( q: search, key: Rails.application.secrets.google_maps_embed_api_key )
+    "https://www.google.com/maps/embed/v1/#{ mode }?#{ params.to_query }"
+  end
+  
+  def format_zoopla_description(description)
+    # Insert section breaks where appropriate
+    description.gsub!(/([a-z])([A-Z])/,'\1<br/>\2')
+
+    # Insert paragraph breaks where appropriate
+    description.gsub!(/([.!?*-])([A-Z"])/, '\1<br/><br/>\2')
+    
+    # Convert all new lines to BRs
+    description.gsub!(/\n/, '<br/>')
+
+    description.html_safe
+  end
 
   def link_to_add_fields(name=nil, f=nil, association=nil, &block)
     f, association = name, f if block_given?
@@ -40,12 +101,26 @@ module ApplicationHelper
   end
   
   def results_count(search)
-    service = MyNextFlat::CachedService.new
-    service.cached_search?(search) ? service.search(search).count : nil
+    Zoopla::CachedListings.new.search(search, {}, {allow_query: false}).count
   end
   
   def price_for(listing)
-    number_to_price(listing.to_let? ? listing.price_per_calendar_month : listing.price, listing.to_let?)
+    price = number_to_price(listing.to_let? ? listing.price_per_calendar_month : listing.price, listing.to_let?)
+
+    case listing.price_modifier
+    when 'poa'                 then 'POA'
+    when 'price_on_request'    then 'POR'
+    when 'offers_over'         then "over #{price}"
+    when 'from'                then "from #{price}"
+    when 'offers_in_region_of' then "in region of #{price}"
+    when 'part_buy_part_rent'  then "#{price} (part buy part rent)"
+    when 'shared_equity'       then "#{price} (shared equity)"
+    when 'shared_ownership'    then "#{price} (shared ownership)"
+    when 'guide_price'         then "#{price} (guide)"
+    when 'sale_by_tender'      then "#{price} by tender"
+    else
+      price
+    end.html_safe
   end
 
   def number_to_price(price, to_let=false)
@@ -85,7 +160,14 @@ module ApplicationHelper
   
   def baths_for(baths)
     baths = baths.try(:baths) || baths
-    pluralize(baths, 'bath')
+    whole_baths = baths.truncate
+    half_baths = (baths - whole_baths).round(1) == 0.5 ? '&frac12;' : nil
+    "#{ whole_baths }#{ half_baths } #{ 'bath'.pluralize(baths) }"
+  end
+  
+  def receptions_for(receptions)
+    receptions = receptions.try(:receptions) || receptions
+    pluralize(receptions, 'reception')
   end
 
 end

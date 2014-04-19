@@ -8,11 +8,10 @@ class LatLonLocation < Location
     self.area = value.to_s
   end
   
-  def area=(value)
-    super
-    @coordiantes = nil
+  def geocode_async
+    self.latitude = self.coordinates.latitude
+    self.longitude = self.coordinates.longitude
+    true
   end
-  
-  delegate :latitude, :longitude, to: :coordinates
 
 end

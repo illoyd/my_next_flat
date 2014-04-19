@@ -1,0 +1,13 @@
+#panel-container
+  #panels
+    #content-panel
+      = render 'header'
+      = render 'alerts'
+      = yield
+      = render 'footer'
+    #map-panel
+      #map{ data: { mapify: @map[:id], latitude: @map[:longitude], longitude: @map[:latitude] } }
+      .sr-only
+        - @map[:markers].each do |listing|
+          .info[listing]{ data: { marker: @map[:id], latitude: listing.latitude, longitude: listing.longitude } }
+            %p= link_to listing.address, listing_path(listing.id)

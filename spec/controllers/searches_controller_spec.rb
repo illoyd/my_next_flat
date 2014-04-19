@@ -18,7 +18,7 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe SearchesController do
+describe SearchesController, :vcr do
 
   # This should return the minimal set of attributes required to create a valid
   # Search. As you add validations to Search, be sure to
@@ -32,8 +32,10 @@ describe SearchesController do
   # SearchesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
   
-  let(:user)   { create(:user) }
-  let(:search) { create(:search, :with_daily_schedule, user: user) }
+  let(:user)     { create(:user) }
+  let(:search)   { create(:search, :with_daily_schedule, user: user, locations: [location], criterias: [criteria]) }
+  let(:location) { build(:location, area: 'SE10', search: nil) }
+  let(:criteria) { build(:buy_criteria, max_beds: '8', min_beds: '2', search: nil) }
   before { sign_in(user) }
 
   describe "GET index" do

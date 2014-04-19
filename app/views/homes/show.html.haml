@@ -1,0 +1,15 @@
+- if current_or_guest_user.searches.none?
+  %p Intelligent search options to make finding your next flat easier and faster. Use our lovingly handcrafted search options to spot your next flat before someone else does. And best of all we'll keep you informed just as soon as we see something you might like.
+  = link_to new_search_path, class: 'btn btn-lg btn-success' do
+    %i.fa.fa-search
+    Start Searching!
+
+- else
+  %p
+    - if guest_user?
+      Welcome back! Why not sign up to save your searches?
+    - else
+      Welcome back, #{ current_or_guest_user.name }!
+
+  %table.table
+    %tbody= render partial: 'search', collection: current_or_guest_user.searches
