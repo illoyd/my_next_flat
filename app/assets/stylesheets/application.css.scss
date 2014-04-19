@@ -39,11 +39,13 @@
   
   a#user_icon {
     @extend .thumbnail;
+    margin-top: 10px;
+    margin-bottom: 0px;
     text-align: center;
     vertical-align: middle;
     
     display: inline-block;
-    @include square(40px);
+    @include square(35px);
   }
 }
 
