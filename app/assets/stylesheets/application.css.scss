@@ -49,8 +49,23 @@
   }
 }
 
-#link-bar {
-  // @extend .btn-group-justified;
+#link-group {
+  @extend .text-center;
+  
+  .links {
+    display: inline-block;
+    @extend .btn-group;
+    @extend .btn-group-sm;
+    
+    a {
+      @extend .btn;
+      @extend .btn-default;
+    }
+    
+    br {
+      @extend .visible-xs;
+    }
+  }
 }
 
 h2.listing span.label {
@@ -85,7 +100,21 @@ h2.listing span.label {
   font-size: 133%;
 }
 
+.panel-default.light_up {
+  &:hover {
+    @extend .panel-primary;
+  }
+}
+
+.panel-default.light_up_danger {
+  &:hover {
+    @extend .panel-danger;
+  }
+}
+
 form.madlib {
+  @extend .form-inline;
+  
   input[type=text], input[type=number], select {
     border: 0px none transparent;
     border-bottom: 3px dotted gray;
@@ -97,6 +126,10 @@ form.madlib {
       background-color: lighten($brand-primary, 40%);
       border-bottom-color: $brand-primary;
     }
+  }
+  
+  label {
+    @extend .sr-only;
   }
 
   select, input[type=number] {

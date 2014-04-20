@@ -2,33 +2,43 @@
 #user_controls.dropdown.pull-right
   %a#user_icon{ href: edit_user_registration_path, data: {toggle: 'dropdown', target: '#'} }
     - if signed_in?
-      =icon('user')
+      = image_tag(current_or_guest_user.profile_image_url)
     - else
-      =icon('user', 'fa-lg')
+      = icon('user', 'fa-lg')
 
   %ul.dropdown-menu{ role: 'menu' }
     - if signed_in?
       %li
         = link_to edit_user_registration_path do
           Hi, #{ current_or_guest_user.name }!
-        
-    - else
-      %li
-        = link_to new_user_session_path do
-          = icon('sign-in')
-          Sign in
+    %li
+      = link_to home_path do
+        = icon('search')
+        Saved Searches
+
+    %li
+      = link_to new_search_path do
+        = icon('search-plus')
+        New Search
+
+    %li.divider
+
+    - unless signed_in?
       %li
         = link_to new_user_registration_path do
           = icon('plus')
           Sign up
-      
-    %li
-      = link_to home_path do
-        = icon('search')
-        Search
+      %li
+        = link_to new_user_session_path do
+          = icon('sign-in')
+          Sign in with email
+      %li
+        = link_to user_omniauth_authorize_path(:twitter) do
+          = icon('twitter')
+          Sign in with Twitter
 
     - if signed_in?
       %li
-        = link_to edit_user_registration_path do
+        = link_to destroy_user_session_path, method: :delete do
           = icon('sign-out')
           Sign out

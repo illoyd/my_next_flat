@@ -7,4 +7,5 @@
   %br/
   my next flat
 
-%p.lead.text-center.text-muted Where do you want to live today?
+%p.lead.text-center.text-muted
+  Where do you want to live today#{ ', ' + current_or_guest_user.name if signed_in? }?

@@ -64,15 +64,13 @@ class ApplicationController < ActionController::Base
   # Called (once) when the user logs in, insert any code your application needs
   # to hand off from guest_user to current_user.
   def logging_in
-    guest_user.searches.each { |search| search.update!( user: current_user ) }    
-    guest_user.reload
-    current_user.reload
+    current_user.merge!(guest_user)
   end
 
   #
   # Create a new guest user
   def create_guest_user
-    User.create(name: "Guest", email: "guest_#{Time.now.to_i}#{rand(99)}@mynextflat.co.uk", guest: true).tap do |u|
+    User.create(name: "Guest", email: "guest_#{Time.now.to_i}#{rand(99)}@mynextflat.co.uk", guest: true, real_email: false).tap do |u|
       u.save!(:validate => false)
       session[:guest_user_id] = u.id
     end

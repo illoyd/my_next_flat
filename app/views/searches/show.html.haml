@@ -1,18 +1,19 @@
 = render partial: 'searches/destroy_modal', locals: {search: @search}
 
-.row
-  .col-xs-12
-    #link-bar.btn-toolbar
-      .btn-group.btn-group-sm
-        = link_to home_path, class: 'btn btn-default' do
-          = icon('arrow-circle-o-left')
-          Back
-        = link_to edit_search_path(@search), class: 'btn btn-default' do
-          %i.fa.fa-pencil
-          Edit
-        = link_to '#', class: 'btn btn-default btn-sm', 'data-toggle'=>"modal", 'data-target'=>"#delete_#{@search.id}" do
-          =icon('trash-o')
-          Delete
+#link-group
+  .links
+    = link_to home_path do
+      = icon('arrow-circle-o-left')
+      %br/
+      Back
+    = link_to edit_search_path(@search) do
+      %i.fa.fa-pencil
+      %br/
+      Edit
+    = link_to '#', 'data-toggle'=>"modal", 'data-target'=>"#delete_#{@search.id}" do
+      =icon('trash-o')
+      %br/
+      Delete
 
 
 %h2.listing

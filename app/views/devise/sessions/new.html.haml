@@ -1,23 +1,37 @@
-.panel.panel-primary
-  .panel-heading
-    %h1.panel-title Sign in
-  .panel-body
-    = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: 'form-horizontal' }) do |f|
-      .form-group
-        = f.label :email, class: 'col-sm-2 control-label'
-        .col-sm-10= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email'
-    
-      .form-group
-        = f.label :password, class: 'col-sm-2 control-label'
-        .col-sm-10= f.password_field :password, class: 'form-control'
-    
-      - if devise_mapping.rememberable?
-        .form-group
-          .col-sm-offset-2.col-sm-10
-            = f.check_box :remember_me, checked: true
-            = f.label :remember_me
-    
-      .form-group
-        .col-sm-offset-2.col-sm-10= f.submit "Sign in", class: 'btn btn-default'
+.row
+  .col-md-6
+    .panel.panel-default.light_up
+      .panel-heading
+        %h1.panel-title Sign in
+      .panel-body
+        = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: 'form-horizontal' }) do |f|
+          .form-group
+            = f.label :email, class: 'col-sm-2 control-label'
+            .col-sm-10= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email'
+        
+          .form-group
+            = f.label :password, class: 'col-sm-2 control-label'
+            .col-sm-10= f.password_field :password, class: 'form-control'
+        
+          - if devise_mapping.rememberable?
+            .form-group
+              .col-sm-offset-2.col-sm-10
+                = f.check_box :remember_me, checked: true
+                = f.label :remember_me
+        
+          .form-group
+            .col-sm-offset-2.col-sm-10= f.submit "Sign in", class: 'btn btn-default'
 
-  .panel-footer= render "devise/shared/links"
+  .col-md-6
+    .panel.panel-default.light_up
+      .panel-heading
+        %h1.panel-title Sign in
+      .panel-body
+        %p Or sign in using ...
+        %p
+          = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-lg btn-block' do
+            = icon('twitter')
+            Sign in with Twitter
+
+.text-center
+  = render "devise/shared/links"
