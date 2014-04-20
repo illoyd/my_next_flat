@@ -7,7 +7,11 @@ class User < ActiveRecord::Base
 
   has_many :searches, inverse_of: :user, dependent: :destroy
   
-  scope :twitter_user_for, ->(uid, nickname, email) { where('twitter_uid = ? OR twitter_handle = ? OR email = ?', uid, nickname, email) }
+  validates :name, presence: true
+  
+  def twitter?
+    self.twitter_uid.present?
+  end
 
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -20,8 +24,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.find_for_twitter_oauth(auth)
-    find_or_create_by(twitter_uid: auth.uid) do |user|
+  def self.find_or_initialize_with_twitter_oauth(auth)
+    find_or_initialize_by(twitter_uid: auth.uid) do |user|
       user.twitter_uid       = auth.uid
       user.twitter_handle    = auth.info.nickname
       user.profile_image_url = auth.info.image
@@ -30,6 +34,12 @@ class User < ActiveRecord::Base
       user.name              = auth.info.name
       user.real_email        = false
     end
+  end
+  
+  def merge!(other_user)
+    other_user.searches.each { |search| search.update!( user: self ) }    
+    other_user.reload
+    self.reload
   end
 
 end

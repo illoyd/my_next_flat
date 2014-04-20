@@ -64,9 +64,7 @@ class ApplicationController < ActionController::Base
   # Called (once) when the user logs in, insert any code your application needs
   # to hand off from guest_user to current_user.
   def logging_in
-    guest_user.searches.each { |search| search.update!( user: current_user ) }    
-    guest_user.reload
-    current_user.reload
+    current_user.merge!(guest_user)
   end
 
   #

@@ -1,8 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def twitter
-    # You need to implement the method below in your model (e.g. app/models/user.rb)
-    @user = User.find_for_twitter_oauth(request.env["omniauth.auth"])
+    @user = User.find_or_initialize_with_twitter_oauth(request.env["omniauth.auth"])
 
     # If the user is persisted, they've registered before so sign on in!
     if @user.persisted?
