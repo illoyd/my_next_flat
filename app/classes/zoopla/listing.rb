@@ -66,6 +66,14 @@ module Zoopla
     def outcode?
       !self.outcode.blank?
     end
+    
+    def display_name
+      if !self.street.blank? && self.street != self.city
+        self.street
+      else
+        self.address
+      end
+    end
 
     def ==(other)
       self.class == other.class && self.id == other.id

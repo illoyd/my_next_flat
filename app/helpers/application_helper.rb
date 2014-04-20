@@ -13,11 +13,7 @@ module ApplicationHelper
   end
   
   def title_for(listing)
-    if !listing.street.blank? && listing.street != listing.city
-      listing.street
-    else
-      listing.address
-    end
+    listing.display_name
   end
   
   def icon(label, *classes)
@@ -60,6 +56,10 @@ module ApplicationHelper
     "https://www.google.com/maps/embed/v1/#{ mode }?#{ params.to_query }"
   end
   
+  def results_count(search)
+    Zoopla::CachedListings.new.search(search, {}, {allow_query: false}).count
+  end
+  
   def format_zoopla_description(description)
     # Insert section breaks where appropriate
     description.gsub!(/([a-z])([A-Z])/,'\1<br/>\2')
@@ -98,10 +98,6 @@ module ApplicationHelper
   
   def number_to_sterling_let(value)
     "&pound;#{ number_with_delimiter(value) }pcm".html_safe
-  end
-  
-  def results_count(search)
-    Zoopla::CachedListings.new.search(search, {}, {allow_query: false}).count
   end
   
   def price_for(listing)

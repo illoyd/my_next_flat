@@ -57,6 +57,7 @@ gem 'uk_postcode'
 gem 'geocoder'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'rails_12factor'
+gem 'twitter'
 
 #
 # Infrastructure gems

@@ -22,6 +22,9 @@ class Search < ActiveRecord::Base
   validates :top_n, numericality: { less_than_or_equal_to: 10 }, if: :alert_via_email?
   validates :top_n, numericality: { less_than_or_equal_to: 2 },  if: :alert_via_twitter?
   
+  scope :should_alert, ->{ where( 'next_run_at <= NOW()' ).alertable }
+  scope :alertable,    ->{ where(alert_method: %w( twitter email )) }
+  
   DAILY         = -1
   WEEKDAY       = -2
   WEEKEND       = -3

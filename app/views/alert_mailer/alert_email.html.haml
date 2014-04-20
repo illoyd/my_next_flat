@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1 my next flat
+    %h2 #{ @listings.count } new listings for #{ @search.name }!
+    %p Hi #{ @user.name }, we just found #{ @listings.count } new listings for you. Your next flat awaits!
+    
+    = render partial: 'listing', collection: @listings, spacer_template: 'listing_separator'
+
+    %hr/
+
+    %p
+      We are sending you this alert at this address as it was registered with <strong>my next flat</strong>. You can manage your alerts at
+      = succeed '.' do
+        = link_to 'mynextflat.co.uk', 'http://www.mynextflat.co.uk'
+    %p= link_to 'Unsubscribe', 'http://www.mynextflat.co.uk'
