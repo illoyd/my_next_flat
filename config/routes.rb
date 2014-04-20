@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resource :home, only: :show
   
-  resource :user, only: :update
+  resource :profile, only: :update
 
   resources :searches do
     resources :listings, only: :show
