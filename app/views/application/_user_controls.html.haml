@@ -21,6 +21,7 @@
         = link_to new_user_registration_path do
           = icon('plus')
           Sign up
+      %li= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
       
     %li
       = link_to home_path do
