@@ -19,4 +19,9 @@
 %h2.listing
   = @search.name
 
+- if @search.message
+  .alert.alert-danger
+    %p <strong>Oops!</strong> We encountered a problem with this search.
+    %p= @search.message
+
 = render partial: 'listing', collection: @listings, spacer_template: 'listing_separator'

@@ -1,4 +1,4 @@
-class UsersController < ProtectedController
+class ProfilesController < ProtectedController
   respond_to :html
 
   def update

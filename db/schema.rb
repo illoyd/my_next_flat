@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419141947) do
+ActiveRecord::Schema.define(version: 20140420171453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20140419141947) do
     t.datetime "updated_at"
     t.string   "alert_method", default: "ignore"
     t.integer  "top_n",        default: 1
+    t.text     "message"
   end
 
   add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree
