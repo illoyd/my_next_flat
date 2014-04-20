@@ -2,9 +2,9 @@
 #user_controls.dropdown.pull-right
   %a#user_icon{ href: edit_user_registration_path, data: {toggle: 'dropdown', target: '#'} }
     - if signed_in?
-      =icon('user')
+      = image_tag(current_or_guest_user.profile_image_url)
     - else
-      =icon('user', 'fa-lg')
+      = icon('user', 'fa-lg')
 
   %ul.dropdown-menu{ role: 'menu' }
     - if signed_in?
@@ -30,6 +30,6 @@
 
     - if signed_in?
       %li
-        = link_to edit_user_registration_path do
+        = link_to destroy_user_session_path, method: :delete do
           = icon('sign-out')
           Sign out
