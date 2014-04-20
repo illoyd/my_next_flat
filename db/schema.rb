@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20140419141947) do
     t.string   "twitter_uid"
     t.string   "twitter_handle"
     t.string   "profile_image_url"
+    t.boolean  "real_email",             default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

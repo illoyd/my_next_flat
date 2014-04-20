@@ -4,12 +4,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [ :twitter ]
+
   has_many :searches, inverse_of: :user, dependent: :destroy
+  
+  scope :twitter_user_for, ->(uid, nickname, email) { where('twitter_uid = ? OR twitter_handle = ? OR email = ?', uid, nickname, email) }
 
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.twitter_data"] && session["devise.twitter_data"]["info"]
-        user.email             = data["email"]    if user.email.blank?
+        user.email             = data['email']    if user.email.blank?
         user.name              = data['name']     if user.name.blank?
         user.twitter_handle    = data["nickname"] if user.twitter_handle.blank?
         user.profile_image_url = data['image']    if user.profile_image_url.blank?
@@ -18,14 +21,14 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_twitter_oauth(auth)
-    ( find_by(twitter_uid: auth.uid) || find_by(email: auth.info.email) || new ).tap do |user|
+    find_or_create_by(twitter_uid: auth.uid) do |user|
       user.twitter_uid       = auth.uid
       user.twitter_handle    = auth.info.nickname
-      user.email             = auth.info.email
-      user.password          ||= Devise.friendly_token[0,20]
-      user.name              = auth.info.name
       user.profile_image_url = auth.info.image
-      user.save
+      user.email             = auth.info.email || auth.email || "#{ auth.info.nickname }_twitter@mynextflat.co.uk"
+      user.password          = Devise.friendly_token[0,20]
+      user.name              = auth.info.name
+      user.real_email        = false
     end
   end
 

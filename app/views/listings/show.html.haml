@@ -1,53 +1,57 @@
 - content_for(:title) do
   #{ title_for(@listing) } at my next flat
 
-.row
-  .col-xs-12
-    #link-bar.btn-toolbar
-      .btn-group.btn-group-sm
-        = link_to @search || :back, class: 'btn btn-default' do
-          = icon('arrow-circle-o-left')
-          Back
-        = link_to '#photo', class: 'btn btn-default' do
-          = icon('camera')
-          Photo
-        = link_to '#highlights', class: 'btn btn-default' do
-          = icon('check')
-          Highlights
-        = link_to '#nearby', class: 'btn btn-default' do
-          = icon('map-marker')
-          Nearby
-        = link_to '#advert', class: 'btn btn-default' do
-          = icon('flag')
-          Advert
-        = link_to @listing.listing_url, class: 'btn btn-default', target: :blank do
-          = icon('info-circle')
-          More Info
+#link-group
+  .links
+    = link_to @search || :back do
+      = icon('arrow-circle-o-left')
+      %br/
+      Back
+    = link_to '#photo' do
+      = icon('camera')
+      %br/
+      Photo
+    = link_to '#notes' do
+      = icon('flag-o')
+      %br/
+      Notes
+    = link_to '#nearby' do
+      = icon('compass')
+      %br/
+      Nearby
+    = link_to '#advert' do
+      = icon('file-text-o')
+      %br/
+      Advert
+    = link_to @listing.listing_url, target: :blank do
+      = icon('info-circle')
+      %br/
+      More
 
 
 %h2.listing#photo
-  = listing_status_label(@listing)
   = title_for(@listing)
 
 .row{ style: 'margin-top: 25px;' }
   .col-md-7
-    = link_to @listing.listing_url, class: 'thumbnail', target: '_blank' do
+    = link_to @listing.listing_url, class: 'thumbnail', target: :blank do
       = image_tag @listing.image_url, src: @listing.caption
   .col-md-5
     .panel.panel-default
       .panel-heading= @listing.agent_name
       .panel-body
-        = link_to @listing.listing_url, target: '_blank' do
+        = link_to @listing.listing_url, target: :blank do
           = image_tag @listing.agent_logo_url, src: @listing.agent_name, class: 'center-block'
 
 
-%h3#highlights
-  highlights
+%h3#notes
+  notes
   = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
 %p.label-cloud
   = render partial: 'listing_labels', object: @listing
   = label2("first listed #{ @listing.created_at.to_formatted_s(:short_date) }", :default)
-  = label2("last updated #{ @listing.updated_at.to_formatted_s(:short_date) }", :default)
+  - if @listing.created_at.to_date != @listing.updated_at.to_date
+    = label2("last updated #{ @listing.updated_at.to_formatted_s(:short_date) }", :default)
 
 %p= @listing.summary
   
@@ -71,11 +75,12 @@
 %p!= format_zoopla_description @listing.description
 
 
-%h3#raw
-  raw
-  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
-- @listing.each do |k,v|
-  %pre #{k}: #{v}
-  
+- if Rails.env.development?
+  %h3#raw
+    raw
+    = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
+  - @listing.each do |k,v|
+    %pre #{k}: #{v}
 
-%p= link_to 'More Information', @listing.listing_url, class: 'btn btn-success btn-block', target: '_blank'
+
+%p= link_to 'More Information', @listing.listing_url, class: 'btn btn-success btn-block', target: :blank
