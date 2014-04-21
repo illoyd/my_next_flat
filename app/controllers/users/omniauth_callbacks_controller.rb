@@ -1,7 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def twitter
-    @user = User.find_or_initialize_with_twitter_oauth(request.env["omniauth.auth"])
+    @user = User.find_or_create_with_twitter_oauth(request.env["omniauth.auth"])
 
     # If the user is persisted, they've registered before so sign on in!
     if @user.persisted?
@@ -11,6 +11,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # Otherwise register
     else
       session["devise.twitter_data"] = request.env["omniauth.auth"].except("extra")
+      logger.warn(session["devise.twitter_data"])
       redirect_to new_user_registration_url
 
     end

@@ -24,8 +24,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.find_or_initialize_with_twitter_oauth(auth)
-    find_or_initialize_by(twitter_uid: auth.uid) do |user|
+  def self.find_or_create_with_twitter_oauth(auth)
+    find_or_create_by(twitter_uid: auth.uid) do |user|
       user.twitter_uid       = auth.uid
       user.twitter_handle    = auth.info.nickname
       user.profile_image_url = auth.info.image
