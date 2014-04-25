@@ -13,7 +13,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # Otherwise register
     else
       session["devise.twitter_data"] = request.env["omniauth.auth"].except("extra")
-      logger.warn(session["devise.twitter_data"])
+      logger.info(session["devise.twitter_data"])
       redirect_to new_user_registration_url
 
     end

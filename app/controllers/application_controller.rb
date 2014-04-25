@@ -57,12 +57,6 @@ class ApplicationController < ActionController::Base
 
   protected
   
-#   def after_sign_in_path_for(resource)
-#     logger.info "#env[\"omniauth.origin\"] = '#{ request.env["omniauth.origin"] }'"
-#     logger.info "#session[\"user_return_to\"] = '#{ request.session["user_return_to"] }'"
-#     request.env['omniauth.origin'] || request.session["user_return_to"] || root_path
-#   end
-
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
