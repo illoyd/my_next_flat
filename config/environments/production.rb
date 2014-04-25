@@ -18,8 +18,8 @@ Rails.application.configure do
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
   config.action_dispatch.rack_cache = {
-    metastore:   'redis://localhost:6379/1/metastore',
-    entitystore: 'redis://localhost:6379/1/entitystore'
+    metastore:   "#{ Rails.application.secrets.redis_url }/1/metastore",
+    entitystore: "#{ Rails.application.secrets.redis_url }/1/entitystore"
   }
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
