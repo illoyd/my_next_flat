@@ -61,9 +61,11 @@ gem 'twitter'
 
 #
 # Infrastructure gems
+gem 'rack-cache'
 gem 'oj'
 gem 'oj_mimic_json'
 gem 'redis'
+gem 'redis-rails'
 gem 'sidekiq', '~> 2.17'
 gem 'sidetiq'
 
