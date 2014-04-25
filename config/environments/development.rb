@@ -37,4 +37,13 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Activate development caching for testing
+  config.cache_store = :redis_store, "#{ Rails.application.secrets.redis_url }/0/cache", { expires_in: 90.minutes }
+
+  config.action_dispatch.rack_cache = {
+    metastore:   "#{ Rails.application.secrets.redis_url }/1/metastore",
+    entitystore: "#{ Rails.application.secrets.redis_url }/1/entitystore"
+  }
+
 end
