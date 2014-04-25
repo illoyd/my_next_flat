@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
   ##
   # Protect with CanCan
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message # unless Rails.environment.development?
+    session[:user_return_to] = request.fullpath
+    redirect_to new_user_session_path, :alert => exception.message # unless Rails.environment.development?
   end
 
   ##
@@ -55,6 +56,12 @@ class ApplicationController < ActionController::Base
   helper_method :current_or_guest_user, :guest_user?
 
   protected
+  
+#   def after_sign_in_path_for(resource)
+#     logger.info "#env[\"omniauth.origin\"] = '#{ request.env["omniauth.origin"] }'"
+#     logger.info "#session[\"user_return_to\"] = '#{ request.session["user_return_to"] }'"
+#     request.env['omniauth.origin'] || request.session["user_return_to"] || root_path
+#   end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
