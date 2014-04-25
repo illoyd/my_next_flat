@@ -2,10 +2,10 @@ class FindScheduledSearchAlertsJob
   include Sidekiq::Worker
   include Sidetiq::Schedulable
   
-  recurrence { hourly.minute_of_hour(1, 15, 30, 45, 59) }
+  recurrence { hourly.minute_of_hour(1, 15, 30, 45) }
 
   def perform
-    Search.should_run.each { |search| schedule_alert(search) }
+    Search.should_alert.each { |search| schedule_alert(search) }
   end
   
   def schedule_alert(search)
