@@ -61,6 +61,8 @@ module ApplicationHelper
   end
   
   def format_zoopla_description(description)
+    return nil if description.blank?
+    
     # Insert section breaks where appropriate
     description.gsub!(/([a-z])([A-Z])/,'\1<br/>\2')
 
