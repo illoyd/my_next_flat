@@ -61,9 +61,10 @@ gem 'twitter'
 
 #
 # Infrastructure gems
-gem 'rack-cache'
 gem 'oj'
 gem 'oj_mimic_json'
+gem 'rack-cache'
+gem 'redis-rack-cache'
 gem 'redis'
 gem 'redis-rails'
 gem 'sidekiq', '~> 2.17'
@@ -94,6 +95,5 @@ end
 # Production gems
 group :production do
   gem 'newrelic_rpm'
-  gem 'rails_12factor'
   gem 'lograge'
 end
