@@ -67,7 +67,7 @@ gem 'oj_mimic_json'
 gem 'redis'
 gem 'redis-rails'
 gem 'sidekiq', '~> 2.17'
-gem 'sidetiq'
+gem 'sidetiq', '~> 0.5'
 
 #
 # Test and development gems
@@ -84,7 +84,7 @@ group :test do
 	gem 'shoulda-matchers'
 	gem 'rspec-sidekiq'
 	gem 'vcr'
-	gem 'webmock', "~> 1.11.0"
+	gem 'webmock', "~> 1.12.0"
 	gem 'fuubar'
   gem 'simplecov', :require => false
   gem 'hashdiff'
