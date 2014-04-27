@@ -2,7 +2,6 @@ class Search < ActiveRecord::Base
   belongs_to :user,    inverse_of: :searches
   has_many :locations, inverse_of: :search, dependent: :destroy, autosave: true
   has_many :criterias, inverse_of: :search, dependent: :destroy, autosave: true
-  has_many :alerts,    inverse_of: :search, dependent: :destroy, autosave: true
 
   accepts_nested_attributes_for :locations, :criterias, allow_destroy: true, reject_if: ->(nested){ nested.blank? }
   
