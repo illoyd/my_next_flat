@@ -11,20 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140420171453) do
+ActiveRecord::Schema.define(version: 20140427184408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "alerts", force: true do |t|
-    t.integer  "search_id"
-    t.string   "contact",        null: false
-    t.datetime "last_performed", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "alerts", ["search_id"], name: "index_alerts_on_search_id", using: :btree
 
   create_table "criteria", force: true do |t|
     t.integer  "search_id"
@@ -74,16 +64,17 @@ ActiveRecord::Schema.define(version: 20140420171453) do
 
   create_table "searches", force: true do |t|
     t.integer  "user_id"
-    t.string   "name",                            null: false
-    t.boolean  "active",       default: true,     null: false
+    t.string   "name",                               null: false
+    t.boolean  "active",          default: true,     null: false
     t.datetime "last_run_at"
     t.datetime "next_run_at"
     t.text     "schedule"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "alert_method", default: "ignore"
-    t.integer  "top_n",        default: 1
+    t.string   "alert_method",    default: "ignore"
+    t.integer  "top_n",           default: 1
     t.text     "message"
+    t.datetime "last_alerted_at"
   end
 
   add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree

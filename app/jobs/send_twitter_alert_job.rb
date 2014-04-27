@@ -1,18 +1,28 @@
 class SendTwitterAlertJob < SendAlertJob
   include Sidekiq::Worker
+  include TwitterCardHelper
+  
+  TEMPLATES = [
+    '@%{ username } We found a %{ title } for %{ price }. Nice! %{ url }',
+    '@%{ username } We spotted a %{ title } for %{ price }. Looks nice! %{ url }',
+    '@%{ username } Found a %{ title }, and just for %{ price }! %{ url }'
+  ]
 
   def send_alert(search, listings)
     listings.each do |listing|
-      message = listing_message(search, listing)
+      message = compose_tweet(search, listing)
       logger.info "Twitter: #{ message }"
       $twitter.update(message)
     end
   end
   
-  def listing_message(search, listing)
-    listing_kind   = listing.kind || beds_for(listing)
-    listing_status = listing.for_sale? ? 'for sale' : 'for rent'
-    "@#{ search.user.twitter_handle } We found a #{ listing_kind.downcase } #{ listing_status } for #{ price_for(listing) }. #{ search_listing_url(search, listing.id, host: 'www.mynextflat.co.uk') }"
+  def compose_tweet(search, listing)
+    TEMPLATES.sample % {
+      username: search.user.twitter_handle,
+      title:    twitter_title_for(listing),
+      price:    price_for(listing),
+      url:      search_listing_url(search, listing.id, host: 'www.mynextflat.co.uk')
+    }
   end
 
 end
