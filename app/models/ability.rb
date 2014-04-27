@@ -32,6 +32,6 @@ class Ability
     # Grant user rights over all objects the user owns
     can :update, User, id: user.id
     can :manage, Search, user_id: user.id
-    can :manage, [ Location, Criteria, Alert ], { search: { user_id: user.id } }
+    can :manage, [ Location, Criteria ], { search: { user_id: user.id } }
   end
 end
