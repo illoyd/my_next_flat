@@ -8,5 +8,6 @@
     %script{src: 'https://maps.googleapis.com/maps/api/js?sensor=false'}
     = csrf_meta_tags
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    = yield(:meta) if content_for?(:meta)
 
   %body= @map ? render(partial: 'layouts/with_map') : render(partial: 'layouts/with_content')

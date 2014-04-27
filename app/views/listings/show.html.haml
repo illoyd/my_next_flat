@@ -1,6 +1,15 @@
 - content_for(:title) do
   #{ title_for(@listing) } at my next flat
 
+- content_for(:meta) do
+  %meta{content: "summary", name: "twitter:card"}/
+  %meta{content: "@mynextflatbot", name: "twitter:site"}/
+  %meta{content: twitter_title_for(@listing), name: "twitter:title"}/
+  %meta{content: twitter_description_for(@listing), name: "twitter:description"}/
+  %meta{content: twitter_creator_for(@listing), name: "twitter:creator"}/
+  %meta{content: twitter_image_for(@listing), name: "twitter:image:src"}/
+  %meta{content: "mynextflat.co.uk", name: "twitter:domain"}/  
+
 #link-group
   .links
     = link_to @search || :back do

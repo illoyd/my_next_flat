@@ -24,6 +24,7 @@ module Zoopla
     property :listing_url,   from: :details_url
     property :image_url
     property :thumbnail_url
+    property :floorplan_url, from: :floor_plan
 
     property :description
     property :summary,        from: :short_description, transformer: BlankToNilTransformer
