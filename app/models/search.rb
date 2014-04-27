@@ -34,12 +34,30 @@ class Search < ActiveRecord::Base
   DEFAULT_DAYS  = WEEKDAY
   DEFAULT_HOUR  = 8
   
+  ##
+  # Alert using email
   def alert_via_email?
     self.alert_method.inquiry.email?
   end
   
+  ##
+  # Alert using twitter
   def alert_via_twitter?
     self.alert_method.inquiry.twitter?
+  end
+  
+  ##
+  # Get all listings from the providers.
+  def listings
+    Zoopla::CachedListings.new.search(self).sort_by(&:updated_at).reverse!
+  end
+  
+  ##
+  # Return only new listings.
+  def new_listings
+    ll = listings
+    return ll if self.last_alerted_at.nil?
+    ll.select { |listing| listing.updated_at >= self.last_alerted_at }
   end
   
   ##
@@ -56,6 +74,8 @@ class Search < ActiveRecord::Base
     listings.reject { |ll| ll.updated_at < cutoff_timestamp }.sort_by(&:updated_at)
   end
   
+  ##
+  # Get a collection of possible searches using locations and criterias.
   def combinations
     self.locations.product(self.criterias)
   end
