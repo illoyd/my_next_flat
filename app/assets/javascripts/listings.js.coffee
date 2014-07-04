@@ -16,6 +16,7 @@ markerify = (map, marker) ->
     animation: google.maps.Animation.DROP,
     draggable: false
   } ).click ->
+    window.location = '#' + marker.data('jump');
     map.gmap('openInfoWindow', {content: marker.get(0)}, this)
 
 

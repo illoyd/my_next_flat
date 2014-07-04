@@ -1,7 +1,7 @@
-.row
+.row{ id: "listing-#{ listing.id }"}
   .col-sm-3.col-md-4
     = link_to search_listing_path(@search, listing.id), class: 'thumbnail' do
-      = image_tag listing.image_url, src: listing.caption || listing.address
+      = image_tag listing.image_url, src: title_for(listing)
 
     = link_to search_listing_path(@search, listing.id) do
       = image_tag listing.agent_logo_url, src: listing.agent_name, style: 'max-width: 100%;'
