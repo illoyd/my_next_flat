@@ -46,12 +46,14 @@
     = link_to @listing.listing_url, class: 'thumbnail', target: :blank do
       = image_tag @listing.image_url, src: @listing.caption
   .col-md-5
-    .panel.panel-default
-      .panel-heading= @listing.agent_name
-      .panel-body
-        = link_to @listing.listing_url, target: :blank do
-          = image_tag @listing.agent_logo_url, src: @listing.agent_name, class: 'center-block'
-
+    - if @listing.floorplan_url.present?
+      = link_to @listing.listing_url, class: 'thumbnail', target: :blank do
+        = image_tag @listing.floorplan_url.first, src: @listing.caption
+    = link_to @listing.listing_url, target: :blank do
+      - if @listing.agent_logo_url.present?
+        = image_tag @listing.agent_logo_url, src: @listing.agent_name, class: 'center-block'
+      - else
+        = @listing.agent_name
 
 %h3#notes
   notes
