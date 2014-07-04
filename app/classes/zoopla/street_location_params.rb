@@ -1,6 +1,6 @@
 module Zoopla
 
-  class LocationParams < APISmith::Smash
+  class StreetLocationParams < APISmith::Smash
     property :street
     property :town
     property :country

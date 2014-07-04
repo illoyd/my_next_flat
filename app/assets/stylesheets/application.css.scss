@@ -112,6 +112,17 @@ h2.listing span.label {
   }
 }
 
+.search-panel {
+  @extend .panel;
+  @extend .panel-default;
+  @extend .center-block;
+  width: 77%;
+  
+  .list-group-item {
+    font-size: $font-size-large;
+  }
+}
+
 form.madlib {
   @extend .form-inline;
   
@@ -120,6 +131,7 @@ form.madlib {
     border-bottom: 3px dotted gray;
     border-radius: 0px;
     @include box-shadow(none);
+    font-family: $headings-font-family;
     
     &:focus {
       color: $brand-primary;

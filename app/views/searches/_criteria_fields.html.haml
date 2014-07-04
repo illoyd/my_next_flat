@@ -8,39 +8,42 @@
   / Buy or let
   - if f.object.new_record?
     = f.label :type, class: 'sr-only'
-    = f.select :type, options_for_criteria_types, {}, class: 'form-control input-sm'
+    = f.select :type, options_for_criteria_types, {}, class: 'form-control'
   - else
-    %kbd= criteria_kind_for(f.object)
+    %code= criteria_kind_for(f.object)
 
-  something between
+  something
+  %br.visible-xs-block/
+
+  between
   
   / Price
-  .form-group{ style: 'width: 35%' }
-    = f.label :min_price, class: 'sr-only'
-    .input-group
-      %span.input-group-addon &pound;
-      = f.text_field :min_price, class: 'form-control input-sm', placeholder: '0'
+  &pound;
+  = f.label :min_price, class: 'sr-only'
+  = f.text_field :min_price, class: 'form-control input-lg', size: 10, placeholder: '0'
   and  
-  .form-group{ style: 'width: 35%' }
-    = f.label :max_price, class: 'sr-only'
-    .input-group
-      %span.input-group-addon &pound;
-      = f.text_field :max_price, class: 'form-control input-sm', placeholder: '1,000,000'
+  &pound;
+  = f.label :max_price, class: 'sr-only'
+  = f.text_field :max_price, class: 'form-control input-lg', size: 10, placeholder: '1,000,000'
+  
+  %span.per_week (if letting: per week)
+  %br/
   
   / Beds
   with 
   = f.label :min_beds, class: 'sr-only'
-  = f.text_field :min_beds, class: 'form-control input-sm', style: 'width: 25%', placeholder: 0
+  = f.number_field :min_beds, class: 'form-control input-lg', size: 3, step: 1, in: 0..10, placeholder: 0
   to
   = f.label :max_beds, class: 'sr-only'
-  = f.text_field :max_beds, class: 'form-control input-sm', style: 'width: 25%', placeholder: 'any'
+  = f.number_field :max_beds, class: 'form-control input-lg', size: 3, step: 1, in: 0..10, placeholder: 'any'
   bedrooms
+  %br.visible-xs-block/
   
   / Baths
   and
   = f.label :min_baths, class: 'sr-only'
-  = f.text_field :min_baths, class: 'form-control input-sm', style: 'width: 25%', placeholder: 0
+  = f.number_field :min_baths, class: 'form-control input-lg', size: 3, step: 1, in: 0..10, placeholder: 0
   to
   = f.label :max_baths, class: 'sr-only'
-  = f.text_field :max_baths, class: 'form-control input-sm', style: 'width: 25%', placeholder: 'any'
+  = f.number_field :max_baths, class: 'form-control input-lg', size: 3, step: 1, in: 0..10, placeholder: 'any'
   bathrooms

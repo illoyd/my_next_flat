@@ -3,7 +3,7 @@ function add_section(link, association, content) {
   var regexp = new RegExp("new_" + association, "g");
   content = $(content.replace(regexp, new_id));
   content.hide();
-  $(link).parents('div.panel').find('ul.list-group').append(content);
+  $(link).parents('div.search-panel').find('ul.list-group').append(content);
   content.slideDown();
 };
 

@@ -36,42 +36,32 @@
     = field_error_icon @search.errors[:hour_of_day]
     \.
 
-  .row
-    / Locations
-    .col-md-6
-      .panel.panel-info
-        .panel-heading
-          %h2.panel-title
-            %i.fa.fa-map-marker
-            Locations
-        %ul.list-group
-          = f.fields_for :locations do |builder|
-            - render 'location_fields', :f => builder
-        .panel-footer
-          = @search.locations.count
-          locations
-          .pull-right
-            = link_to_add_fields(f, :locations) do
-              %i.fa.fa-plus
-              Add
+  / Locations
+  .search-panel
+    .panel-heading
+      %h2.panel-title
+        %i.fa.fa-map-marker
+        Places
+    %ul.list-group
+      = f.fields_for :locations do |builder|
+        - render 'location_fields', :f => builder
+    .panel-footer.text-center
+      = link_to_add_fields(f, :locations) do
+        %i.fa.fa-plus
+        Add
 
-    / Criteria
-    .col-md-6
-      .panel.panel-info
-        .panel-heading
-          %h2.panel-title
-            %i.fa.fa-check
-            Criteria
-        %ul.list-group
-          = f.fields_for :criterias do |builder|
-            - render 'criteria_fields', :f => builder
-        .panel-footer
-          = @search.criterias.count
-          criteria
-          .pull-right
-            = link_to_add_fields(f, :criterias) do
-              %i.fa.fa-plus
-              Add
+  / Criteria
+  .search-panel
+    .panel-heading
+      %h2.panel-title
+        %i.fa.fa-check
+        Things
+    %ul.list-group
+      = f.fields_for :criterias do |builder|
+        - render 'criteria_fields', :f => builder
+    .panel-footer.text-center
+      = link_to_add_fields(f, :criterias) do
+        %i.fa.fa-plus
+        Add
 
-  .row
-    .col-md-offset-2.col-md-8= f.submit "Search", class: 'btn btn-success btn-block'
+  = f.submit "Search", class: 'btn btn-success btn-block center-block', style: 'width: 66%;'
