@@ -40,6 +40,29 @@ html,body { height: 100%; }
   }
 }
 
+#page-listings {
+  #panel-container {
+    #panels {
+      #content-panel {
+        @include make-sm-column(8);
+        @include make-sm-column-push(4);
+        @include make-md-column(7);
+        @include make-md-column-push(5);
+      }
+      
+      #map-panel {
+        @include make-sm-column(4);
+        @include make-sm-column-pull(8);
+        @include make-md-column(5);
+        @include make-md-column-pull(7);
+        height: 100%;
+        padding-left: 0px;
+        position: fixed;
+      }
+    }
+  }
+}
+
 h1 {
   font-family: 'Gloria Hallelujah';
 }

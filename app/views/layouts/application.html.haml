@@ -10,4 +10,5 @@
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     = yield(:meta) if content_for?(:meta)
 
-  %body= @map ? render(partial: 'layouts/with_map') : render(partial: 'layouts/with_content')
+  %body{ id: "page-#{ controller_name }" }
+    = @map ? render(partial: 'layouts/with_map') : render(partial: 'layouts/with_content')
