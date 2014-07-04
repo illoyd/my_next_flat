@@ -11,7 +11,7 @@
       to save your searches?
 
   %table.table
-    %tbody= render partial: 'search', collection: current_or_guest_user.searches
+    %tbody= render partial: 'search', collection: current_or_guest_user.searches.sort_by(&:name)
 
 %p{ style: 'margin-top: 25px' }
   = link_to new_search_path, class: 'btn btn-lg btn-success btn-block' do
