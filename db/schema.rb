@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140427184408) do
+ActiveRecord::Schema.define(version: 20140705074048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "criteria", force: true do |t|
-    t.integer  "search_id"
+    t.integer  "example_id"
     t.string   "type",                         null: false
     t.boolean  "include_let",  default: false, null: false
     t.boolean  "include_sold", default: false, null: false
@@ -32,10 +32,29 @@ ActiveRecord::Schema.define(version: 20140427184408) do
     t.datetime "updated_at"
   end
 
-  add_index "criteria", ["search_id"], name: "index_criteria_on_search_id", using: :btree
+  add_index "criteria", ["example_id"], name: "index_criteria_on_example_id", using: :btree
+
+  create_table "examples", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name",                               null: false
+    t.boolean  "active",          default: true,     null: false
+    t.datetime "last_run_at"
+    t.datetime "next_run_at"
+    t.text     "schedule"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "alert_method",    default: "ignore"
+    t.integer  "top_n",           default: 1
+    t.text     "message"
+    t.datetime "last_alerted_at"
+    t.string   "type"
+  end
+
+  add_index "examples", ["type"], name: "index_examples_on_type", using: :btree
+  add_index "examples", ["user_id"], name: "index_examples_on_user_id", using: :btree
 
   create_table "locations", force: true do |t|
-    t.integer  "search_id"
+    t.integer  "example_id"
     t.string   "type"
     t.string   "area",                     null: false
     t.string   "country"
@@ -46,7 +65,7 @@ ActiveRecord::Schema.define(version: 20140427184408) do
     t.float    "longitude"
   end
 
-  add_index "locations", ["search_id"], name: "index_locations_on_search_id", using: :btree
+  add_index "locations", ["example_id"], name: "index_locations_on_example_id", using: :btree
 
   create_table "point_of_interests", force: true do |t|
     t.string   "name"
@@ -61,23 +80,6 @@ ActiveRecord::Schema.define(version: 20140427184408) do
 
   add_index "point_of_interests", ["lines"], name: "index_point_of_interests_on_lines", using: :gin
   add_index "point_of_interests", ["zones"], name: "index_point_of_interests_on_zones", using: :gin
-
-  create_table "searches", force: true do |t|
-    t.integer  "user_id"
-    t.string   "name",                               null: false
-    t.boolean  "active",          default: true,     null: false
-    t.datetime "last_run_at"
-    t.datetime "next_run_at"
-    t.text     "schedule"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "alert_method",    default: "ignore"
-    t.integer  "top_n",           default: 1
-    t.text     "message"
-    t.datetime "last_alerted_at"
-  end
-
-  add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

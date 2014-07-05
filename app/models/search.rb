@@ -1,22 +1,15 @@
-class Search < ActiveRecord::Base
+class Search < Example
   belongs_to :user,    inverse_of: :searches
-  has_many :locations, inverse_of: :search, dependent: :destroy, autosave: true
-  has_many :criterias, inverse_of: :search, dependent: :destroy, autosave: true
 
-  accepts_nested_attributes_for :locations, :criterias, allow_destroy: true, reject_if: ->(nested){ nested.blank? }
-  
   serialize :schedule, IceCube::Schedule
   
   after_initialize  :ensure_schedule
   before_validation :update_next_run_at
   
-  validates_presence_of :name, :user
+  validates_presence_of :user
 
   validates :alert_method, inclusion: { in: %w( ignore twitter email ), allow_nil: true }
 
-  validates :locations, associated: true, length: { minimum: 1, maximum: 10, too_short: "must have at least %{count} location", too_long: "may have at most %{count} locations" }
-  validates :criterias, associated: true, length: { minimum: 1, maximum: 4, too_short: "must have at least %{count} criterion", too_long: "may have at most %{count} criteria"  }
-  
   validates :top_n, numericality: { integer_only: true, greater_than_or_equal_to: 1 }
   validates :top_n, numericality: { less_than_or_equal_to: 10 }, if: :alert_via_email?
   validates :top_n, numericality: { less_than_or_equal_to: 2 },  if: :alert_via_twitter?
@@ -47,12 +40,6 @@ class Search < ActiveRecord::Base
   end
   
   ##
-  # Get all listings from the providers.
-  def listings
-    Zoopla::CachedListings.new.search(self).sort_by(&:updated_at).reverse!
-  end
-  
-  ##
   # Return only new listings.
   def new_listings
     ll = listings
@@ -72,12 +59,6 @@ class Search < ActiveRecord::Base
   def filter_listings(listings)
     cutoff_timestamp = self.last_run_at
     listings.reject { |ll| ll.updated_at < cutoff_timestamp }.sort_by(&:updated_at)
-  end
-  
-  ##
-  # Get a collection of possible searches using locations and criterias.
-  def combinations
-    self.locations.product(self.criterias)
   end
   
   def day_of_week
@@ -115,10 +96,11 @@ class Search < ActiveRecord::Base
   end
   
   def ensure_schedule
-    self.schedule = make_schedule if self.schedule.blank?
+    self.schedule = make_schedule if self.schedule_before_type_cast.blank?
   end
   
   def update_next_run_at
+    self.ensure_schedule
     self.next_run_at = self.schedule.try(:next_occurrence)
   end
   
