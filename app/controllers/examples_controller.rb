@@ -1,7 +1,9 @@
-class HomesController < ApplicationController
-  skip_authorization_check :show
-  
-  def show
+class ExamplesController < ApplicationController
+  skip_authorization_check :index
+
+  # GET /examples
+  # GET /examples.json
+  def index
     @local_area = request.location.try(:city)
     @local_area = 'London' if @local_area.blank?
 
@@ -12,7 +14,17 @@ class HomesController < ApplicationController
 
     @map = { id: 'map', markers: @local_listings, latitude: @local_map_center[0], longitude: @local_map_center[1] }
     
-    @searches = current_or_guest_user.searches
+    @searches = Example.examples
+  end
+
+  # GET /examples/1
+  # GET /examples/1.json
+  def show
+    # Request the example and clone it for the current user
+    search = Example.examples.find(params[:id]).dup_as_search_for(current_or_guest_user)
+    
+    # Redirect to the new search
+    redirect_to search
   end
 
   protected

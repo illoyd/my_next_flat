@@ -5,6 +5,7 @@ class SearchesController < ApplicationController
   # GET /searches
   # GET /searches.json
   def index
+    redirect_to :home
   end
 
   # GET /searches/1

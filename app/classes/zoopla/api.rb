@@ -34,7 +34,7 @@ module Zoopla
       case response['error_code'].to_i
         when -1
           disambiguation = response['disambiguation'] ? "Did you mean #{ response['disambiguation'].to_sentence( two_words_connector: ' or ', last_word_connector: ', or ') }?" : nil
-          raise DisambiguationError.new("#{ response['error_string'] } #{ suggestions }".strip, response)
+          raise DisambiguationError.new("#{ response['error_string'] } #{ disambiguation }".strip, response)
         when  1 then raise InsufficientArgumentsError.new(response['error_string'], response)
         when  5 then raise InvalidRequestedDataError.new(response['error_string'], response)
         when  7
