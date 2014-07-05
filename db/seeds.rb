@@ -16,3 +16,20 @@
     example.criterias << LetCriteria.new
   end
 end
+
+[ 'Balham, London', 'Battersea, London', 'Belgravia, London', 'Bermondsey, London', 'Bethnal Green, London', 'Bloomsbury, London',
+  'Brixton, London', 'Camden Town, London', 'Canonbury, London', 'Chelsea, London', 'City of London, London', 'Clapham, London',
+  'Clerkenwell, London', 'Covent Garden, London', 'Earls Court, London', 'Fitzrovia, London', 'Fulham, London', 'Greenwich, London',
+  'Haggerston, London', 'Hammersmith, London', 'Isle of Dogs, London', 'Islington, London', 'Kennington, London', 'Kensington, London',
+  'Kings Cross, London', 'Knightsbridge, London', 'Lambeth, London', 'Maida Vale, London', 'Marylebone, London', 'Mayfair, London',
+  'Notting Hill, London', 'Paddington, London', 'Pimlico, London', 'Shepherd\'s Bush, London', 'Shoreditch, London', 'Soho, London',
+  'Somers Town, London', 'South Bank, London', 'Southwark, London', 'Stepney, London', 'St. James\'s, London', 'St. Luke\'s, London',
+  'Stockwell, London', 'The West End, London', 'Walworth, London', 'Westminster, London', 'Whitechapel/Brick Lane, London', 
+  'Wimbledon, London' ].each do |area|
+
+  Example.find_or_create_by(name: area) do |example|
+    example.locations << Location.new(area: area, radius: 0.25)
+    example.criterias << BuyCriteria.new
+    example.criterias << LetCriteria.new
+  end
+end
