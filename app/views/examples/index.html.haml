@@ -1,0 +1,31 @@
+%p.text-center
+  - if guest_user?
+    Welcome back! Why not
+    = link_to 'sign up', new_user_registration_path
+    or
+    = link_to 'sign in', new_user_session_path
+    to save your searches?
+
+%table.table
+  %tbody= render partial: 'homes/search', collection: @searches.sort_by(&:name)
+
+%p{ style: 'margin-top: 25px' }
+  = link_to new_search_path, class: 'btn btn-lg btn-success btn-block' do
+    = icon('search-plus')
+    Start Searching!
+
+- if guest_user?
+  .text-center
+    %ul.nav.nav-pills{ style: 'margin-top: 25px; display: inline-block;' }
+      %li
+        = link_to new_user_registration_path do
+          = icon('plus')
+          Sign up
+      %li
+        = link_to new_user_session_path do
+          = icon('sign-in')
+          Sign in
+      %li
+        = link_to user_omniauth_authorize_path(:twitter) do
+          = icon('twitter')
+          Sign in with Twitter

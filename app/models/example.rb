@@ -18,6 +18,10 @@ class Example < ActiveRecord::Base
   scope :searches, -> { where(type: 'Search') }
   
   ##
+  # Randomise the search order
+  scope :random, ->(count) { order("RANDOM()").first(count || 1) }
+  
+  ##
   # Get all listings from the providers.
   def listings
     Zoopla::CachedListings.new.search(self).sort_by(&:updated_at).reverse!

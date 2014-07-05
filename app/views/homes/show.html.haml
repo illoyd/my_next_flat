@@ -1,5 +1,10 @@
 - if current_or_guest_user.searches.none?
   %p Intelligent search options to make finding your next flat easier and faster. Use our lovingly handcrafted search options to spot your next flat before someone else does. And best of all we'll keep you informed just as soon as we see something you might like.
+  
+  %p Here are a few ideas to get you started...
+
+  %table.table
+    %tbody= render partial: 'homes/search', collection: Example.examples.random(5).sort_by(&:name)
 
 - else
   %p.text-center
@@ -11,12 +16,16 @@
       to save your searches?
 
   %table.table
-    %tbody= render partial: 'search', collection: current_or_guest_user.searches.sort_by(&:name)
+    %tbody= render partial: 'homes/search', collection: @searches.sort_by(&:name)
 
 %p{ style: 'margin-top: 25px' }
   = link_to new_search_path, class: 'btn btn-lg btn-success btn-block' do
-    = icon('search')
+    = icon('search-plus')
     Start Searching!
+
+  = link_to examples_path, class: 'btn btn-default btn-md btn-block' do
+    = icon('search')
+    Explore Places!
 
 - if guest_user?
   .text-center
