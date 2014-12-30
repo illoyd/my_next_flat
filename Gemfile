@@ -3,17 +3,15 @@ ruby '2.1.4'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
-# Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
+gem 'rails', '4.2.0'
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.1'
+gem 'sass-rails', '~> 5.0.1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
@@ -49,14 +47,13 @@ gem 'hashie'
 gem 'api_smith'
 gem 'ice_cube'
 gem 'recurring_select'
-gem 'devise', '~> 3.2.0'
+gem 'devise', '~> 3.4.0'
 gem 'devise-async'
 gem 'omniauth-twitter'
-gem 'cancancan', '~> 1.7'
+gem 'cancancan', '~> 1.9'
 gem 'uk_postcode'
 gem 'geocoder'
-gem 'bootstrap-sass', '~> 3.1.1'
-gem 'rails_12factor'
+gem 'bootstrap-sass', '~> 3.3.1'
 gem 'twitter'
 
 #
@@ -67,8 +64,8 @@ gem 'rack-cache'
 gem 'redis-rack-cache'
 gem 'redis'
 gem 'redis-rails'
-gem 'sidekiq', '~> 2.17'
-gem 'sidetiq', '~> 0.5'
+gem 'sidekiq', '~> 3.3'
+gem 'sidetiq', '~> 0.6'
 
 #
 # Test and development gems
@@ -94,6 +91,7 @@ end
 #
 # Production gems
 group :production do
+  gem 'rails_12factor'
   gem 'newrelic_rpm'
   gem 'lograge'
 end
