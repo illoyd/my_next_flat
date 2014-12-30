@@ -1,6 +1,6 @@
 class PostcodeLocation < Location
 
-  validate :area, presence: true, postcode: true
+  validates :area, presence: true, postcode: true
 
   before_validation :clean_area
   after_validation :format_area
