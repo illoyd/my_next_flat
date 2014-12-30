@@ -62,6 +62,7 @@ before_fork do |server, worker|
   Signal.trap 'TERM' do
     puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
     Process.kill 'QUIT', Process.pid
+    Process.kill 'TERM', @sidekiq_pid if @sidekiq_pid
   end
   
   # the following is highly recomended for Rails + "preload_app true"
@@ -94,7 +95,7 @@ before_fork do |server, worker|
   # sleep 1
 
   if run_sidekiq_in_this_thread
-    @sidekiq_pid ||= spawn("bundle exec sidekiq -c #{ ENV['JOB_CONCURRENCY'].to_i }")
+    @sidekiq_pid ||= spawn("bundle exec sidekiq -c #{ ENV['JOB_CONCURRENCY'] || 1 } -C ./config/sidekiq.yml")
     Rails.logger.info("Spawned sidekiq #{@sidekiq_pid}")
   end
 
