@@ -4,27 +4,27 @@ module MyNextFlat
   
     def self.listing(listing)
       key = cache_key(listing)
-      data = $redis.get(key)
+      data = Redis.current.get(key)
       data.blank? ? nil : deserialize( data )
     end
     
     def self.cache(listing)
       key = cache_key(listing)
-      $redis.setex( key, default_ttl, serialize(listing) )
+      Redis.current.setex( key, default_ttl, serialize(listing) )
     end
     
     def self.cache_nil(listing_id)
       key = cache_key(listing_id)
-      $redis.setex( key, nil_ttl, nil )
+      Redis.current.setex( key, nil_ttl, nil )
     end
     
     def self.cached?(listing)
       key = cache_key(listing)
-      $redis.exists(key)
+      Redis.current.exists(key)
     end
     
     def self.keys
-      $redis.keys('listing:*')
+      Redis.current.keys('listing:*')
     end
     
     def self.cache_key(listing)

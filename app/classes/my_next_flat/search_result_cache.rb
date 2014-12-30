@@ -4,14 +4,14 @@ module MyNextFlat
   
     def self.results(results)
       key = cache_key(results)
-      deserialize( $redis.get(key) )
+      deserialize( Redis.current.get(key) )
     end
     
     def self.cache(search, results)
       key = cache_key(search)
       
       # Save entire results to cache
-      $redis.setex( key, default_ttl, serialize(results) )
+      Redis.current.setex( key, default_ttl, serialize(results) )
       
       # Save individual items
       results.each { |listing| ListingCache.cache(listing) }
@@ -19,12 +19,12 @@ module MyNextFlat
     
     def self.clear(search)
       key = cache_key(search)
-      $redis.del(key)
+      Redis.current.del(key)
     end
     
     def self.cached?(search)
       key = cache_key(search)
-      $redis.exists(key)
+      Redis.current.exists(key)
     end
     
     def self.cache_key(results)

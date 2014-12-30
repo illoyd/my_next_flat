@@ -44,7 +44,7 @@ module MyNextFlat
     def sample_cached_listings(count)
       keys = ListingCache.keys.sample(count).compact
       return [] if keys.empty?
-      $redis.mget(keys).map{ |value| ListingCache.deserialize(value) }
+      Redis.current.mget(keys).map{ |value| ListingCache.deserialize(value) }
     end
     
     ##
@@ -69,7 +69,7 @@ module MyNextFlat
     end
     
     def get_json(key)
-      JSON.parse($redis.get(key))
+      JSON.parse(Redis.current.get(key))
     end
     
     def get_object(key, klass)
@@ -78,9 +78,9 @@ module MyNextFlat
 
     def set_json(key, object, ttl=nil)
       if ttl
-        $redis.setex(key, ttl, object.to_json)
+        Redis.current.setex(key, ttl, object.to_json)
       else
-        $redis.set(key, object.to_json)
+        Redis.current.set(key, object.to_json)
       end
     end
 

@@ -1,3 +1,6 @@
-Geocoder.configure(
-  cache: $redis || Redis.new(uri: Rails.application.secrets.redis_url)
-)
+if ENV["REDISCLOUD_URL"] || ENV["REDIS_URL"]
+  Geocoder.configure(
+    cache: Redis.current || Redis.new(:url => ENV["REDISCLOUD_URL"] || ENV["REDIS_URL"])
+  )
+end
+

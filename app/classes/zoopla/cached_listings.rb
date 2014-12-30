@@ -40,25 +40,25 @@ module Zoopla
 
     def get_cache(query)
       cache_key = cache_key_for(query)
-      $redis.exists(cache_key) ? Zoopla::Listing.call(JSON.parse($redis.get(cache_key))) : nil
+      Redis.current.exists(cache_key) ? Zoopla::Listing.call(JSON.parse(Redis.current.get(cache_key))) : nil
     end
     
     def set_cache(query, results)
       # Store the main search
       cache_key = cache_key_for(query)
-      $redis.setex(cache_key, TTL, results.to_json)
+      Redis.current.setex(cache_key, TTL, results.to_json)
       
       # For every item in the response, cache it as if it were a seperate search
       results.each do |listing|
         listing_query = listing_id_query_for(listing.id)
         listing_cache_key = cache_key_for(listing_query)
-        $redis.setex(listing_cache_key, TTL, [listing].to_json)
+        Redis.current.setex(listing_cache_key, TTL, [listing].to_json)
       end
     end
     
     def clear_cache(query)
       cache_key = cache_key_for(query)
-      $redis.del(cache_key)
+      Redis.current.del(cache_key)
     end
 
   end
