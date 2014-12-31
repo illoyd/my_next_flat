@@ -22,6 +22,7 @@ class SearchesController < ApplicationController
       @search.save
     end
 
+    @listings = Kaminari.paginate_array(@listings).page(params[:page]).per(10)
     @results = @listings
     @map = { id: 'map', markers: @listings, latitude: @listings.first.try(:latitude) || 51.5072, longitude: @listings.first.try(:longitude) || 0.1275 }
   end

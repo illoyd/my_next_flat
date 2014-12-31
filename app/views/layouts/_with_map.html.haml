@@ -7,31 +7,31 @@
       = render 'footer'
     #map-panel
       #map{ data: { mapify: @map[:id], latitude: @map[:longitude], longitude: @map[:latitude] } }
-      .sr-only
-        - @map[:markers].each do |listing|
-          .info[listing]{ data: { marker: @map[:id], latitude: listing.latitude, longitude: listing.longitude, jump: "listing-#{ listing.id }" } }
-            %p
-              - if listing.created_at.to_date == Time.now.to_date
-                =label2("new", "warning")
-              
-              - elsif listing.updated_at.to_date == Time.now.to_date
-                =label2("updated", "warning")
-
-              = link_to listing_path(listing.id) do
-                %strong= title_for(listing)
-
-            %p
-              = link_to listing_path(listing.id) do
-                = image_tag listing.image_url, src: title_for(listing), class: 'thumbnail', width: '150px'
-
-              - if listing.for_sale?
-                =label2("#{ listing.kind.downcase } for sale", "buy")
-              
-              - elsif listing.to_let?
-                =label2("#{ listing.kind.downcase } to let", "let")
-              
-              - else
-                =label2("#{ listing.kind.downcase } #{ listing.status }", "default")
-              
-              =label2(price_for(listing), "price")
+      -#
+        .sr-only
+          - @map[:markers].each do |listing|
+            .info[listing]{ data: { marker: @map[:id], latitude: listing.latitude, longitude: listing.longitude, jump: "listing-#{ listing.id }" } }
+              %p
+                - if listing.created_at.to_date == Time.now.to_date
+                  =label2("new", "warning")
+                
+                - elsif listing.updated_at.to_date == Time.now.to_date
+                  =label2("updated", "warning")
   
+                = link_to listing_path(listing.id) do
+                  %strong= title_for(listing)
+  
+              %p
+                = link_to listing_path(listing.id) do
+                  = image_tag listing.image_url, src: title_for(listing), class: 'thumbnail', width: '150px'
+  
+                - if listing.for_sale?
+                  =label2("#{ listing.kind.downcase } for sale", "buy")
+                
+                - elsif listing.to_let?
+                  =label2("#{ listing.kind.downcase } to let", "let")
+                
+                - else
+                  =label2("#{ listing.kind.downcase } #{ listing.status }", "default")
+                
+                =label2(price_for(listing), "price")

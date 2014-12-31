@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resource :profile, only: :update
 
   resources :searches do
+    get 'page/:page', action: :show, on: :member
     resources :listings, only: :show
   end
 

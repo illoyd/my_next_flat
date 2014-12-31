@@ -55,6 +55,7 @@ gem 'uk_postcode'
 gem 'geocoder'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'twitter'
+gem 'kaminari'
 
 #
 # Infrastructure gems

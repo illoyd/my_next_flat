@@ -23,11 +23,12 @@
 
 // Body
 body {
-  padding-top: $navbar-height+5px;
-  padding-bottom: 40%; //$banner-ad-xs-height+$map-xs-height+5px;
+  margin-top: $navbar-height+5px;
+  padding-bottom: $map-xs-height;
+  margin-bottom: $banner-ad-xs-height+5px;
 
   @media (min-width: $banner-ad-sm-width) {
-    // padding-bottom: $banner-ad-sm-height+$map-xs-height+5px;
+    margin-bottom: $banner-ad-sm-height+5px;
   }
 }
 

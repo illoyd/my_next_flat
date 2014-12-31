@@ -1,17 +1,18 @@
 $map-xs-height: 250px;
+$map-height: 40%;
 
 // Map
 div#map-panel {
   width: 100%;
-  height: 40%;
+  height: $map-xs-height;
   position: fixed;
   left: 0;
   bottom: 0;
   
-  padding-bottom: $banner-ad-xs-height;
+  margin-bottom: $banner-ad-xs-height;
 
   @media (min-width: $screen-xs-max) {
-    padding-bottom: $banner-ad-sm-height;
+    margin-bottom: $banner-ad-sm-height;
   }
 
   div#map {
