@@ -1,0 +1,17 @@
+:javascript
+  // Tablets and up
+  if (document.width >= 728) {
+    mopub_ad_width = 728;
+    mopub_ad_height = 90;
+    mopub_ad_unit = "eb574e4d1793458980273a13c5159a31";
+  }
+  
+  // Phones and down
+  else {
+    mopub_ad_width = 320;
+    mopub_ad_height = 50;
+    mopub_ad_unit = "44da0d380bf443ebb8dcc172921936cd";
+  }
+
+  mopub_keywords = "london";
+%script{src: "http://ads.mopub.com/js/client/mopub.js"}

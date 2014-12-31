@@ -10,7 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= # require_tree .
  *= require recurring_select
  *= require_self
  */
@@ -18,6 +18,17 @@
 @import "bootstrap-sprockets";
 @import "theme";
 @import "bootstrap";
+@import "ads";
+
+// Body
+body {
+  padding-top: $navbar-height+5px;
+  padding-bottom: 50px+5px;
+
+  @media (min-width: 728px) {
+    padding-bottom: 90px+5px;
+  }
+}
 
 // Header
 nav a.profile-link,
@@ -26,6 +37,11 @@ nav button.profile-link {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+// Footer
+
+// Ad Banner
+
 
 /*
 .heading {
