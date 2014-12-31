@@ -16,10 +16,28 @@ module ApplicationHelper
     listing.display_name
   end
   
-  def icon(label, *classes)
-    "<i class=\"fa fa-#{ label } #{ Array(classes).join(' ') }\"></i>".html_safe
+  def photo_tag_for(user)
+    image_tag(user.try(:photo_url) || 'default.png', style: 'height: 30px;')
   end
   
+  ##
+  # Create a font-awesome icon
+  def icon( kind = :blank, options = {} )
+    kind = ICONS.fetch(kind, kind.to_s.gsub(/_/, '-'))
+    
+    # Convert options into a hash and move option value into the :class key
+    options = { class: options } if options.is_a?(String) || options.is_a?(Array)
+
+    options[:class] = [ 'fa', "fa-#{kind}", options[:class] ].compact
+    content_tag(:i, '', options)
+  end  
+  
+  ##
+  # Prefix a string with an icon
+  def iconify(label, icon, options = {})
+    "#{ icon(icon, options) } #{ label }".strip.html_safe
+  end
+
   def label2(text, label, *classes)
     "<span class=\"label label-#{ label } #{ Array(classes).join(' ') }\">#{ text }</span>".html_safe
   end
