@@ -19,6 +19,14 @@
 @import "theme";
 @import "bootstrap";
 
+// Header
+nav a.profile-link,
+nav button.profile-link {
+  margin: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 /*
 .heading {
   h1 {
