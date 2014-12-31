@@ -19,14 +19,15 @@
 @import "theme";
 @import "bootstrap";
 @import "ads";
+@import "maps";
 
 // Body
 body {
   padding-top: $navbar-height+5px;
-  padding-bottom: 50px+5px;
+  padding-bottom: 40%; //$banner-ad-xs-height+$map-xs-height+5px;
 
-  @media (min-width: 728px) {
-    padding-bottom: 90px+5px;
+  @media (min-width: $banner-ad-sm-width) {
+    // padding-bottom: $banner-ad-sm-height+$map-xs-height+5px;
   }
 }
 
@@ -38,9 +39,52 @@ nav button.profile-link {
   padding-bottom: 10px;
 }
 
+// Content
+
+h1 {
+  font-size: 24px;
+  margin-top: 0;
+  line-height: 45px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+nav.page-controls {
+  @extend .text-center;
+  
+  & > ul {
+    @extend .nav;
+    @extend .nav-tabs;
+  }
+}
+
+.listing {
+  @extend .row;
+  
+  .image-panel {
+    @extend .col-xs-4;
+    @extend .col-md-3;
+  }
+  
+  .description-panel {
+    @extend .col-xs-8;
+    @extend .col-md-9;
+  }
+}
+
+// Labels
+.label-buy        { @extend .label-success; }
+.label-let        { @extend .label-danger; }
+.label-price      { @extend .label-primary; }
+.label-beds       { @extend .label-info; }
+.label-baths      { @extend .label-info; }
+.label-receptions { @extend .label-default; }
+
 // Footer
 
-// Ad Banner
+
 
 
 /*

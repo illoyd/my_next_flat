@@ -38,6 +38,5 @@ module Zoopla
     def listing_id_query_for(id)
       { listing_id: id }
     end
-
   end
 end

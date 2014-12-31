@@ -1,16 +1,15 @@
-.row{ id: "listing-#{ listing.id }"}
-  .col-sm-3.col-md-4
-    = link_to search_listing_path(@search, listing.id), class: 'thumbnail' do
-      = image_tag listing.image_url, src: title_for(listing)
+- cache listing do
+  .listing{ id: "listing-#{ listing.id }", data: {lat: listing.latitude, lon: listing.longitude} }
+    .col-xs-12
+      %h2{style: 'margin-top: 0px'}= link_to title_for(listing), search_listing_path(@search, listing.id)
 
-    = link_to search_listing_path(@search, listing.id) do
-      = image_tag listing.agent_logo_url, src: listing.agent_name, style: 'max-width: 100%;'
+    / Image
+    .image-panel
+      = link_to search_listing_path(@search, listing.id), class: 'thumbnail' do
+        = image_tag listing.image_url, src: title_for(listing)
 
-  .col-sm-9.col-md-8
-    %h3{style: 'margin-top: 0px'}= link_to title_for(listing), search_listing_path(@search, listing.id)
-
-    %p= render partial: 'listing_labels', object: listing
-
-    %p= format_zoopla_description listing.summary
-    .small Updated #{ listing.updated_at.to_formatted_s(:short_date) }
-    
+    / Description
+    .description-panel
+      %p= render partial: 'listing_labels', object: listing
+      %p= format_zoopla_description listing.summary
+      .small Updated #{ listing.updated_at.to_formatted_s(:short_date) }

@@ -1,27 +1,19 @@
 = render partial: 'searches/destroy_modal', locals: {search: @search}
 
-#link-group
-  .links
-    = link_to home_path do
-      = icon('arrow-circle-o-left')
-      %br/
-      Back
-    = link_to edit_search_path(@search) do
-      %i.fa.fa-pencil
-      %br/
-      Edit
-    = link_to '#', 'data-toggle'=>"modal", 'data-target'=>"#delete_#{@search.id}" do
-      =icon('trash-o')
-      %br/
-      Delete
+.container
+  - cache @search do
+    %nav.page-controls.pull-right
+      %ul
+        %li= link_to icon(:back), home_path
+        %li= link_to icon(:edit), edit_search_path(@search)
+        %li= link_to icon(:delete), '#', 'data-toggle'=>"modal", 'data-target'=>"#delete_#{@search.id}"
 
-
-%h2.listing
-  = @search.name
-
-- if @search.message
-  .alert.alert-danger
-    %p <strong>Oops!</strong> We encountered a problem with this search.
-    %p= @search.message
-
-= render partial: 'listing', collection: @listings, spacer_template: 'listing_separator'
+    %h1= @search.name
+  
+  - if @search.message.present?
+    - cache @search.message do
+      .alert.alert-danger
+        %p <strong>Oops!</strong> We encountered a problem with this search.
+        %p= @search.message
+  
+  = render(partial: 'listings', object: @listings)

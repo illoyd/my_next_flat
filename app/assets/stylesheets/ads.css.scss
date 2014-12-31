@@ -1,3 +1,9 @@
+$banner-ad-xs-height: 50px;
+$banner-ad-xs-width:  320px;
+
+$banner-ad-sm-height: 90px;
+$banner-ad-sm-width:  728px;
+
 div#banner-ad {
   position: fixed;
   left: 0;
@@ -9,19 +15,19 @@ div#banner-ad {
   
   iframe {
     display: block;
-    height:  50px;
-    width:   320px;
+    height:  $banner-ad-xs-height;
+    width:   $banner-ad-xs-width;
     border:  0px;
     margin:  0px auto;
   }
 }
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: 728px) {
+@media (min-width: $banner-ad-sm-width) {
   div#banner-ad {
     iframe {
-      height:  90px;
-      width:   728px;
+      height:  $banner-ad-sm-height;
+      width:   $banner-ad-sm-width;
     }
   }
 }
