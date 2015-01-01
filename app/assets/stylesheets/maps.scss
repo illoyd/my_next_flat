@@ -1,21 +1,33 @@
-$map-xs-height: 250px;
-$map-height: 40%;
+$map-xs-height: 200px;
+$map-sm-height: 300px;
 
 // Map
-div#map-panel {
+div#map-container {
   width: 100%;
-  height: $map-xs-height;
   position: fixed;
   left: 0;
   bottom: 0;
   
+  // When screen height is < min (phones; default)
+  height: $map-xs-height;
+  
+  // When screen height is > min (tablets)
+  @media (min-height: $screen-height-sm-min) {
+    height: $map-sm-height;
+  }
+
+  // When screen width is < min (phones; default)
   margin-bottom: $banner-ad-xs-height;
 
-  @media (min-width: $screen-xs-max) {
+  // When screen width is > min (tablets)
+  @media (min-width: $screen-sm-max) {
     margin-bottom: $banner-ad-sm-height;
   }
 
+  // Force child map to 100%
   div#map {
     height: 100%;
+    width: 100%;
   }
+  
 }

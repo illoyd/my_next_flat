@@ -24,12 +24,23 @@
 // Body
 body {
   margin-top: $navbar-height+5px;
-  padding-bottom: $map-xs-height;
+  
+  // When screen width is < min (phones; default)
   margin-bottom: $banner-ad-xs-height+5px;
 
+  // When screen width is > min (tablets)
   @media (min-width: $banner-ad-sm-width) {
     margin-bottom: $banner-ad-sm-height+5px;
   }
+
+  // When screen height is < min (phones; default)
+  padding-bottom: $map-xs-height;
+  
+  // When screen height is > min (tablets)
+  @media (min-height: $screen-height-sm-min) {
+    padding-bottom: $map-sm-height;
+  }
+
 }
 
 // Header
