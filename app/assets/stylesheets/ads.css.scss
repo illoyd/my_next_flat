@@ -11,7 +11,7 @@ div#banner-ad {
   bottom: 0;
   background-color: $gray-lighter;
   border-top: 2px solid $gray-light;
-  z-index: $zindex-navbar;
+  z-index: $zindex-navbar+1;
   
   iframe {
     display: block;
