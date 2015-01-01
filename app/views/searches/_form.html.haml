@@ -1,4 +1,4 @@
-= form_for(@search, html: { class: 'form-inline madlib' }) do |f|
+= form_for(@search, html: { class: 'form horizontal' }) do |f|
 
   - if @search.errors.any?
     .panel.panel-danger
@@ -11,30 +11,28 @@
         - @search.errors.full_messages.each do |msg|
           %li.list-group-item= msg
 
-  %p{ style: 'font-size: 133%'}
-    Save my search as
-    = f.label :name, class: 'sr-only'
-    = f.text_field :name, class: 'form-control input-lg', placeholder: 'search name'
-    = field_error_icon @search.errors[:name]
-    so I can find it later.
+  .group
+    = f.label :name
+    .controls= f.text_field :name, placeholder: 'search name', class: 'form-control'
 
-  %p{ style: 'font-size: 133%' }
-    = f.label :alert_method, class: 'sr-only'
-    = f.select :alert_method, options_for_alert_method, {}, class: 'form-control input-lg'
-    = field_error_icon @search.errors[:alert_method]
-    me the
-    = f.label :top_n, class: 'sr-only'
-    = f.number_field :top_n, class: 'form-control input-lg', size: 2, step: 1, in: 1..10
-    = field_error_icon @search.errors[:top_n]
-    newest listings every
-    = f.label :day_of_week, class: 'sr-only'
-    = f.select :day_of_week, options_for_day_of_week, {}, class: 'form-control input-lg'
-    = field_error_icon @search.errors[:day_of_week]
-    at
-    = f.label :hour_of_day, class: 'sr-only'
-    = f.select :hour_of_day, options_for_hour_of_day, {}, class: 'form-control input-lg'
-    = field_error_icon @search.errors[:hour_of_day]
-    \.
+  -#
+    %p{ style: 'font-size: 133%' }
+      = f.label :alert_method, class: 'sr-only'
+      = f.select :alert_method, options_for_alert_method, {}, class: 'form-control input-lg'
+      = field_error_icon @search.errors[:alert_method]
+      me the
+      = f.label :top_n, class: 'sr-only'
+      = f.number_field :top_n, class: 'form-control input-lg', size: 2, step: 1, in: 1..10
+      = field_error_icon @search.errors[:top_n]
+      newest listings every
+      = f.label :day_of_week, class: 'sr-only'
+      = f.select :day_of_week, options_for_day_of_week, {}, class: 'form-control input-lg'
+      = field_error_icon @search.errors[:day_of_week]
+      at
+      = f.label :hour_of_day, class: 'sr-only'
+      = f.select :hour_of_day, options_for_hour_of_day, {}, class: 'form-control input-lg'
+      = field_error_icon @search.errors[:hour_of_day]
+      \.
 
   / Locations
   .search-panel
@@ -44,11 +42,16 @@
         Places
     %ul.list-group
       = f.fields_for :locations do |builder|
-        - render 'location_fields', :f => builder
+        - case builder.object
+        - when TfLStationLocation
+          - render 'tf_l_station_location_fields', f: builder
+        - when PointOfInterestLocation
+          - render 'point_of_interest_location_fields', f: builder
+        - else
+          - render 'location_fields', f: builder
     .panel-footer.text-center
-      = link_to_add_fields(f, :locations) do
-        %i.fa.fa-plus
-        Add
+      = link_to_add_fields_with_type(iconify('Area', :plus), f, :locations, Location)
+      = link_to_add_fields_with_type(iconify('TfL Station', :plus), f, :locations, TfLStationLocation)
 
   / Criteria
   .search-panel
@@ -58,10 +61,13 @@
         Things
     %ul.list-group
       = f.fields_for :criterias do |builder|
-        - render 'criteria_fields', :f => builder
+        - case builder.object
+        - when BuyCriteria
+          - render 'buy_criterium_fields', f: builder
+        - when LetCriteria
+          - render 'let_criterium_fields', f: builder
     .panel-footer.text-center
-      = link_to_add_fields(f, :criterias) do
-        %i.fa.fa-plus
-        Add
+      = link_to_add_fields_with_type(iconify('Buy', :plus), f, :criterias, BuyCriteria)
+      = link_to_add_fields_with_type(iconify('Let', :plus), f, :criterias, LetCriteria)
 
   = f.submit "Search", class: 'btn btn-success btn-block center-block', style: 'width: 66%;'

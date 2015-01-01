@@ -17,9 +17,10 @@
  
 @import "bootstrap-sprockets";
 @import "theme";
-@import "bootstrap";
 @import "ads";
 @import "maps";
+@import "forms";
+@import "bootstrap";
 
 // Body
 body {
@@ -93,6 +94,12 @@ nav.page-controls {
 .label-beds       { @extend .label-info; }
 .label-baths      { @extend .label-info; }
 .label-receptions { @extend .label-default; }
+
+// Panels
+.search-panel {
+  @extend .panel;
+  @extend .panel-default;
+}
 
 // Footer
 

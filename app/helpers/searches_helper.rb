@@ -31,9 +31,9 @@ module SearchesHelper
   def radius_for(radius)
     case radius
       when 0
-        'in'
+        'this area only'
       else
-        "within #{ number_to_fraction(radius, strip_insignificant_zeros: true) } #{ 'mile'.pluralize(radius) } of".html_safe
+        "#{ number_to_fraction(radius, strip_insignificant_zeros: true) } #{ 'mile'.pluralize(radius) }".html_safe
     end
   end
   

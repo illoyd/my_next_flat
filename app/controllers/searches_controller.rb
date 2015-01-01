@@ -30,7 +30,10 @@ class SearchesController < ApplicationController
   # GET /searches/new
   def new
     @search.locations.build if @search.locations.empty?
-    @search.criterias.build if @search.criterias.empty?
+    if @search.criterias.empty?
+#       @search.criterias << BuyCriteria.new
+#       @search.criterias << LetCriteria.new
+    end
   end
 
   # GET /searches/1/edit
@@ -83,6 +86,6 @@ class SearchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def search_params
-      params.require(:search).permit(:name, :alert_method, :day_of_week, :hour_of_day, :top_n, { locations_attributes: [ :id, :type, :area, :radius, :_destroy ], criterias_attributes: [ :id, :type, :min_price, :max_price, :min_beds, :max_beds, :min_baths, :max_baths, :_destroy ] })
+      params.require(:search).permit(:name, :alert_method, :day_of_week, :hour_of_day, :top_n, { locations_attributes: [ :id, :type, :area, :radius, :point_of_interest_id, :_destroy ], criterias_attributes: [ :id, :type, :min_price, :max_price, :min_beds, :max_beds, :min_baths, :max_baths, :_destroy ] })
     end
 end

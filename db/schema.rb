@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140705074048) do
+ActiveRecord::Schema.define(version: 20150101160530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "criteria", force: true do |t|
+  create_table "criteria", force: :cascade do |t|
     t.integer  "example_id"
-    t.string   "type",                         null: false
-    t.boolean  "include_let",  default: false, null: false
-    t.boolean  "include_sold", default: false, null: false
+    t.string   "type",         limit: 255,                 null: false
+    t.boolean  "include_let",              default: false, null: false
+    t.boolean  "include_sold",             default: false, null: false
     t.boolean  "furnished"
     t.integer  "min_price"
     t.integer  "max_price"
@@ -34,75 +34,78 @@ ActiveRecord::Schema.define(version: 20140705074048) do
 
   add_index "criteria", ["example_id"], name: "index_criteria_on_example_id", using: :btree
 
-  create_table "examples", force: true do |t|
+  create_table "examples", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name",                               null: false
-    t.boolean  "active",          default: true,     null: false
+    t.string   "name",            limit: 255,                    null: false
+    t.boolean  "active",                      default: true,     null: false
     t.datetime "last_run_at"
     t.datetime "next_run_at"
     t.text     "schedule"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "alert_method",    default: "ignore"
-    t.integer  "top_n",           default: 1
+    t.string   "alert_method",    limit: 255, default: "ignore"
+    t.integer  "top_n",                       default: 1
     t.text     "message"
     t.datetime "last_alerted_at"
-    t.string   "type"
+    t.string   "type",            limit: 255
   end
 
   add_index "examples", ["type"], name: "index_examples_on_type", using: :btree
   add_index "examples", ["user_id"], name: "index_examples_on_user_id", using: :btree
 
-  create_table "locations", force: true do |t|
+  create_table "locations", force: :cascade do |t|
     t.integer  "example_id"
-    t.string   "type"
-    t.string   "area",                     null: false
-    t.string   "country"
-    t.float    "radius",     default: 0.0, null: false
+    t.string   "type",                 limit: 255
+    t.string   "area",                 limit: 255,               null: false
+    t.string   "country",              limit: 255
+    t.float    "radius",                           default: 0.0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "point_of_interest_id"
   end
 
   add_index "locations", ["example_id"], name: "index_locations_on_example_id", using: :btree
+  add_index "locations", ["point_of_interest_id"], name: "index_locations_on_point_of_interest_id", using: :btree
 
-  create_table "point_of_interests", force: true do |t|
-    t.string   "name"
-    t.string   "kind"
+  create_table "point_of_interests", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "kind",       limit: 255
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "zones",      default: [], array: true
-    t.string   "lines",      default: [], array: true
+    t.string   "zones",                  default: [], array: true
+    t.string   "lines",                  default: [], array: true
   end
 
   add_index "point_of_interests", ["lines"], name: "index_point_of_interests_on_lines", using: :gin
   add_index "point_of_interests", ["zones"], name: "index_point_of_interests_on_zones", using: :gin
 
-  create_table "users", force: true do |t|
-    t.string   "name"
+  create_table "users", force: :cascade do |t|
+    t.string   "name",                   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "",    null: false
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",                      default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.boolean  "guest",                  default: false
-    t.string   "twitter_uid"
-    t.string   "twitter_handle"
-    t.string   "profile_image_url"
-    t.boolean  "real_email",             default: true
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.boolean  "guest",                              default: false
+    t.string   "twitter_uid",            limit: 255
+    t.string   "twitter_handle",         limit: 255
+    t.string   "profile_image_url",      limit: 255
+    t.boolean  "real_email",                         default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "locations", "point_of_interests"
 end

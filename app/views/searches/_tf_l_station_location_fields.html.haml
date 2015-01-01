@@ -2,7 +2,7 @@
   = f.hidden_field :_destroy, class: 'destroy'
   = link_to '#', onclick: "javascript:delete_section(this); return false;", class: 'pull-right', style: 'font-size: 150%' do
     = icon( :delete )
-
+  
   = f.hidden_field :type
 
   -# Search radius
@@ -10,7 +10,6 @@
     .col-xs-3= f.label :radius, iconify('Radius', 'map-marker')
     .col-xs-8= f.select :radius, options_for_radius, {}, class: 'form-control'
   
-  -# Search terms
   .row
-    .col-xs-3= f.label :area, iconify('Area', :search)
-    .col-xs-8= f.text_field :area, class: 'form-control'
+    .col-xs-3= f.label :point_of_interest_id, iconify('TfL', :search)
+    .col-xs-8= f.collection_select :point_of_interest_id, PointOfInterest.tfl_stations, :id, :name, {}, class: 'form-control'

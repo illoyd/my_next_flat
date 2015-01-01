@@ -1,0 +1,15 @@
+- cache do
+  = render(partial: 'searches/destroy_modal', locals: {search: @search}) unless @search.new_record?
+  
+  .container
+    - cache @search do
+      %nav.page-controls.pull-right
+        %ul
+          %li
+            = link_to_unless_current(icon(:back), @search) do
+              = link_to(icon(:back), home_path)
+          - unless @search.new_record? || current_page?(edit_search_path(@search))
+            %li= link_to_unless_current icon(:edit), edit_search_path(@search)
+          %li= link_to icon(:delete), '#', 'data-toggle'=>"modal", 'data-target'=>"#delete_#{@search.id}"
+  
+      %h1= @search.name

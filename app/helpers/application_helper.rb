@@ -101,7 +101,24 @@ module ApplicationHelper
       render(association.to_s.singularize + "_fields", :f => builder)
     end
     
-    html_options = { onclick: "add_section(this, \"#{association}\", \"#{escape_javascript(fields)}\"); return false;" }
+    html_options = { onclick: "add_section(this, \"#{association}\", \"#{escape_javascript(fields)}\"); return false;", class: 'btn btn-default btn-sm' }
+    
+    if block_given?
+      link_to('#', html_options, &block)
+    else
+      link_to(name, '#', html_options)
+    end
+  end
+
+  def link_to_add_fields_with_type(name=nil, f=nil, association=nil, type_class=nil, &block)
+    f, association, type_class = name, f, association if block_given?
+  
+    new_object = type_class.new
+    fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
+      render(type_class.to_s.singularize.underscore + "_fields", :f => builder)
+    end
+    
+    html_options = { onclick: "add_section(this, \"#{association}\", \"#{escape_javascript(fields)}\"); return false;", class: 'btn btn-default btn-sm' }
     
     if block_given?
       link_to('#', html_options, &block)

@@ -1,0 +1,76 @@
+// General search form
+form.form {
+
+  div.group {
+    @extend .form-group;
+    
+    label {
+      @extend .control-label;
+    } // label
+
+    input[type=text], input[type=number], input[type=tel], input[type=email] {
+      //@extend .form-control;
+    } // Inputs
+
+    input[type=submit], button[type=submit] {
+      @extend .btn;
+      @extend .btn-primary;
+    } // Submit button
+
+    button, a {
+      @extend .btn;
+      @extend .btn-default;
+    } // Buttons and links
+    
+  } // .group
+
+}
+
+// Horizontal form
+form.horizontal {
+  @extend .form;
+  @extend .form-horizontal;
+  
+  div.group {
+    
+    label {
+      @extend .col-sm-3;
+    } // .label
+    
+    .controls {
+      @extend .col-sm-9;
+    } // .controls
+    
+    .buttons {
+      @extend .col-sm-9;
+      @extend .col-sm-offset-3;
+    } // .buttons
+
+  } // .group
+
+}
+
+// Inline form
+form.inline {
+  @extend .form;
+  @extend .form-inline;
+  
+  div.group {
+    @extend .form-group-sm;
+    
+    label {
+      @extend .sr-only;
+    } // .label
+
+    input[type=text], input[type=number], input[type=tel], input[type=email] {
+      @extend .input-sm;
+    } // Inputs
+    
+    input[type=submit], button, a {
+      @extend .btn-sm;
+    }
+
+  } // .group
+}
+
+// Search forms

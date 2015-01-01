@@ -10,7 +10,6 @@
     .col-xs-3= f.label :radius, iconify('Radius', 'map-marker')
     .col-xs-8= f.select :radius, options_for_radius, {}, class: 'form-control'
   
-  -# Search terms
   .row
-    .col-xs-3= f.label :area, iconify('Area', :search)
-    .col-xs-8= f.text_field :area, class: 'form-control'
+    .col-xs-3= f.label :area, iconify('POI', :search)
+    .col-xs-8= f.collection_select :area, PointOfInterest.points_of_interest, :id, :name, {}, class: 'form-control'
