@@ -1,5 +1,5 @@
 - content_for(:title) do
-  #{ title_for(@listing) } at my next flat
+  #{ title_for(@listing) } at MyNextFlat
 
 - content_for(:meta) do
   %meta{content: "summary", name: "twitter:card"}/
@@ -9,37 +9,6 @@
   %meta{content: twitter_creator_for(@listing), name: "twitter:creator"}/
   %meta{content: twitter_image_for(@listing), name: "twitter:image:src"}/
   %meta{content: "mynextflat.co.uk", name: "twitter:domain"}/  
-
-#link-group
-  .links
-    = link_to @search || :back do
-      = icon('arrow-circle-o-left')
-      %br/
-      Back
-    = link_to '#photo' do
-      = icon('camera')
-      %br/
-      Photo
-    = link_to '#notes' do
-      = icon('flag-o')
-      %br/
-      Notes
-    = link_to '#nearby' do
-      = icon('compass')
-      %br/
-      Nearby
-    = link_to '#advert' do
-      = icon('file-text-o')
-      %br/
-      Advert
-    = link_to @listing.listing_url, target: :blank do
-      = icon('info-circle')
-      %br/
-      More
-
-
-%h2.listing#photo
-  = title_for(@listing)
 
 .row{ style: 'margin-top: 25px;' }
   .col-md-7
