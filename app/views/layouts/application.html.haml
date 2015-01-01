@@ -12,12 +12,19 @@
       = render partial: 'favicons'
       = yield(:meta) if content_for?(:meta)
 
-  %body{ id: "page-#{ controller_name }" }
+  %body{ id: "page-#{ controller_name }", class: ('with-map' if @map) }
     -# Navbar
     = render partial: 'navbar'
       
-    -# Layout
-    = @map ? render(partial: 'layouts/with_map') : render(partial: 'layouts/with_content')
+    .container
+      = render 'header'
+      = render 'alerts'
+      = yield
+      = render 'footer'
+
+    -# Map, if required
+    - if @map
+      = render(partial: 'map')
 
     -# Ads
     = render partial: 'ads/banner'

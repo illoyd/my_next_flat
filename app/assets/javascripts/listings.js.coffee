@@ -4,20 +4,24 @@
 
 mapify = (map) ->
   map.gmap(
-    center: map.data('latitude') + ',' + map.data('longitude')
+    center: map.data('lat') + ',' + map.data('lon')
   ).bind 'init', ->
-    markerify(map, $(marker)) for marker in $('[data-marker='+map.data('mapify')+']')
+    markerify(map, $(marker)) for marker in $('[data-map='+map.data('map-id')+']')
     fit_map(map)
 
 
 markerify = (map, marker) ->
   map.gmap('addMarker', {
-    position: marker.data('latitude') + ',' + marker.data('longitude'),
+    position:  marker.data('lat') + ',' + marker.data('lon'),
     animation: google.maps.Animation.DROP,
     draggable: false
-  } ).click ->
-    window.location = '#' + marker.data('jump');
-    map.gmap('openInfoWindow', {content: marker.get(0)}, this)
+  }).click ->
+    $('html, body').animate({
+      scrollTop: $('#' + marker.data('jump')).offset().top - 70
+    }, 1250);
+    # window.location = '#' + marker.data('jump');
+    # $('#' + marker.data('jump')).get(0).scrollIntoView();
+    # map.gmap('openInfoWindow', {content: marker.get(0)}, this)
 
 
 fit_map = (map) ->
@@ -31,5 +35,5 @@ fit_map = (map) ->
 
 
 $(document).on 'page:change', ->
-  $("div[data-mapify]").each (index) ->
+  $("div[data-map-id]").each (index) ->
     mapify($(this))
