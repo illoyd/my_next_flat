@@ -1,25 +1,12 @@
 - cache do
-  .container
-    %nav#top.page-controls
-      %ul
-        %li
-          = link_to @search || :back do
-            = icon('arrow-circle-o-left')
-        %li
-          = link_to '#photo' do
-            = icon('camera')
-        %li
-          = link_to '#notes' do
-            = icon('flag-o')
-        %li
-          = link_to '#nearby' do
-            = icon('compass')
-        %li
-          = link_to '#advert' do
-            = icon('file-text-o')
-        %li
-          = link_to @listing.listing_url, target: :blank do
-            = icon('info-circle')
-      
-    %h1.listing#photo{ data: {map: @map[:id], lat: @listing.latitude, lon: @listing.longitude, jump: 'top' } }
-      = title_for(@listing)
+  %nav#top.page-controls.pull-right
+    %ul
+      %li= link_to icon('arrow-circle-o-left'), (@search || :back)
+      %li= link_to icon('camera'), '#photo', data: {'scroll-to' => true}
+      %li= link_to icon('flag-o'), '#notes', data: {'scroll-to' => true}
+      %li= link_to icon('compass'), '#nearby', data: {'scroll-to' => true}
+      %li= link_to icon('file-text-o'), '#advert', data: {'scroll-to' => true}
+      %li= link_to icon(:info), @listing.listing_url, target: :blank
+
+  %h1{ data: {map: @map[:id], lat: @listing.latitude, lon: @listing.longitude, jump: 'top' } }
+    = title_for(@listing)

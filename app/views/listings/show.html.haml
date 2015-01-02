@@ -10,35 +10,41 @@
   %meta{content: twitter_image_for(@listing), name: "twitter:image:src"}/
   %meta{content: "mynextflat.co.uk", name: "twitter:domain"}/  
 
-.row{ style: 'margin-top: 25px;' }
-  .col-md-7
-    = link_to @listing.listing_url, class: 'thumbnail', target: :blank do
-      = image_tag @listing.image_url, src: @listing.caption
-  .col-md-5
-    - if @listing.floorplan_url.present?
-      = link_to @listing.listing_url, class: 'thumbnail', target: :blank do
-        = image_tag @listing.floorplan_url.first, src: @listing.caption
-    = link_to @listing.listing_url, target: :blank do
-      - if @listing.agent_logo_url.present?
-        = image_tag @listing.agent_logo_url, src: @listing.agent_name, class: 'center-block'
-      - else
-        = @listing.agent_name
 
-%h3#notes
+%h2#photo
+  photos
+  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right', data: {'scroll-to' => true}
+.row
+  - if @listing.listing_url.present?
+    .col-xs-7
+      = link_to @listing.listing_url, class: 'thumbnail', data: {toggle: 'modal', target: '#main-photo'} do
+        = image_tag @listing.image_url, src: @listing.caption
+  - if @listing.floorplan_url.present?
+    .col-xs-5
+      = link_to @listing.listing_url, class: 'thumbnail', data: {toggle: 'modal', target: '#floorplan-photo'} do
+        = image_tag @listing.floorplan_url.first, src: @listing.caption
+
+
+%h2#notes
   notes
-  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
+  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right', data: {'scroll-to' => true}
 %p.label-cloud
   = render partial: 'listing_labels', object: @listing
   = label2("first listed #{ @listing.created_at.to_formatted_s(:short_date) }", :default)
   - if @listing.created_at.to_date != @listing.updated_at.to_date
     = label2("last updated #{ @listing.updated_at.to_formatted_s(:short_date) }", :default)
+%p
+  = link_to @listing.listing_url, target: :blank, class: 'pull-right' do
+    - if @listing.agent_logo_url.present?
+      = image_tag @listing.agent_logo_url, src: @listing.agent_name, class: 'center-block'
+    - else
+      = @listing.agent_name
+  = @listing.summary
 
-%p= @listing.summary
-  
 
-%h3#nearby
+%h2#nearby
   nearby
-  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
+  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right', data: {'scroll-to' => true}
 %table.table
   - @nearby.group_by(&:kind).each do |kind, pois|
     %tr
@@ -48,17 +54,41 @@
           - pois.each do |poi|
             %li[poi]{ data: { marker: 'disabled:'+@map[:id], latitude: poi.latitude, longitude: poi.longitude } } #{ poi.name } (#{ poi.distance.round(1) })
 
-%h3#advert
+%h2#advert
   description
-  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
+  = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right', data: {'scroll-to' => true}
 %p.text-muted= @listing.address
 %p!= format_zoopla_description @listing.description
 
 
+-# Main photo modal
+- if @listing.image_url.present?
+  #main-photo.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-body
+          = image_tag @listing.image_url, src: @listing.caption, style: 'width:100%;', data: {"dismiss" => "modal"}
+        .modal-footer
+          %a.btn.btn-info{href: @listing.listing_url, target: '_blank'}= iconify('More Info', :info)
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}= iconify('Close', :close)
+
+
+-# Floorplan photo modal
+- if @listing.floorplan_url.present?
+  #floorplan-photo.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-body
+          = image_tag @listing.floorplan_url.first, src: @listing.caption, style: 'width:100%;', data: {"dismiss" => "modal"}
+        .modal-footer
+          %a.btn.btn-info{href: @listing.listing_url, target: '_blank'}= iconify('More Info', :info)
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}= iconify('Close', :close)
+
+
 - if Rails.env.development?
-  %h3#raw
+  %h2#raw
     raw
-    = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right'
+    = link_to icon('arrow-circle-o-up'), '#top', class: 'pull-right', data: {'scroll-to' => true}
   - @listing.each do |k,v|
     %pre #{k}: #{v}
 
