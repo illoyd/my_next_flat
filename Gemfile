@@ -66,7 +66,7 @@ gem 'redis-rack-cache'
 gem 'redis'
 gem 'redis-rails'
 gem 'sidekiq', '~> 3.3'
-gem 'sidetiq', '~> 0.6'
+# gem 'sidetiq', '~> 0.6'
 
 #
 # Test and development gems
