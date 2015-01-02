@@ -1,4 +1,4 @@
-- cache listing do
+- cache "listing-#{ listing.id }" do
   .listing{ id: "listing-#{ listing.id }", data: {map: @map[:id], lat: listing.latitude, lon: listing.longitude, jump: "listing-#{ listing.id }"} }
     .col-xs-12
       %h2{style: 'margin-top: 0px'}= link_to title_for(listing), search_listing_path(@search, listing.id)
