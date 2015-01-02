@@ -1,2 +1,3 @@
-%p.muted Lat: #{ @map.try(:latitude) || 'nil' } Lon: #{ @map.try(:longitude) || 'nil' }
-%p.muted request.location = #{ request.location.to_h }
+- if Rails.env.development?
+  %p.muted Lat: #{ @map.try(:latitude) || 'nil' } Lon: #{ @map.try(:longitude) || 'nil' }
+  %p.muted request.location = #{ request.location.to_h }
