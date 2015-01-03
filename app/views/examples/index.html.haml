@@ -1,9 +1,7 @@
 %p.text-center
   - if guest_user?
     Welcome back! Why not
-    = link_to 'sign up', new_user_registration_path
-    or
-    = link_to 'sign in', new_user_session_path
+    = link_to 'sign in', '#', class: 'btn btn-primary', data: {target: '#sign-in-modal', toggle: 'modal'}
     to save your searches?
 
 %table.table
@@ -17,10 +15,6 @@
 - if guest_user?
   .text-center
     %ul.nav.nav-pills{ style: 'margin-top: 25px; display: inline-block;' }
-      %li
-        = link_to new_user_registration_path do
-          = icon('plus')
-          Sign up
       %li
         = link_to new_user_session_path do
           = icon('sign-in')

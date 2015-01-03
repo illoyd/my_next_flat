@@ -13,7 +13,6 @@
               .col-sm-10= f.text_field :name, autofocus: true, class: 'form-control'
           
             .form-group
-              - current_or_guest_user.email = nil unless current_or_guest_user.real_email? 
               = f.label :email, class: 'col-sm-2 control-label'
               .col-sm-10= f.email_field :email, class: 'form-control', placeholder: 'hello@example.com'
       

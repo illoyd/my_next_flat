@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150101160530) do
+ActiveRecord::Schema.define(version: 20150103104818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(version: 20150101160530) do
   add_index "examples", ["type"], name: "index_examples_on_type", using: :btree
   add_index "examples", ["user_id"], name: "index_examples_on_user_id", using: :btree
 
+  create_table "identities", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
+
   create_table "locations", force: :cascade do |t|
     t.integer  "example_id"
     t.string   "type",                 limit: 255
@@ -84,28 +94,30 @@ ActiveRecord::Schema.define(version: 20150101160530) do
   add_index "point_of_interests", ["zones"], name: "index_point_of_interests_on_zones", using: :gin
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                   limit: 255
+    t.string   "name",                 limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                  limit: 255, default: "",    null: false
-    t.string   "encrypted_password",     limit: 255, default: "",    null: false
-    t.string   "reset_password_token",   limit: 255
-    t.datetime "reset_password_sent_at"
+    t.string   "email",                limit: 255, default: "",    null: false
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,     null: false
+    t.integer  "sign_in_count",                    default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.boolean  "guest",                              default: false
-    t.string   "twitter_uid",            limit: 255
-    t.string   "twitter_handle",         limit: 255
-    t.string   "profile_image_url",      limit: 255
-    t.boolean  "real_email",                         default: true
+    t.string   "current_sign_in_ip",   limit: 255
+    t.string   "last_sign_in_ip",      limit: 255
+    t.boolean  "guest",                            default: false
+    t.string   "photo_url",            limit: 255
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.string   "big_photo_url"
+    t.string   "remember_token"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
+  add_foreign_key "identities", "users"
   add_foreign_key "locations", "point_of_interests"
 end

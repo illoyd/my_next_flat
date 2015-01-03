@@ -1,40 +1,18 @@
 class User < ActiveRecord::Base
+  
+  # Regexes for use with social sign-in
+  TEMP_EMAIL_PREFIX = 'change@me'
+  TEMP_EMAIL_REGEX = /\Achange@me/
+
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: [ :twitter ]
+  # :database_authenticatable, :registerable, :validatable, :lockable, :timeoutable, :recoverable
+  devise :rememberable, :trackable, :omniauthable, :confirmable, :async
+
+  validates_presence_of :name, :email
+  validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
 
   has_many :searches, inverse_of: :user, dependent: :destroy
-  
-  validates :name, presence: true
-  
-  def twitter?
-    self.twitter_uid.present?
-  end
-
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if data = session["devise.twitter_data"] && session["devise.twitter_data"]["info"]
-        user.email             = data['email']    if user.email.blank?
-        user.name              = data['name']     if user.name.blank?
-        user.twitter_handle    = data["nickname"] if user.twitter_handle.blank?
-        user.profile_image_url = data['image']    if user.profile_image_url.blank?
-      end
-    end
-  end
-
-  def self.find_or_create_with_twitter_oauth(auth)
-    find_or_create_by(twitter_uid: auth.uid) do |user|
-      user.twitter_uid       = auth.uid
-      user.twitter_handle    = auth.info.nickname
-      user.profile_image_url = auth.info.image
-      user.email             = auth.info.email || auth.email || "#{ auth.info.nickname }_twitter@mynextflat.co.uk"
-      user.password          = Devise.friendly_token[0,20]
-      user.name              = auth.info.name
-      user.real_email        = false
-    end
-  end
+  has_many :identities, inverse_of: :user, dependent: :destroy
   
   def merge!(other_user)
     other_user.searches.each { |search| search.update!( user: self ) }    
@@ -42,4 +20,60 @@ class User < ActiveRecord::Base
     self.reload
   end
 
+  def self.find_for_oauth(auth, signed_in_resource = nil)
+    
+    # Get the identity and user if they exist
+    identity = Identity.find_for_oauth(auth)
+
+    # If a signed_in_resource is provided it always overrides the existing user
+    # to prevent the identity being locked with accidentally created accounts.
+    # Note that this may leave zombie accounts (with no associated identity) which
+    # can be cleaned up at a later date.
+    user = signed_in_resource ? signed_in_resource : identity.user
+
+    # Create the user if needed
+    if user.nil?
+
+      # Get the existing user by email if the provider gives us a verified email.
+      # If no verified email was provided we assign a temporary email and ask the
+      # user to verify it on the next step via UsersController.finish_signup
+      email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
+      email = auth.info.email if email_is_verified
+      user = User.where(:email => email).first if email
+
+      # Create the user if it's a new registration
+      if user.nil?
+        user = User.new(
+          name: auth.extra.raw_info.name,
+          #username: auth.info.nickname || auth.uid,
+          email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+          photo_url:     auth.info.image,
+          big_photo_url: auth.info.image,
+          # password: Devise.friendly_token[0,20]
+        )
+        user.skip_confirmation!
+        user.save!
+      end
+    
+    # Update user photos
+    else
+      user.update_columns(
+        photo_url:     auth.info.image,
+        big_photo_url: auth.info.image
+      )
+      user.touch
+    end
+
+    # Associate the identity with the user if needed
+    if identity.user != user
+      identity.user = user
+      identity.save!
+    end
+    user
+  end
+
+  def email_verified?
+    self.email && self.email !~ TEMP_EMAIL_REGEX
+  end
+  
 end

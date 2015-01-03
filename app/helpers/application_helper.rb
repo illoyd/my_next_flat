@@ -20,6 +20,10 @@ module ApplicationHelper
     image_tag(user.try(:photo_url) || 'default.png', style: 'height: 30px;')
   end
   
+  def big_photo_tag_for(user)
+    image_tag(user.try(:big_photo_url) || 'default.png')
+  end
+  
   ##
   # Create a font-awesome icon
   def icon( kind = :blank, options = {} )

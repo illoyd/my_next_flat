@@ -14,11 +14,10 @@
       #navbar.collapse.navbar-collapse
         %ul.nav.navbar-nav.navbar-right
           - if guest_user?
-            %li= link_to iconify('Sign up', :plus), new_user_registration_path
-            %li= link_to iconify('Sign in', :sign_in), new_user_session_path
+            %li= link_to iconify('Sign in', :sign_in), '#', data: {target: '#sign-in-modal', toggle: 'modal'}
 
           - else # not a guest
-            %li=link_to "Hi, #{ current_or_guest_user.name }!", edit_user_registration_path
+            %li=link_to "Hi, #{ current_or_guest_user.name }!", edit_user_path(current_or_guest_user)
                 
           %li
             =link_to(searches_path) do

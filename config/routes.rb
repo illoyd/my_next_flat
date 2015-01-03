@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  
+  # Devise routes for use with social sign-ups
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+  match '/users/:id/finish_signup' => 'users#finish_signup', as: :finish_signup, via: [:get, :patch]
+
+  devise_scope :user do
+    get   'sign_in',  to: 'devise/sessions#new',     as: :new_user_session
+    match 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session, via: [:get, :delete]
+  end
+  
+  resources :users, only: [:show, :edit, :update]
 
   resource :home, only: :show
   

@@ -21,7 +21,6 @@
       = render 'alerts'
       = yield
       = render 'footer'
-      = render 'debug'
 
     -# Map, if required
     - if @map
@@ -29,3 +28,7 @@
 
     -# Ads
     = render partial: 'ads/banner'
+    
+    -# Sign-in form, only if not signed-in
+    - unless signed_in?
+      = render(partial: 'sign_in_modal')

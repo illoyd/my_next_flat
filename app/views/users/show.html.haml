@@ -1,0 +1,19 @@
+= render partial: 'page_header', locals: { user: @user }
+
+- cache @user do
+  %p.text-center
+    - if @user.unconfirmed_email.present?
+      = mail_to @user.unconfirmed_email
+      %span.label.label-default unconfirmed
+      
+    - elsif @user.email.present? && @user.email_verified?
+      = mail_to @user.email
+    - else
+      = link_to 'set your email', edit_user_path(@user)
+  
+  %p.text-center.small
+    = link_to 'edit your profile', edit_user_path(@user)
+
+-# = render partial: 'activity_map', object: @user.stop_requests
+
+= render partial: 'activity_timeline'

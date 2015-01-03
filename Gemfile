@@ -69,6 +69,10 @@ gem 'sidekiq', '~> 3.3'
 # gem 'sidetiq', '~> 0.6'
 
 #
+# Dev and Prod gems
+gem 'rails_12factor', group: [:development, :production]
+
+#
 # Test and development gems
 group :test, :development do
   gem "rspec-rails" #, "~> 2.0"
@@ -92,7 +96,6 @@ end
 #
 # Production gems
 group :production do
-  gem 'rails_12factor'
   gem 'newrelic_rpm'
   gem 'lograge'
 end
