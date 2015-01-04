@@ -39,7 +39,8 @@ module ApplicationHelper
   ##
   # Prefix a string with an icon
   def iconify(label, icon, options = {})
-    "#{ icon(icon, options) } #{ label }".strip.html_safe
+    contents = "#{ icon(icon, options) }&nbsp;#{ label }".strip.html_safe
+    content_tag(:span, contents, {style: 'white-space:nowrap;'})
   end
 
   def label2(text, label, *classes)
@@ -119,7 +120,7 @@ module ApplicationHelper
   
     new_object = type_class.new
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-      render(type_class.to_s.singularize.underscore + "_fields", :f => builder)
+      render(partial: type_class.to_s.singularize.underscore + "_fields", locals: {f: builder}, layout: 'layouts/criterium')
     end
     
     html_options = { onclick: "add_section(this, \"#{association}\", \"#{escape_javascript(fields)}\"); return false;", class: 'btn btn-default btn-sm' }

@@ -22,6 +22,11 @@
 @import "forms";
 @import "bootstrap";
 
+// Turbolinks!
+html.turbolinks-progress-bar::before {
+  background-color: $brand-info !important;
+}
+
 // Body
 body {
   margin-top: $navbar-height+5px;
@@ -103,6 +108,31 @@ nav.page-controls {
 .search-panel {
   @extend .panel;
   @extend .panel-default;
+}
+
+// Tables
+table.criteria {
+  @extend .table;
+  @extend .table-condensed;
+
+  margin-bottom: 0px;
+  margin-left: 0px;
+  
+  tbody {
+    tr {
+      td {
+        border: none;
+        line-height: 37px;
+      }
+    }
+  }
+}
+
+.criteria-delete {
+  @extend .pull-right;
+  @extend .btn;
+  @extend .btn-sm;
+  @extend .btn-default;
 }
 
 // Footer

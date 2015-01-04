@@ -1,48 +1,20 @@
-%li.list-group-item
-  = f.hidden_field :_destroy, class: 'destroy'
-  = link_to '#', onclick: "javascript:delete_section(this); return false;", class: 'pull-right', style: 'font-size: 150%' do
-    = icon( :delete )
+-# Buy...
+%p
+  I want to 
+  %code= criteria_kind_for(f.object)
+  \...
 
-  %p
-    I want to 
-    %code= criteria_kind_for(f.object)
-    = f.hidden_field :type
-
-  -# Price
-  .row
-    .col-xs-3
-      %strong &pound; Price
-    .col-xs-4
-      = f.label :min_price, class: 'sr-only'
-      = f.number_field :min_price, class: 'form-control', step: 1, min: 0, placeholder: 0
-    .col-xs-1
-      to
-    .col-xs-4
-      = f.label :max_price, class: 'sr-only'
-      = f.number_field :max_price, class: 'form-control', step: 1, min: 0, placeholder: 'any'
-
-  -# Beds
-  .row
-    .col-xs-3
-      %strong Beds
-    .col-xs-4
-      = f.label :min_beds, class: 'sr-only'
-      = f.number_field :min_beds, class: 'form-control', step: 1, min: 0, placeholder: 0
-    .col-xs-1
-      to
-    .col-xs-4
-      = f.label :max_beds, class: 'sr-only'
-      = f.number_field :max_beds, class: 'form-control', step: 1, min: 0, placeholder: 'any'
-
-  -# Baths
-  .row
-    .col-xs-3
-      %strong Baths
-    .col-xs-4
-      = f.label :min_baths, class: 'sr-only'
-      = f.number_field :min_baths, class: 'form-control', step: 1, min: 0, placeholder: 0
-    .col-xs-1
-      to
-    .col-xs-4
-      = f.label :max_baths, class: 'sr-only'
-      = f.number_field :max_baths, class: 'form-control', step: 1, min: 0, placeholder: 'any'
+%table.criteria
+  %tbody
+    - %w( price beds baths ).each do |key|
+      %tr
+        %td
+          %strong= key.humanize
+        %td
+          = f.label "min_#{key}".to_sym, class: 'sr-only'
+          = f.number_field "min_#{key}".to_sym, class: 'form-control', step: 1, min: 0, placeholder: 0
+        %td
+          to
+        %td
+          = f.label "max_#{key}".to_sym, class: 'sr-only'
+          = f.number_field "max_#{key}".to_sym, class: 'form-control', step: 1, min: 0, placeholder: 'any'
