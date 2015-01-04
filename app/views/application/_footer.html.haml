@@ -1,18 +1,14 @@
 - cache do
   .container
     %hr/
-    .row.small.muted-text
-      .col-xs-8
-        %p
-          Copyright &copy; 2015 Ian Lloyd. All rights reserved.
-          %br/
-          We use
-          = link_to 'Zoopla', 'http://www.zoopla.co.uk'
-          to provide real-time property information.      
-        %p
-          Let us know your thoughts.
-          = mail_to 'hello@signalcloudapp.com'
-    
-      .col-xs-4.text-right
-        %a{href: "http://www.zoopla.co.uk/"}
-          %img{alt: "Property information powered by Zoopla", border: "0", height: "54", src: "http://www.zoopla.co.uk/static/images/mashery/powered-by-zoopla.png", title: "Property information powered by Zoopla", width: "111"}/
+    %p
+      %a{href: "http://www.zoopla.co.uk/", class: 'pull-right'}
+        %img{alt: "Property information powered by Zoopla", border: "0", height: "54", src: "http://www.zoopla.co.uk/static/images/mashery/powered-by-zoopla.png", title: "Property information powered by Zoopla", width: "111"}/
+      Copyright &copy; 2015 Ian Lloyd. All rights reserved.
+      %br/
+      We use
+      = link_to 'Zoopla', 'http://www.zoopla.co.uk'
+      to provide real-time property information.      
+    %p
+      Let us know your thoughts.
+      = mail_to 'hello@signalcloudapp.com'
