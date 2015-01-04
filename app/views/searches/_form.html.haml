@@ -39,16 +39,16 @@
     .panel-heading
       %h2.panel-title
         %i.fa.fa-map-marker
-        Places
+        Where
     %ul.list-group
       = f.fields_for :locations do |builder|
         - case builder.object
         - when TfLStationLocation
-          - render 'tf_l_station_location_fields', f: builder
+          - render partial: 'tf_l_station_location_fields', locals: {f: builder}, layout: 'layouts/criterium'
         - when PointOfInterestLocation
-          - render 'point_of_interest_location_fields', f: builder
+          - render partial: 'point_of_interest_location_fields', locals: {f: builder}, layout: 'layouts/criterium'
         - else
-          - render 'location_fields', f: builder
+          - render partial: 'location_fields', locals: {f: builder}, layout: 'layouts/criterium'
     .panel-footer.text-center
       = link_to_add_fields_with_type(iconify('Area', :plus), f, :locations, Location)
       = link_to_add_fields_with_type(iconify('TfL Station', :plus), f, :locations, TfLStationLocation)
@@ -58,14 +58,14 @@
     .panel-heading
       %h2.panel-title
         %i.fa.fa-check
-        Things
+        What
     %ul.list-group
       = f.fields_for :criterias do |builder|
         - case builder.object
         - when BuyCriteria
-          - render 'buy_criterium_fields', f: builder
+          - render partial: 'buy_criterium_fields', locals: {f: builder}, layout: 'layouts/criterium'
         - when LetCriteria
-          - render 'let_criterium_fields', f: builder
+          - render partial: 'let_criterium_fields', locals: {f: builder}, layout: 'layouts/criterium'
     .panel-footer.text-center
       = link_to_add_fields_with_type(iconify('Buy', :plus), f, :criterias, BuyCriteria)
       = link_to_add_fields_with_type(iconify('Let', :plus), f, :criterias, LetCriteria)

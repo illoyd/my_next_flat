@@ -1,0 +1,5 @@
+%li.list-group-item
+  = f.hidden_field :type
+  = f.hidden_field :_destroy, class: 'destroy'
+  = render partial: 'delete_section_button'
+  = yield
