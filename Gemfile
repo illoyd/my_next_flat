@@ -61,6 +61,7 @@ gem 'kaminari'
 # Infrastructure gems
 gem 'oj'
 gem 'oj_mimic_json'
+gem 'dalli'
 gem 'redis'
 gem 'redis-rails'
 gem 'sidekiq', '~> 3.3'
