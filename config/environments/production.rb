@@ -17,10 +17,10 @@ Rails.application.configure do
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
-  config.action_dispatch.rack_cache = {
-    metastore:   "#{ Rails.application.secrets.redis_url }/1/metastore",
-    entitystore: "#{ Rails.application.secrets.redis_url }/1/entitystore"
-  }
+  # config.action_dispatch.rack_cache = {
+  #   metastore:   "#{ Rails.application.secrets.redis_url }/1/metastore",
+  #   entitystore: "#{ Rails.application.secrets.redis_url }/1/entitystore"
+  # }
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = false
