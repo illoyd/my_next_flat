@@ -89,15 +89,4 @@ Rails.application.configure do
   # Activate lograge
   config.lograge.enabled = true
 
-  # Add GMail configuration for production server
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'signalcloudapp.com',
-    user_name:            Rails.application.secrets.gmail_username,
-    password:             Rails.application.secrets.gmail_password,
-    authentication:       'plain',
-    enable_starttls_auto: true  }
-
 end
