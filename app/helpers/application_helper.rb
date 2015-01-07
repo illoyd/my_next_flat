@@ -13,7 +13,7 @@ module ApplicationHelper
   end
   
   def title_for(listing)
-    listing.display_name
+    listing.try(:display_name) || 'New Listing'
   end
   
   def photo_tag_for(user)
