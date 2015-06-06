@@ -188,6 +188,7 @@ module ApplicationHelper
   
   def beds_for(beds)
     beds = beds.try(:beds) || beds
+    return nil unless beds
     case beds
       when 0
         'studio'
@@ -198,6 +199,7 @@ module ApplicationHelper
   
   def baths_for(baths)
     baths = baths.try(:baths) || baths
+    return nil unless baths
     whole_baths = baths.truncate
     half_baths = (baths - whole_baths).round(1) == 0.5 ? '&frac12;' : nil
     "#{ whole_baths }#{ half_baths } #{ 'bath'.pluralize(baths) }"
@@ -205,6 +207,7 @@ module ApplicationHelper
   
   def receptions_for(receptions)
     receptions = receptions.try(:receptions) || receptions
+    return nil unless receptions
     pluralize(receptions, 'reception')
   end
 
