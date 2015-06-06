@@ -1,9 +1,10 @@
 module TwitterCardHelper
 
   def twitter_title_for(listing)
+    return nil unless listing
     beds   = beds_for(listing)
     baths  = baths_for(listing)
-    kind   = listing.kind.downcase || 'property'
+    kind   = listing.try(:kind).try(:downcase) || 'property'
     status = listing.for_sale? ? 'sale' : 'rent'
     "#{ beds } #{ baths } #{ kind } for #{ status }".strip.gsub(/ {2,}/, ' ').gsub(/(\b\w+\b)(?:\s*\1)+/, '\1')
   end
