@@ -10,7 +10,7 @@ module TwitterCardHelper
   end
 
   def twitter_description_for(listing)
-    description = listing.summary || listing.description || twitter_title_for(listing)
+    description = listing.try(:summary) || listing.try(:description) || twitter_title_for(listing)
     truncate(description, length: 200, separator: ' ')
   end
 
@@ -19,7 +19,7 @@ module TwitterCardHelper
   end
 
   def twitter_image_for(listing)
-    listing.image_url || listing.floorplan_url || listing.agent_logo_url || nil
+    listing.try(:image_url) || listing.try(:floorplan_url) || listing.try(:agent_logo_url) || nil
   end
 
 end
