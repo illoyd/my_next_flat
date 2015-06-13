@@ -4,6 +4,7 @@ class ListingsController < ApplicationController
   skip_authorization_check :show  
 
   def show
+    redirect_to(request.env["HTTP_REFERER"] || home_path, :flash => { :error => "Oops! That listing is not available anymore!" }) if @listing.nil?
     load_nearbys
     load_map
   end
