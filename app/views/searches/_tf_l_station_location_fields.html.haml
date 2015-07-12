@@ -8,7 +8,7 @@
   %tbody
     %tr
       %td= f.label :radius, iconify('Radius', 'map-marker')
-      %td= f.select :radius, options_for_radius, {}, class: 'form-control'
+      %td= f.select :radius, options_for_radius(remove: 0), {selected: 0.5}, class: 'form-control'
     %tr
       %td= f.label :point_of_interest_id, iconify('TfL', :search)
       %td= f.collection_select :point_of_interest_id, PointOfInterest.tfl_stations, :id, :name, {}, class: 'form-control'

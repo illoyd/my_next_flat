@@ -12,8 +12,12 @@ module SearchesHelper
     [ ['Don\'t send', 'ignore'], ['Email', 'email'], ['Tweet', 'twitter'] ]
   end
   
-  def options_for_radius
-    [ 0, 0.25, 0.5, 0.75, 1, 2, 5, 10, 15, 25, 50 ].map{ |miles| [radius_for(miles), miles] }
+  ##
+  # Return a fully formed options component for an option field
+  # options[:remove] to remove items from the array
+  def options_for_radius(options = {})
+    values = [ 0, 0.25, 0.5, 0.75, 1, 2, 5, 10, 15, 25, 50 ] - Array(options.try(:remove))
+    values.map{ |miles| [radius_for(miles), miles] }
   end
   
   def options_for_day_of_week
