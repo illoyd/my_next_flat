@@ -211,4 +211,11 @@ module ApplicationHelper
     pluralize(receptions, 'reception')
   end
 
+
+  def cache_key_for_user_searches
+    count          = current_or_guest_user.searches.count
+    max_updated_at = current_or_guest_user.searches.maximum(:updated_at).try(:utc).try(:to_s, :number)
+    "user/#{current_or_guest_user.id}/searches/all-#{count}-#{max_updated_at}"
+  end
+  
 end
