@@ -1,2 +1,2 @@
 #map-container
-  #map{ data: { 'map-id' => @map[:id], lon: @map[:longitude], lat: @map[:latitude] } }
+  #map{ data: { 'map-id' => @map[:id], lon: @map[:longitude] || -0.1257400, lat: @map[:latitude] || 51.5085300 } }
