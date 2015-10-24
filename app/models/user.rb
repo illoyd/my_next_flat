@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   has_many :searches, inverse_of: :user, dependent: :destroy
   has_many :identities, inverse_of: :user, dependent: :destroy
   
+  scope :guests, -> { where(guest: true) }
+  scope :created_before(interval), -> { where("created_at < NOW() - INTERVAL '#{ interval }'") }
+  
   def merge!(other_user)
     other_user.searches.each { |search| search.update!( user: self ) }    
     other_user.reload
