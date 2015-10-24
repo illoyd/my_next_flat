@@ -2,7 +2,7 @@ namespace :clean do
 
   desc "Clean stale users"
   task users: :environment do
-    CleanStaleUsersJob.perform_async
+    CleanStaleGuestsJob.perform_async
   end
 
 end
